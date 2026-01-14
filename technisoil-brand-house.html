@@ -11,6 +11,25 @@
     
     <style>
         /* ═══════════════════════════════════════════════════════════════
+           CUSTOM FONTS
+           ═══════════════════════════════════════════════════════════════ */
+        @font-face {
+            font-family: 'NEO';
+            src: url('assets/fonts/neo-thin.woff2') format('woff2');
+            font-weight: 100 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'NEO';
+            src: url('assets/fonts/neo-bold.woff2') format('woff2');
+            font-weight: 600 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
            TECHNISOIL / NEO BRAND TOKENS
            ═══════════════════════════════════════════════════════════════ */
         :root {
@@ -36,8 +55,8 @@
             --earth-tan: #C4A77D;
             --safety-orange: #FF6D00;
             
-            /* Typography - Helvetica Neue Stack + Roboto Mono */
-            --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /* Typography - NEO Custom + Helvetica Neue Stack + Roboto Mono */
+            --font-display: 'NEO', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-mono: 'Roboto Mono', 'Consolas', monospace;
             
@@ -150,13 +169,14 @@
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-            color: var(--white);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            text-transform: uppercase;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
         }
 
         .logo-divider {
@@ -262,6 +282,36 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+
+        /* Project image backgrounds */
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            mix-blend-mode: luminosity;
+            z-index: 0;
+        }
+
+        .hero-bg-image.image-1 {
+            background-image: url('assets/images/neo-project-1.jpg');
+        }
+
+        .hero-bg-image.image-2 {
+            background-image: url('assets/images/neo-project-2.jpg');
+            opacity: 0.06;
+            animation: fadeInOut 20s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.06; }
+            50% { opacity: 0.12; }
         }
 
         /* Molecular hexagon overlay */
@@ -545,6 +595,16 @@
             display: flex;
             align-items: center;
             margin-bottom: var(--space-lg);
+        }
+
+        .brand-logo-area img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-logo-area.neo img {
+            height: 50px;
         }
 
         .brand-logo-text {
@@ -992,12 +1052,19 @@
         }
 
         .footer-logo {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--chalk);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 22px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-logo img:hover {
+            opacity: 1;
         }
 
         .footer-tagline {
@@ -1152,7 +1219,7 @@
         <div class="header-inner">
             <div class="logo-group">
                 <a href="index.html" class="logo">
-                    <img src="https://technisoilind.com/img/logo-middle.png" alt="TechniSoil Industries" style="height: 40px; width: auto;">
+                    <img src="assets/logos/technisoil-logo.svg" alt="TechniSoil Industrial">
                 </a>
                 <div class="logo-divider"></div>
                 <span class="logo-sub">Brand House</span>
@@ -1171,6 +1238,8 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-bg-image image-1"></div>
+        <div class="hero-bg-image image-2"></div>
         <div class="hero-bg">
             <div class="molecular-overlay"></div>
             <canvas id="aggregateCanvas"></canvas>
@@ -1229,8 +1298,8 @@
             <div class="brands-grid">
                 <!-- TechniSoil Industrial -->
                 <a href="technisoil/index.html" class="brand-card tsi reveal delay-2">
-                    <div class="brand-logo-area">
-                        <span class="brand-logo-text tsi">TechniSoil</span>
+                    <div class="brand-logo-area tsi">
+                        <img src="assets/logos/technisoil-logo.svg" alt="TechniSoil Industrial">
                     </div>
                     <div class="brand-type">Parent Company</div>
                     <div class="brand-name">TechniSoil Industrial</div>
@@ -1249,8 +1318,8 @@
                 
                 <!-- NEO -->
                 <a href="neo/index.html" class="brand-card neo reveal delay-3">
-                    <div class="brand-logo-area">
-                        <span class="brand-logo-text neo">NEO™</span>
+                    <div class="brand-logo-area neo">
+                        <img src="assets/logos/neo-logo-white.png" alt="NEO by TechniSoil">
                     </div>
                     <div class="brand-type">Product Brand</div>
                     <div class="brand-name">NEO by TechniSoil</div>
@@ -1483,7 +1552,9 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <span class="footer-logo">TechniSoil Industrial</span>
+                <div class="footer-logo">
+                    <img src="assets/logos/technisoil-logo.svg" alt="TechniSoil Industrial">
+                </div>
                 <span class="footer-tagline">Pavement Performance & Sustainability</span>
             </div>
             <div class="footer-links">
