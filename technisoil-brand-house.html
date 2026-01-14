@@ -269,6 +269,11 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            background-image: url('https://technisoilind.com/img/bg_main.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
         }
 
         .hero-bg canvas {
@@ -886,6 +891,33 @@
             opacity: 1;
         }
 
+        .client-logo {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background: var(--gravel);
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover {
+            background: var(--concrete);
+            transform: translateY(-2px);
+        }
+
+        .client-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: grayscale(1) brightness(1.5);
+            transition: filter 0.3s ease;
+        }
+
+        .client-logo:hover img {
+            filter: grayscale(0) brightness(1);
+        }
+
         .award-card {
             background: var(--aggregate);
             padding: var(--space-lg);
@@ -916,6 +948,80 @@
             font-weight: 300;
             color: var(--chalk);
             line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           REPORTS SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .reports-section {
+            background: var(--asphalt);
+            min-height: auto;
+            padding: var(--space-2xl) 0;
+        }
+
+        .reports-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .reports-header h3 {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--polymer-green);
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .reports-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 200;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .reports-cta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .report-link {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            background: var(--gravel);
+            color: var(--white);
+            border: 1px solid var(--concrete);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .report-link:hover {
+            background: var(--polymer-green);
+            color: var(--carbon);
+            border-color: var(--polymer-green);
+            box-shadow: 0 0 30px var(--polymer-green-glow);
+            transform: translateY(-2px);
+        }
+
+        .report-link::after {
+            content: '→';
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .report-link:hover::after {
+            transform: translateX(4px);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1124,6 +1230,7 @@
                 <a href="neo/index.html">NEO System</a>
                 <a href="shared/index.html">Shared Assets</a>
                 <a href="playbooks/index.html">Playbooks</a>
+                <a href="#reports">Reports</a>
                 <a href="https://technisoilind.com" target="_blank" class="nav-cta">Main Site</a>
             </nav>
         </div>
@@ -1385,28 +1492,58 @@
                 <div class="clients-area reveal delay-2">
                     <h3>Trusted By</h3>
                     <div class="client-logos">
-                        <div class="client-logo-placeholder">Apple</div>
-                        <div class="client-logo-placeholder">Google</div>
-                        <div class="client-logo-placeholder">Meta</div>
-                        <div class="client-logo-placeholder">Caltrans</div>
-                        <div class="client-logo-placeholder">LA City</div>
-                        <div class="client-logo-placeholder">Pebble Beach</div>
-                        <div class="client-logo-placeholder">Qatar Museums</div>
-                        <div class="client-logo-placeholder">Imperial Palace</div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-001.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-002.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-003.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-004.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-005.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-006.png" alt="Client">
+                        </div>
+                        <div class="client-logo">
+                            <img src="https://technisoilind.com/clients/logos/client-logo-008.png" alt="Client">
+                        </div>
                     </div>
                 </div>
                 
                 <div class="awards-area reveal delay-3">
                     <h3>Recognition</h3>
                     <div class="award-card">
-                        <div class="award-name">Katerva Award</div>
+                        <div class="award-name">The Katerva Awards</div>
                         <div class="award-category">Finalist — Cities & Mobility</div>
                         <p class="award-desc">
-                            Referred to by Reuters as "the Nobel Prize for Sustainability." 
-                            Recognizing companies driving global change.
+                            "A new breed of companies are showing how innovation can be scaled for both business opportunities and global good. Led by resolute and independent thinkers, these companies are making dents in conventional ways of thinking to defy and fight for global change."
+                        </p>
+                        <p class="award-desc" style="margin-top: 1rem; font-size: 0.75rem; font-style: italic; color: var(--ite-lighter);">
+                            Referred to by Reuters as "the Nobel Prize for Sustainability". Each year, thousands of ideas are submitted to Katerva Award experts and award council, selecting winners across 10 categories.
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPORTS SECTION -->
+    <section class="reports-section" id="reports">
+        <div class="section-inner">
+            <div class="reports-header reveal">
+                <h3>Technical Resources</h3>
+                <h2>Reports & <span class="bold">Documentation</span></h2>
+            </div>
+            <div class="reports-cta reveal delay-1">
+                <a href="https://technisoilind.com/reports.html" target="_blank" class="report-link">
+                    View All Reports
+                </a>
             </div>
         </div>
     </section>
@@ -1424,6 +1561,7 @@
                 <a href="https://technisoilind.com" target="_blank">TechniSoil</a>
                 <a href="https://neopave.com" target="_blank">NEO</a>
                 <a href="shared/index.html">Assets</a>
+                <a href="https://technisoilind.com/reports.html" target="_blank">Reports</a>
             </div>
             <div class="footer-credit">
                 Brand House by <a href="https://look-serious.com" target="_blank">Look Serious</a>
