@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechniSoil Industrial — The End of Asphalt</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           TECHNISOIL INDUSTRIAL — PENTAGRAM-LEVEL INDEX
+           Paula Scher Typography × Ansel Adams Contrast × Marty Neumeier ZAG
+           ═══════════════════════════════════════════════════════════════ */
+
+        :root {
+            /* High-Contrast Palette — Ansel Adams Zone System Inspired */
+            --zone-0-black: #000000;
+            --zone-2-deep: #0a0a0a;
+            --zone-3-dark: #1a1a1a;
+            --zone-4-shadow: #2a2a2a;
+            --zone-6-mid: #666666;
+            --zone-8-light: #cccccc;
+            --zone-9-bright: #e8e8e8;
+            --zone-10-white: #ffffff;
+
+            /* Brand Accents */
+            --polymer-green: #00E676;
+            --polymer-green-glow: rgba(0, 230, 118, 0.4);
+            --neo-cyan: #00BCD4;
+
+            /* Typography System — Paula Scher Scale */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Roboto Mono', 'Consolas', monospace;
+
+            /* Spacing — Golden Ratio Based */
+            --space-xs: 0.618rem;
+            --space-sm: 1rem;
+            --space-md: 1.618rem;
+            --space-lg: 2.618rem;
+            --space-xl: 4.236rem;
+            --space-2xl: 6.854rem;
+            --space-3xl: 11.089rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            background: var(--zone-0-black);
+            color: var(--zone-10-white);
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--polymer-green);
+            color: var(--zone-0-black);
+        }
+
+        /* Scrollbar — Minimal */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--zone-2-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--zone-6-mid);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--polymer-green);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HEADER — MINIMAL & SOPHISTICATED
+           ═══════════════════════════════════════════════════════════════ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--space-md) var(--space-lg);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-inner {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-mark {
+            height: 32px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-mark:hover {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--zone-8-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--polymer-green);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--zone-10-white);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HERO — PAULA SCHER TYPOGRAPHIC MONUMENTALITY
+           ═══════════════════════════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--zone-0-black);
+        }
+
+        /* High-Contrast Background Image — Ansel Adams Aesthetic */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://technisoilind.com/img/bg_main.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: grayscale(1) contrast(1.4) brightness(0.4);
+            opacity: 0.35;
+        }
+
+        /* Texture Overlay — Pavement Grain */
+        .texture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+        }
+
+        /* Gradient Atmosphere */
+        .hero-atmosphere {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(0, 230, 118, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(0, 188, 212, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, transparent 0%, var(--zone-0-black) 100%);
+        }
+
+        /* Content — Layered Typography */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1600px;
+            padding: 0 var(--space-xl);
+            margin: 0 auto;
+        }
+
+        /* Typographic Lock-Up — Paula Scher Style */
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 16rem);
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            color: var(--zone-10-white);
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .hero-headline .line-1 {
+            display: block;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .hero-headline .line-2 {
+            display: block;
+            color: var(--polymer-green);
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+        }
+
+        .hero-headline .line-3 {
+            display: block;
+            font-weight: 400;
+            font-size: 0.6em;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+        }
+
+        @keyframes revealUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Subheadline — Sans Serif Contrast */
+        .hero-subhead {
+            font-family: var(--font-sans);
+            font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+            font-weight: 200;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+            color: var(--zone-9-bright);
+            max-width: 900px;
+            margin-bottom: var(--space-xl);
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        .hero-subhead strong {
+            font-weight: 400;
+            color: var(--zone-10-white);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Eyebrow — Mono Detail */
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--polymer-green);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0s forwards;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--polymer-green);
+        }
+
+        /* CTAs */
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1.25rem 2.5rem;
+            border: 1px solid;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--polymer-green);
+            border-color: var(--polymer-green);
+            color: var(--zone-0-black);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--zone-10-white);
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            color: var(--zone-0-black);
+            box-shadow: 0 0 60px var(--polymer-green-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border-color: var(--zone-8-light);
+            color: var(--zone-10-white);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--zone-10-white);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ZAG SECTION — RADICAL DIFFERENTIATION
+           ═══════════════════════════════════════════════════════════════ */
+        .zag-section {
+            position: relative;
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--zone-10-white);
+            color: var(--zone-0-black);
+        }
+
+        .zag-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Large Typographic Statement */
+        .zag-statement {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 8rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .zag-statement .zig {
+            display: block;
+            color: var(--zone-6-mid);
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 0.5em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .zag-statement .zag {
+            display: block;
+            color: var(--zone-0-black);
+        }
+
+        .zag-statement .highlight {
+            color: var(--polymer-green);
+            font-style: italic;
+        }
+
+        /* Supporting Copy */
+        .zag-body {
+            max-width: 800px;
+            font-family: var(--font-sans);
+            font-size: clamp(1rem, 1.5vw, 1.5rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--zone-4-shadow);
+        }
+
+        .zag-body strong {
+            font-weight: 500;
+            color: var(--zone-0-black);
+        }
+
+        /* Stats Grid */
+        .zag-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-2xl);
+            border-top: 1px solid var(--zone-8-light);
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 5vw, 6rem);
+            font-weight: 300;
+            line-height: 1;
+            color: var(--zone-0-black);
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-value .unit {
+            font-size: 0.5em;
+            color: var(--polymer-green);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--zone-6-mid);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PORTFOLIO SECTION — CLIENT PROOF
+           ═══════════════════════════════════════════════════════════════ */
+        .portfolio-section {
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--zone-2-deep);
+        }
+
+        .portfolio-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--polymer-green);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .client-item {
+            aspect-ratio: 16/10;
+            background: var(--zone-3-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            transition: all 0.4s ease;
+        }
+
+        .client-item:hover {
+            background: var(--zone-4-shadow);
+            transform: scale(1.02);
+        }
+
+        .client-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(1) brightness(1.8) contrast(0.8);
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .client-item:hover img {
+            filter: grayscale(0) brightness(1) contrast(1);
+            opacity: 1;
+        }
+
+        /* Award Callout */
+        .award-callout {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-2xl);
+            border-left: 3px solid var(--polymer-green);
+            background: var(--zone-3-dark);
+        }
+
+        .award-name {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--zone-10-white);
+        }
+
+        .award-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--polymer-green);
+            margin-bottom: var(--space-md);
+        }
+
+        .award-quote {
+            font-family: var(--font-sans);
+            font-size: 1.125rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--zone-8-light);
+            font-style: italic;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CONTACT/CTA SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .contact-section {
+            position: relative;
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--zone-0-black);
+            text-align: center;
+        }
+
+        .contact-headline {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 10rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--zone-10-white);
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-headline .accent {
+            color: var(--polymer-green);
+            font-style: italic;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER — MINIMAL ELEGANCE
+           ═══════════════════════════════════════════════════════════════ */
+        footer {
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--zone-2-deep);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--zone-6-mid);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--zone-8-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--polymer-green);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            nav {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 0 var(--space-lg);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .zag-section,
+            .portfolio-section,
+            .contact-section {
+                padding: var(--space-2xl) var(--space-lg);
+            }
+
+            .client-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .client-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .zag-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html">
+                <img src="https://technisoilind.com/img/logo-middle.png" alt="TechniSoil Industries" class="logo-mark">
+            </a>
+            <nav>
+                <a href="technisoil-brand-house.html">Brand House</a>
+                <a href="https://technisoilind.com/reports.html" target="_blank">Reports</a>
+                <a href="https://technisoilind.com" target="_blank">Main Site</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero — Typographic Monumentality -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="texture-overlay"></div>
+        <div class="hero-atmosphere"></div>
+
+        <div class="hero-content">
+            <div class="hero-eyebrow">The End of Asphalt</div>
+
+            <h1 class="hero-headline">
+                <span class="line-1">Pavement.</span>
+                <span class="line-2">Reimagined.</span>
+                <span class="line-3">Recycled.</span>
+            </h1>
+
+            <p class="hero-subhead">
+                While the world burns 1.7 trillion pounds of bitumen annually,
+                we're building <strong>5× stronger roads from recycled plastic</strong>.
+                Zero toxic fumes. Zero compromise.
+            </p>
+
+            <div class="hero-cta">
+                <a href="technisoil-brand-house.html" class="btn btn-primary">Explore Brand System</a>
+                <a href="https://technisoilind.com/reports.html" target="_blank" class="btn btn-ghost">Technical Reports</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZAG — Radical Differentiation -->
+    <section class="zag-section">
+        <div class="zag-container">
+            <div class="zag-statement">
+                <span class="zig">The Industry Zigs</span>
+                <span class="zag">We <span class="highlight">Zag</span></span>
+            </div>
+
+            <div class="zag-body">
+                <p>
+                    The asphalt industry hasn't fundamentally changed in 80 years.
+                    They refine petroleum. Heat it to 300°F. Release carcinogens into communities.
+                    Call it "infrastructure."
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    <strong>TechniSoil Industrial takes a different approach.</strong> We developed a polymer
+                    composite pavement that diverts 150,000 plastic bottles per lane mile from oceans,
+                    outperforms traditional asphalt by 5×, and emits zero toxic fumes during installation.
+                </p>
+            </div>
+
+            <div class="zag-stats">
+                <div class="stat-item">
+                    <div class="stat-value">5<span class="unit">×</span></div>
+                    <div class="stat-label">Stronger Than Asphalt</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">150<span class="unit">K</span></div>
+                    <div class="stat-label">Plastic Bottles Per Lane Mile</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0<span class="unit">°F</span></div>
+                    <div class="stat-label">Toxic Fumes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">80<span class="unit">yr</span></div>
+                    <div class="stat-label">Industry Stagnation. Ended.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio — Client Proof -->
+    <section class="portfolio-section">
+        <div class="portfolio-container">
+            <div class="section-title">Trusted Worldwide</div>
+
+            <div class="client-grid">
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-001.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-002.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-003.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-004.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-005.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-006.png" alt="Client">
+                </div>
+                <div class="client-item">
+                    <img src="https://technisoilind.com/clients/logos/client-logo-008.png" alt="Client">
+                </div>
+            </div>
+
+            <div class="award-callout">
+                <div class="award-name">The Katerva Awards</div>
+                <div class="award-category">Finalist — Cities & Mobility</div>
+                <p class="award-quote">
+                    "A new breed of companies are showing how innovation can be scaled for both
+                    business opportunities and global good. Led by resolute and independent thinkers,
+                    these companies are making dents in conventional ways of thinking to defy and
+                    fight for global change."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA -->
+    <section class="contact-section">
+        <h2 class="contact-headline">
+            Ready to <span class="accent">Build</span><br>
+            The Future?
+        </h2>
+
+        <div class="contact-links">
+            <a href="technisoil-brand-house.html" class="btn btn-primary">Brand System</a>
+            <a href="https://technisoilind.com" target="_blank" class="btn btn-ghost">TechniSoil Industrial</a>
+            <a href="https://neopave.com" target="_blank" class="btn btn-ghost">NEO Product Line</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-text">
+                TechniSoil Industrial — Pavement Performance & Sustainability
+            </div>
+            <div class="footer-links">
+                <a href="technisoil-brand-house.html">Brand House</a>
+                <a href="https://technisoilind.com/reports.html" target="_blank">Reports</a>
+                <a href="https://technisoilind.com" target="_blank">TechniSoil</a>
+                <a href="https://neopave.com" target="_blank">NEO</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
