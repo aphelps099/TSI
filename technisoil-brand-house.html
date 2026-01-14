@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand House | TechniSoil Industrial + NEO</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           TECHNISOIL / NEO BRAND TOKENS
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            /* Core Palette */
+            --carbon: #0a0a0a;
+            --asphalt: #111111;
+            --aggregate: #171717;
+            --gravel: #1e1e1e;
+            --concrete: #2a2a2a;
+            --ite: #404040;
+            --ite-light: #5a5a5a;
+            --ite-lighter: #7a7a7a;
+            --chalk: #b0b0b0;
+            --ite-white: #d0d0d0;
+            --white: #f5f5f5;
+            
+            /* Brand Accents */
+            --polymer-green: #00E676;
+            --polymer-green-dim: rgba(0, 230, 118, 0.12);
+            --polymer-green-glow: rgba(0, 230, 118, 0.35);
+            --neo-cyan: #00BCD4;
+            --neo-cyan-dim: rgba(0, 188, 212, 0.12);
+            --earth-tan: #C4A77D;
+            --safety-orange: #FF6D00;
+            
+            /* Typography - Helvetica Neue Stack + Roboto Mono */
+            --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Roboto Mono', 'Consolas', monospace;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 10rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESET & BASE
+           ═══════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            background: var(--carbon);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--carbon);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--concrete);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--ite);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           GLOBAL PATTERN OVERLAY
+           ═══════════════════════════════════════════════════════════════ */
+        .pattern-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+            background-image: radial-gradient(circle at center, var(--gravel) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HEADER
+           ═══════════════════════════════════════════════════════════════ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .header-accent {
+            height: 2px;
+            background: linear-gradient(90deg, var(--polymer-green), var(--neo-cyan), var(--polymer-green));
+            background-size: 200% 100%;
+            animation: headerGradient 8s linear infinite;
+        }
+
+        @keyframes headerGradient {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .header-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1rem var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--concrete);
+        }
+
+        .logo-sub {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--ite-lighter);
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: var(--ite-lighter);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--white);
+        }
+
+        nav a.active {
+            color: var(--polymer-green);
+        }
+
+        .nav-cta {
+            padding: 0.625rem 1.25rem;
+            background: var(--polymer-green);
+            color: var(--carbon) !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 30px var(--polymer-green-glow);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SECTION BASE - Full Page Scroll Snap
+           ═══════════════════════════════════════════════════════════════ */
+        section {
+            position: relative;
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+            width: 100%;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            background: var(--carbon);
+            overflow: hidden;
+        }
+
+        /* Aggregate background pattern */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Molecular hexagon overlay */
+        .molecular-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.06;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300E676' fill-opacity='0.5'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 2;
+        }
+
+        /* Gradient atmosphere */
+        .atmosphere {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 15% 25%, rgba(0, 230, 118, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 75%, rgba(0, 188, 212, 0.04) 0%, transparent 50%),
+                linear-gradient(180deg, transparent 60%, var(--carbon) 100%);
+            z-index: 3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            color: var(--polymer-green);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--polymer-green);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 200;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-title .bold {
+            font-weight: 700;
+        }
+
+        .hero-title .accent {
+            color: var(--polymer-green);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--chalk);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+            max-width: 520px;
+        }
+
+        .hero-tagline strong {
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.875rem 1.75rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .btn-primary {
+            background: var(--polymer-green);
+            color: var(--carbon);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px var(--polymer-green-glow);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--concrete);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--polymer-green);
+            color: var(--polymer-green);
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            padding-left: var(--space-xl);
+            border-left: 1px solid var(--gravel);
+        }
+
+        .stat {
+            position: relative;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 200;
+            line-height: 1;
+            color: var(--white);
+        }
+
+        .stat-value .unit {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--polymer-green);
+            margin-left: 0.15em;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--ite-lighter);
+            text-transform: uppercase;
+            margin-top: var(--space-xs);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--ite-lighter);
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bobble 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--ite-lighter), transparent);
+        }
+
+        @keyframes bobble {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BRAND ARCHITECTURE SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .brand-section {
+            background: var(--asphalt);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--ite-lighter);
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 200;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .section-title .bold {
+            font-weight: 700;
+        }
+
+        /* Brand cards grid */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--gravel);
+        }
+
+        .brand-card {
+            background: var(--asphalt);
+            padding: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.4s ease;
+        }
+
+        .brand-card:hover {
+            background: var(--aggregate);
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .brand-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .brand-card.tsi::before {
+            background: var(--polymer-green);
+        }
+
+        .brand-card.neo::before {
+            background: linear-gradient(90deg, var(--neo-cyan), var(--polymer-green));
+        }
+
+        .brand-logo-area {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .brand-logo-text {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .brand-logo-text.tsi {
+            color: var(--white);
+        }
+
+        .brand-logo-text.neo {
+            background: linear-gradient(135deg, var(--neo-cyan), var(--polymer-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-type {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--ite-light);
+            text-transform: uppercase;
+            margin-bottom: var(--space-xs);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .brand-desc {
+            font-size: 0.9375rem;
+            font-weight: 300;
+            color: var(--chalk);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+
+        .brand-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .brand-link {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 0.875rem;
+            background: var(--gravel);
+            color: var(--chalk);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .brand-link:hover {
+            background: var(--concrete);
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PRODUCTS SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .products-section {
+            background: var(--carbon);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--gravel);
+        }
+
+        .product-card {
+            background: var(--carbon);
+            padding: var(--space-xl);
+            text-decoration: none;
+            color: var(--white);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            background: var(--asphalt);
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--polymer-green);
+            transition: width 0.4s ease;
+        }
+
+        .product-card:hover::after {
+            width: 100%;
+        }
+
+        .product-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--polymer-green-dim);
+            color: var(--polymer-green);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .product-desc {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--ite-lighter);
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ASSETS SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .assets-section {
+            background: var(--asphalt);
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--gravel);
+        }
+
+        .asset-card {
+            background: var(--asphalt);
+            padding: var(--space-lg);
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .asset-card:hover {
+            background: var(--aggregate);
+        }
+
+        .asset-category {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--polymer-green);
+            text-transform: uppercase;
+            margin-bottom: var(--space-xs);
+        }
+
+        .asset-title {
+            font-family: var(--font-display);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           MARQUEE TICKER
+           ═══════════════════════════════════════════════════════════════ */
+        .marquee {
+            background: var(--carbon);
+            border-top: 1px solid var(--gravel);
+            border-bottom: 1px solid var(--gravel);
+            overflow: hidden;
+            padding: var(--space-sm) 0;
+            min-height: auto;
+            scroll-snap-align: none;
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: marquee 40s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            padding-right: var(--space-lg);
+        }
+
+        .marquee-text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--ite-lighter);
+            padding: 0 var(--space-lg);
+        }
+
+        .marquee-separator {
+            color: var(--polymer-green);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PROOF SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .proof-section {
+            background: var(--carbon);
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-2xl);
+        }
+
+        .clients-area h3,
+        .awards-area h3 {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--ite-lighter);
+            text-transform: uppercase;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--gravel);
+        }
+
+        .client-logos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .client-logo-placeholder {
+            height: 48px;
+            background: var(--gravel);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 400;
+            color: var(--ite-lighter);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .client-logo-placeholder:hover {
+            opacity: 1;
+        }
+
+        .award-card {
+            background: var(--aggregate);
+            padding: var(--space-lg);
+            border-left: 2px solid var(--polymer-green);
+        }
+
+        .award-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .award-category {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--polymer-green);
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .award-desc {
+            font-size: 0.8125rem;
+            font-weight: 300;
+            color: var(--chalk);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════ */
+        footer {
+            background: var(--carbon);
+            padding: var(--space-xl) var(--space-lg);
+            border-top: 1px solid var(--gravel);
+            position: relative;
+            z-index: 10;
+            min-height: auto;
+            scroll-snap-align: none;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--chalk);
+        }
+
+        .footer-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--ite-light);
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ite-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--polymer-green);
+        }
+
+        .footer-credit {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            font-weight: 400;
+            color: var(--ite-light);
+        }
+
+        .footer-credit a {
+            color: var(--chalk);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-credit a:hover {
+            color: var(--polymer-green);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 1200px) {
+            html {
+                scroll-snap-type: none;
+            }
+            
+            section {
+                scroll-snap-align: none;
+                min-height: auto;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: row;
+                border-left: none;
+                border-top: 1px solid var(--gravel);
+                padding-left: 0;
+                padding-top: var(--space-xl);
+                margin-top: var(--space-xl);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .assets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+            }
+            
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .client-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+            
+            .footer-brand {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Subtle dot pattern overlay -->
+    <div class="pattern-overlay"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-accent"></div>
+        <div class="header-inner">
+            <div class="logo-group">
+                <a href="index.html" class="logo">TechniSoil</a>
+                <div class="logo-divider"></div>
+                <span class="logo-sub">Brand House</span>
+            </div>
+            <nav>
+                <a href="#brands">Brands</a>
+                <a href="technisoil/index.html">TSI System</a>
+                <a href="neo/index.html">NEO System</a>
+                <a href="shared/index.html">Shared Assets</a>
+                <a href="playbooks/index.html">Playbooks</a>
+                <a href="https://technisoilind.com" target="_blank" class="nav-cta">Main Site</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="molecular-overlay"></div>
+            <canvas id="aggregateCanvas"></canvas>
+        </div>
+        <div class="atmosphere"></div>
+        
+        <div class="section-inner">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-eyebrow reveal">Brand System</div>
+                    <h1 class="hero-title reveal delay-1">
+                        <span class="bold">Pavement</span><br>
+                        <span class="accent">Inspired</span><br>
+                        By Nature
+                    </h1>
+                    <p class="hero-tagline reveal delay-2">
+                        The complete brand identity system for <strong>TechniSoil Industrial</strong> and <strong>NEO™</strong>. 
+                        Two brands. One revolutionary technology. A unified visual language.
+                    </p>
+                    <div class="hero-cta reveal delay-3">
+                        <a href="#brands" class="btn btn-primary">Explore Brands</a>
+                        <a href="shared/index.html" class="btn btn-ghost">Shared Assets</a>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat reveal delay-2">
+                        <div class="stat-value">5<span class="unit">×</span></div>
+                        <div class="stat-label">Tensile Strength vs. Asphalt</div>
+                    </div>
+                    <div class="stat reveal delay-3">
+                        <div class="stat-value">150<span class="unit">K</span></div>
+                        <div class="stat-label">Plastic Bottles / Lane Mile</div>
+                    </div>
+                    <div class="stat reveal delay-4">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Toxic Fumes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            Scroll
+        </div>
+    </section>
+
+    <!-- 01 / BRAND ARCHITECTURE -->
+    <section class="brand-section" id="brands">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow reveal">01 / Brand Architecture</div>
+                <h2 class="section-title reveal delay-1">Two Brands. <span class="bold">One Mission.</span></h2>
+            </div>
+            
+            <div class="brands-grid">
+                <!-- TechniSoil Industrial -->
+                <a href="technisoil/index.html" class="brand-card tsi reveal delay-2">
+                    <div class="brand-logo-area">
+                        <span class="brand-logo-text tsi">TechniSoil</span>
+                    </div>
+                    <div class="brand-type">Parent Company</div>
+                    <div class="brand-name">TechniSoil Industrial</div>
+                    <p class="brand-desc">
+                        The engineering foundation. Corporate identity for government contracts, 
+                        DOT partnerships, and B2B infrastructure solutions.
+                    </p>
+                    <div class="brand-links">
+                        <span class="brand-link">Colors</span>
+                        <span class="brand-link">Typography</span>
+                        <span class="brand-link">Logo</span>
+                        <span class="brand-link">Voice</span>
+                        <span class="brand-link">Templates</span>
+                    </div>
+                </a>
+                
+                <!-- NEO -->
+                <a href="neo/index.html" class="brand-card neo reveal delay-3">
+                    <div class="brand-logo-area">
+                        <span class="brand-logo-text neo">NEO™</span>
+                    </div>
+                    <div class="brand-type">Product Brand</div>
+                    <div class="brand-name">NEO by TechniSoil</div>
+                    <p class="brand-desc">
+                        The future-facing brand. Investor communications, public awareness, 
+                        and the movement to replace the 80-year-old asphalt industry.
+                    </p>
+                    <div class="brand-links">
+                        <span class="brand-link">Colors</span>
+                        <span class="brand-link">Typography</span>
+                        <span class="brand-link">Logo</span>
+                        <span class="brand-link">Voice</span>
+                        <span class="brand-link">Investor Kit</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 / PRODUCTS -->
+    <section class="products-section" id="products">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow reveal">02 / Quick Access</div>
+                <h2 class="section-title reveal delay-1">Everything <span class="bold">In One Place</span></h2>
+            </div>
+            
+            <div class="products-grid">
+                <a href="shared/colors.html" class="product-card reveal delay-1">
+                    <div class="product-icon">01</div>
+                    <div class="product-title">Color System</div>
+                    <p class="product-desc">Unified palette with brand-specific applications and click-to-copy codes.</p>
+                </a>
+                
+                <a href="shared/typography.html" class="product-card reveal delay-2">
+                    <div class="product-icon">02</div>
+                    <div class="product-title">Typography</div>
+                    <p class="product-desc">Type scale, font families, and hierarchy for both brands.</p>
+                </a>
+                
+                <a href="shared/photography.html" class="product-card reveal delay-3">
+                    <div class="product-icon">03</div>
+                    <div class="product-title">Photography</div>
+                    <p class="product-desc">Image style guide, treatment standards, and asset library.</p>
+                </a>
+                
+                <a href="shared/data-viz.html" class="product-card reveal delay-1">
+                    <div class="product-icon">04</div>
+                    <div class="product-title">Data & Stats</div>
+                    <p class="product-desc">Chart styling, stat presentations, and infographic standards.</p>
+                </a>
+                
+                <a href="playbooks/government-sales.html" class="product-card reveal delay-2">
+                    <div class="product-icon">05</div>
+                    <div class="product-title">Government Sales</div>
+                    <p class="product-desc">DOT and municipal communications playbook.</p>
+                </a>
+                
+                <a href="playbooks/investor-relations.html" class="product-card reveal delay-3">
+                    <div class="product-icon">06</div>
+                    <div class="product-title">Investor Relations</div>
+                    <p class="product-desc">Pitch materials, deck templates, and IR guidelines.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span class="marquee-text">"Pavement Performance & Sustainability"</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">5× Stronger Than Asphalt</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">150K Plastic Bottles Per Lane Mile</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">Zero Toxic Fumes</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">Katerva Award Finalist</span>
+                <span class="marquee-text marquee-separator">◆</span>
+            </div>
+            <div class="marquee-content">
+                <span class="marquee-text">"Pavement Performance & Sustainability"</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">5× Stronger Than Asphalt</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">150K Plastic Bottles Per Lane Mile</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">Zero Toxic Fumes</span>
+                <span class="marquee-text marquee-separator">◆</span>
+                <span class="marquee-text">Katerva Award Finalist</span>
+                <span class="marquee-text marquee-separator">◆</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 03 / ASSETS -->
+    <section class="assets-section" id="assets">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow reveal">03 / Brand Assets</div>
+                <h2 class="section-title reveal delay-1">Playbooks <span class="bold">& Resources</span></h2>
+            </div>
+            
+            <div class="assets-grid">
+                <a href="brand/colors.html" class="asset-card reveal delay-1">
+                    <span class="asset-category">Brand</span>
+                    <span class="asset-title">Color System</span>
+                </a>
+                <a href="brand/typography.html" class="asset-card reveal delay-1">
+                    <span class="asset-category">Brand</span>
+                    <span class="asset-title">Typography</span>
+                </a>
+                <a href="brand/voice.html" class="asset-card reveal delay-1">
+                    <span class="asset-category">Brand</span>
+                    <span class="asset-title">Voice & Messaging</span>
+                </a>
+                <a href="brand/logo.html" class="asset-card reveal delay-1">
+                    <span class="asset-category">Brand</span>
+                    <span class="asset-title">Logo Usage</span>
+                </a>
+                
+                <a href="playbooks/government-sales.html" class="asset-card reveal delay-2">
+                    <span class="asset-category">Playbooks</span>
+                    <span class="asset-title">Government Sales</span>
+                </a>
+                <a href="playbooks/investor-relations.html" class="asset-card reveal delay-2">
+                    <span class="asset-category">Playbooks</span>
+                    <span class="asset-title">Investor Relations</span>
+                </a>
+                <a href="playbooks/press-media.html" class="asset-card reveal delay-2">
+                    <span class="asset-category">Playbooks</span>
+                    <span class="asset-title">Press & Media</span>
+                </a>
+                <a href="playbooks/dealer-certification.html" class="asset-card reveal delay-2">
+                    <span class="asset-category">Playbooks</span>
+                    <span class="asset-title">Dealer Program</span>
+                </a>
+                
+                <a href="templates/social/index.html" class="asset-card reveal delay-3">
+                    <span class="asset-category">Templates</span>
+                    <span class="asset-title">Social Media</span>
+                </a>
+                <a href="templates/email/index.html" class="asset-card reveal delay-3">
+                    <span class="asset-category">Templates</span>
+                    <span class="asset-title">Email Templates</span>
+                </a>
+                <a href="templates/presentations.html" class="asset-card reveal delay-3">
+                    <span class="asset-category">Templates</span>
+                    <span class="asset-title">Presentations</span>
+                </a>
+                <a href="templates/documents.html" class="asset-card reveal delay-3">
+                    <span class="asset-category">Templates</span>
+                    <span class="asset-title">Documents</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 / PROOF -->
+    <section class="proof-section" id="proof">
+        <div class="section-inner">
+            <div class="section-header">
+                <div class="section-eyebrow reveal">04 / Validation</div>
+                <h2 class="section-title reveal delay-1">Trusted <span class="bold">Worldwide</span></h2>
+            </div>
+            
+            <div class="proof-grid">
+                <div class="clients-area reveal delay-2">
+                    <h3>Trusted By</h3>
+                    <div class="client-logos">
+                        <div class="client-logo-placeholder">Apple</div>
+                        <div class="client-logo-placeholder">Google</div>
+                        <div class="client-logo-placeholder">Meta</div>
+                        <div class="client-logo-placeholder">Caltrans</div>
+                        <div class="client-logo-placeholder">LA City</div>
+                        <div class="client-logo-placeholder">Pebble Beach</div>
+                        <div class="client-logo-placeholder">Qatar Museums</div>
+                        <div class="client-logo-placeholder">Imperial Palace</div>
+                    </div>
+                </div>
+                
+                <div class="awards-area reveal delay-3">
+                    <h3>Recognition</h3>
+                    <div class="award-card">
+                        <div class="award-name">Katerva Award</div>
+                        <div class="award-category">Finalist — Cities & Mobility</div>
+                        <p class="award-desc">
+                            Referred to by Reuters as "the Nobel Prize for Sustainability." 
+                            Recognizing companies driving global change.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">TechniSoil Industrial</span>
+                <span class="footer-tagline">Pavement Performance & Sustainability</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://technisoilind.com" target="_blank">TechniSoil</a>
+                <a href="https://neopave.com" target="_blank">NEO</a>
+                <a href="shared/index.html">Assets</a>
+            </div>
+            <div class="footer-credit">
+                Brand House by <a href="https://look-serious.com" target="_blank">Look Serious</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // AGGREGATE PARTICLE SYSTEM
+        // ═══════════════════════════════════════════════════════════════
+        
+        const canvas = document.getElementById('aggregateCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        const particleCount = 60;
+        const bondDistance = 100;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1.5;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random() * 0.25 + 0.08;
+                const colors = ['#2a2a2a', '#333333', '#3a3a3a', '#404040'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function drawBonds() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < bondDistance) {
+                        const opacity = (1 - distance / bondDistance) * 0.1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 230, 118, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBonds();
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        
+        resizeCanvas();
+        initParticles();
+        animate();
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // REVEAL ANIMATIONS
+        // ═══════════════════════════════════════════════════════════════
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
