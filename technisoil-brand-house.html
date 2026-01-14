@@ -30,36 +30,41 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           TECHNISOIL / NEO BRAND TOKENS
+           TECHNISOIL / NEO BRAND TOKENS — Patagonia/North Face Inspired
            ═══════════════════════════════════════════════════════════════ */
         :root {
-            /* Core Palette */
-            --carbon: #0a0a0a;
-            --asphalt: #111111;
-            --aggregate: #171717;
-            --gravel: #1e1e1e;
-            --concrete: #2a2a2a;
-            --ite: #404040;
-            --ite-light: #5a5a5a;
-            --ite-lighter: #7a7a7a;
-            --chalk: #b0b0b0;
-            --ite-white: #d0d0d0;
+            /* Grey/Green/Black Palette */
+            --black: #000000;
+            --charcoal: #1a1a1a;
+            --graphite: #2a2a2a;
+            --slate: #3a3a3a;
+            --stone: #4a4a4a;
+            --concrete: #5a5a5a;
+            --ash: #6a6a6a;
+            --pewter: #7a7a7a;
+            --silver: #9a9a9a;
+            --mist: #b8b8b8;
+            --fog: #d4d4d4;
             --white: #f5f5f5;
-            
-            /* Brand Accents */
-            --polymer-green: #00E676;
-            --polymer-green-dim: rgba(0, 230, 118, 0.12);
-            --polymer-green-glow: rgba(0, 230, 118, 0.35);
-            --neo-cyan: #00BCD4;
-            --neo-cyan-dim: rgba(0, 188, 212, 0.12);
-            --earth-tan: #C4A77D;
-            --safety-orange: #FF6D00;
-            
+
+            /* Green Accent System - Patagonia Inspired */
+            --forest-green: #2d5016;
+            --pine: #3d6b1f;
+            --moss: #4d8129;
+            --sage: #6b9b37;
+            --leaf: #8db255;
+            --lime: #b0d17a;
+
+            /* Functional Greens */
+            --primary-green: #6b9b37;
+            --green-glow: rgba(107, 155, 55, 0.3);
+            --green-dim: rgba(107, 155, 55, 0.1);
+
             /* Typography - NEO Custom + Helvetica Neue Stack + Roboto Mono */
             --font-display: 'NEO', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             --font-mono: 'Roboto Mono', 'Consolas', monospace;
-            
+
             /* Spacing */
             --space-xs: 0.5rem;
             --space-sm: 1rem;
@@ -91,24 +96,47 @@
             font-size: 1rem;
             font-weight: 300;
             line-height: 1.6;
-            background: var(--carbon);
+            background: var(--black);
             color: var(--white);
             overflow-x: hidden;
+            transition: background-color 0.8s ease;
+        }
+
+        /* Scroll-based background transitions */
+        body.scroll-dark {
+            background: var(--black);
+        }
+
+        body.scroll-charcoal {
+            background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
+        }
+
+        body.scroll-graphite {
+            background: var(--graphite);
+        }
+
+        body.scroll-slate {
+            background: linear-gradient(180deg, var(--graphite) 0%, var(--slate) 100%);
+        }
+
+        ::selection {
+            background: var(--primary-green);
+            color: var(--white);
         }
 
         /* Scrollbar styling */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--carbon);
+            background: var(--charcoal);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--concrete);
-            border-radius: 3px;
+            background: var(--primary-green);
+            border-radius: 2px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--ite);
+            background: var(--sage);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -142,15 +170,16 @@
         }
 
         .header-accent {
-            height: 2px;
-            background: linear-gradient(90deg, var(--polymer-green), var(--neo-cyan), var(--polymer-green));
-            background-size: 200% 100%;
-            animation: headerGradient 8s linear infinite;
+            height: 3px;
+            background: linear-gradient(90deg, var(--forest-green), var(--primary-green), var(--sage), var(--primary-green), var(--forest-green));
+            background-size: 300% 100%;
+            animation: headerGradient 12s ease-in-out infinite;
         }
 
         @keyframes headerGradient {
             0% { background-position: 0% 0%; }
-            100% { background-position: 200% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
         }
 
         .header-inner {
@@ -216,19 +245,19 @@
         }
 
         nav a.active {
-            color: var(--polymer-green);
+            color: var(--primary-green);
         }
 
         .nav-cta {
             padding: 0.625rem 1.25rem;
-            background: var(--polymer-green);
+            background: var(--primary-green);
             color: var(--carbon) !important;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .nav-cta:hover {
-            box-shadow: 0 0 30px var(--polymer-green-glow);
+            box-shadow: 0 0 30px var(--primary-green-glow);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -354,7 +383,7 @@
             font-size: 0.625rem;
             font-weight: 500;
             letter-spacing: 0.25em;
-            color: var(--polymer-green);
+            color: var(--primary-green);
             text-transform: uppercase;
             margin-bottom: var(--space-md);
             display: flex;
@@ -366,7 +395,7 @@
             content: '';
             width: 32px;
             height: 1px;
-            background: var(--polymer-green);
+            background: var(--primary-green);
         }
 
         .hero-title {
@@ -384,7 +413,7 @@
         }
 
         .hero-title .accent {
-            color: var(--polymer-green);
+            color: var(--primary-green);
         }
 
         .hero-tagline {
@@ -422,12 +451,12 @@
         }
 
         .btn-primary {
-            background: var(--polymer-green);
+            background: var(--primary-green);
             color: var(--carbon);
         }
 
         .btn-primary:hover {
-            box-shadow: 0 0 40px var(--polymer-green-glow);
+            box-shadow: 0 0 40px var(--primary-green-glow);
             transform: translateY(-1px);
         }
 
@@ -438,8 +467,8 @@
         }
 
         .btn-ghost:hover {
-            border-color: var(--polymer-green);
-            color: var(--polymer-green);
+            border-color: var(--primary-green);
+            color: var(--primary-green);
         }
 
         /* Hero Stats */
@@ -466,7 +495,7 @@
         .stat-value .unit {
             font-size: 1.5rem;
             font-weight: 400;
-            color: var(--polymer-green);
+            color: var(--primary-green);
             margin-left: 0.15em;
         }
 
@@ -583,11 +612,11 @@
         }
 
         .brand-card.tsi::before {
-            background: var(--polymer-green);
+            background: var(--primary-green);
         }
 
         .brand-card.neo::before {
-            background: linear-gradient(90deg, var(--neo-cyan), var(--polymer-green));
+            background: linear-gradient(90deg, var(--neo-cyan), var(--primary-green));
         }
 
         .brand-logo-area {
@@ -620,7 +649,7 @@
         }
 
         .brand-logo-text.neo {
-            background: linear-gradient(135deg, var(--neo-cyan), var(--polymer-green));
+            background: linear-gradient(135deg, var(--neo-cyan), var(--primary-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -711,7 +740,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--polymer-green);
+            background: var(--primary-green);
             transition: width 0.4s ease;
         }
 
@@ -726,8 +755,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--polymer-green-dim);
-            color: var(--polymer-green);
+            background: var(--primary-green-dim);
+            color: var(--primary-green);
             font-family: var(--font-mono);
             font-size: 1rem;
             font-weight: 600;
@@ -782,7 +811,7 @@
             font-size: 0.5rem;
             font-weight: 500;
             letter-spacing: 0.15em;
-            color: var(--polymer-green);
+            color: var(--primary-green);
             text-transform: uppercase;
             margin-bottom: var(--space-xs);
         }
@@ -830,7 +859,7 @@
         }
 
         .marquee-separator {
-            color: var(--polymer-green);
+            color: var(--primary-green);
         }
 
         @keyframes marquee {
@@ -921,7 +950,7 @@
         .award-card {
             background: var(--aggregate);
             padding: var(--space-lg);
-            border-left: 2px solid var(--polymer-green);
+            border-left: 2px solid var(--primary-green);
         }
 
         .award-name {
@@ -938,7 +967,7 @@
             font-size: 0.5625rem;
             font-weight: 500;
             letter-spacing: 0.1em;
-            color: var(--polymer-green);
+            color: var(--primary-green);
             text-transform: uppercase;
             margin-bottom: var(--space-sm);
         }
@@ -969,7 +998,7 @@
             font-size: 0.625rem;
             font-weight: 400;
             letter-spacing: 0.2em;
-            color: var(--polymer-green);
+            color: var(--primary-green);
             text-transform: uppercase;
             margin-bottom: var(--space-sm);
         }
@@ -1007,10 +1036,10 @@
         }
 
         .report-link:hover {
-            background: var(--polymer-green);
+            background: var(--primary-green);
             color: var(--carbon);
-            border-color: var(--polymer-green);
-            box-shadow: 0 0 30px var(--polymer-green-glow);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 30px var(--primary-green-glow);
             transform: translateY(-2px);
         }
 
@@ -1093,7 +1122,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--polymer-green);
+            color: var(--primary-green);
         }
 
         .footer-credit {
@@ -1110,7 +1139,7 @@
         }
 
         .footer-credit a:hover {
-            color: var(--polymer-green);
+            color: var(--primary-green);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1238,16 +1267,16 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-bg-image image-1"></div>
-        <div class="hero-bg-image image-2"></div>
-        <div class="hero-bg">
+        <div class="hero-bg-image image-1" data-parallax="0.5"></div>
+        <div class="hero-bg-image image-2" data-parallax="0.3"></div>
+        <div class="hero-bg" data-parallax="0.4">
             <div class="molecular-overlay"></div>
             <canvas id="aggregateCanvas"></canvas>
         </div>
         <div class="atmosphere"></div>
-        
+
         <div class="section-inner">
-            <div class="hero-content">
+            <div class="hero-content" data-parallax="0.15">
                 <div class="hero-text">
                     <div class="hero-eyebrow reveal">Brand System</div>
                     <h1 class="hero-title reveal delay-1">
@@ -1256,7 +1285,7 @@
                         By Nature
                     </h1>
                     <p class="hero-tagline reveal delay-2">
-                        The complete brand identity system for <strong>TechniSoil Industrial</strong> and <strong>NEO™</strong>. 
+                        The complete brand identity system for <strong>TechniSoil Industrial</strong> and <strong>NEO™</strong>.
                         Two brands. One revolutionary technology. A unified visual language.
                     </p>
                     <div class="hero-cta reveal delay-3">
@@ -1264,24 +1293,24 @@
                         <a href="shared/index.html" class="btn btn-ghost">Shared Assets</a>
                     </div>
                 </div>
-                
+
                 <div class="hero-stats">
-                    <div class="stat reveal delay-2">
+                    <div class="stat reveal delay-2" data-parallax="0.1">
                         <div class="stat-value">5<span class="unit">×</span></div>
                         <div class="stat-label">Tensile Strength vs. Asphalt</div>
                     </div>
-                    <div class="stat reveal delay-3">
+                    <div class="stat reveal delay-3" data-parallax="0.12">
                         <div class="stat-value">150<span class="unit">K</span></div>
                         <div class="stat-label">Plastic Bottles / Lane Mile</div>
                     </div>
-                    <div class="stat reveal delay-4">
+                    <div class="stat reveal delay-4" data-parallax="0.14">
                         <div class="stat-value">0</div>
                         <div class="stat-label">Toxic Fumes</div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="scroll-indicator">
             Scroll
         </div>
@@ -1638,14 +1667,14 @@
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 230, 118, ${opacity})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.strokeStyle = `rgba(107, 155, 55, ${opacity})`;
+                        ctx.lineWidth = 0.8;
                         ctx.stroke();
                     }
                 }
             }
         }
-        
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBonds();
@@ -1655,20 +1684,83 @@
             });
             requestAnimationFrame(animate);
         }
-        
+
         resizeCanvas();
         initParticles();
         animate();
-        
+
         window.addEventListener('resize', () => {
             resizeCanvas();
             initParticles();
         });
 
         // ═══════════════════════════════════════════════════════════════
+        // SCROLL-BASED BACKGROUND COLOR TRANSITIONS
+        // ═══════════════════════════════════════════════════════════════
+        function updateScrollBackground() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const body = document.body;
+
+            // Remove all scroll classes
+            body.classList.remove('scroll-dark', 'scroll-charcoal', 'scroll-graphite', 'scroll-slate');
+
+            // Section boundaries
+            const section1End = windowHeight * 1;
+            const section2End = windowHeight * 2;
+            const section3End = windowHeight * 3.5;
+
+            if (scrollY < section1End) {
+                body.classList.add('scroll-dark');
+            } else if (scrollY < section2End) {
+                body.classList.add('scroll-charcoal');
+            } else if (scrollY < section3End) {
+                body.classList.add('scroll-graphite');
+            } else {
+                body.classList.add('scroll-slate');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // PARALLAX EFFECTS
+        // ═══════════════════════════════════════════════════════════════
+        function handleParallax() {
+            const scrollY = window.scrollY;
+            const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+            parallaxElements.forEach(element => {
+                const speed = parseFloat(element.getAttribute('data-parallax'));
+                const yPos = -(scrollY * speed);
+                element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // OPTIMIZED SCROLL HANDLER
+        // ═══════════════════════════════════════════════════════════════
+        let ticking = false;
+
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateScrollBackground();
+                    handleParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Initial calls
+        updateScrollBackground();
+        handleParallax();
+
+        // ═══════════════════════════════════════════════════════════════
         // REVEAL ANIMATIONS
         // ═══════════════════════════════════════════════════════════════
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
