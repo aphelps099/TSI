@@ -1528,20 +1528,26 @@
         }
 
         @media (max-width: 640px) {
-            /* Client logos - single column on small screens */
+            /* Newsletter - add separator above button */
+            .newsletter-form {
+                border-top: 1px solid var(--charcoal);
+                padding-top: var(--space-md);
+            }
+
+            /* Client logos - tighter grid on mobile */
             .client-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2px;
+                gap: 1px;
             }
 
             .client-item {
-                padding: var(--space-lg);
+                padding: var(--space-md);
                 aspect-ratio: 3/2;
             }
 
             .client-item img {
-                max-width: 90%;
-                max-height: 90%;
+                max-width: 75%;
+                max-height: 75%;
             }
 
             /* Buttons extra small screens */
@@ -1648,13 +1654,19 @@
                 width: 18px;
             }
 
-            /* Logo grid - keep 2 columns */
+            /* Logo grid - keep 2 columns, extra tight */
             .client-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
             }
 
             .client-item {
-                padding: var(--space-md);
+                padding: var(--space-sm);
+            }
+
+            .client-item img {
+                max-width: 70%;
+                max-height: 70%;
             }
 
             .btn-neo,
