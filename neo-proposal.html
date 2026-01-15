@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEO Site Redesign — Proposal</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>NEO — Digital Redesign Proposal</title>
 
     <style>
         :root {
             --black: #000000;
-            --charcoal: #0a0a0a;
-            --graphite: #1a1a1a;
-            --slate: #2a2a2a;
-            --stone: #404040;
-            --pewter: #707070;
-            --silver: #a0a0a0;
-            --mist: #d0d0d0;
+            --near-black: #0d0d0d;
+            --charcoal: #1a1a1a;
+            --graphite: #2d2d2d;
+            --slate: #4a4a4a;
+            --stone: #6a6a6a;
+            --pewter: #8a8a8a;
+            --silver: #aaaaaa;
+            --mist: #c8c8c8;
+            --fog: #e0e0e0;
+            --off-white: #f5f5f5;
             --white: #ffffff;
             --accent: #00D856;
-            --red: #ff4444;
-
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --accent-dim: rgba(0, 216, 86, 0.1);
         }
 
         * {
@@ -33,271 +30,143 @@
         }
 
         body {
-            font-family: var(--font);
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .container {
-            max-width: 1400px;
+        /* Layout */
+        .page {
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 4rem 2rem;
         }
 
-        /* Header */
-        .proposal-header {
-            text-align: center;
-            margin-bottom: 6rem;
-            padding-bottom: 4rem;
-            border-bottom: 1px solid var(--slate);
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem;
+            border-bottom: 1px solid var(--fog);
         }
 
-        .proposal-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-
-        .proposal-subtitle {
-            font-size: 1.125rem;
-            color: var(--silver);
-            font-weight: 400;
-        }
-
-        /* Problem Section */
         .section {
-            margin-bottom: 8rem;
+            padding: 8rem 3rem;
+            border-bottom: 1px solid var(--fog);
         }
 
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            margin-bottom: 3rem;
+        }
+
+        .hero-meta {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--stone);
+            letter-spacing: 0.02em;
+        }
+
+        .section-number {
+            font-size: 0.875rem;
+            font-weight: 500;
             color: var(--pewter);
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            display: block;
         }
 
         .section-title {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 800;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-        }
-
-        .section-intro {
-            font-size: 1.125rem;
-            color: var(--mist);
-            max-width: 800px;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
             margin-bottom: 3rem;
-            line-height: 1.8;
         }
 
-        /* Comparison Grid */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
+        .section-lead {
+            font-size: 1.375rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--slate);
+            max-width: 800px;
+            margin-bottom: 5rem;
         }
 
-        .comparison-item {
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .comparison-header {
-            padding: 1.5rem;
-            background: var(--graphite);
-            border-bottom: 1px solid var(--slate);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .comparison-badge {
-            font-size: 0.625rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.375rem 0.75rem;
-            border-radius: 2px;
-        }
-
-        .badge-current {
-            background: var(--red);
-            color: var(--white);
-        }
-
-        .badge-proposed {
-            background: var(--accent);
-            color: var(--black);
-        }
-
-        .comparison-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .comparison-visual {
-            aspect-ratio: 16/9;
-            background: var(--slate);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pewter);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .comparison-content {
-            padding: 2rem;
-        }
-
-        .comparison-list {
-            list-style: none;
-        }
-
-        .comparison-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--slate);
-            font-size: 0.9375rem;
-            color: var(--mist);
-        }
-
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-list li::before {
-            content: "—";
-            margin-right: 0.75rem;
-            color: var(--pewter);
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
-            border-radius: 4px;
-            padding: 2rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-description {
-            font-size: 0.9375rem;
-            color: var(--silver);
+        .body-text {
+            font-size: 1rem;
+            font-weight: 400;
             line-height: 1.7;
-            margin-bottom: 1rem;
+            color: var(--graphite);
         }
 
-        .feature-value {
-            font-size: 0.8125rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Mockup Showcase */
-        .mockup-showcase {
-            background: var(--charcoal);
-            border: 1px solid var(--slate);
+        /* Browser Mockup */
+        .browser-frame {
+            background: var(--white);
+            border: 1px solid var(--fog);
             border-radius: 8px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .mockup-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--pewter);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .mockup-browser {
-            background: var(--graphite);
-            border: 1px solid var(--stone);
-            border-radius: 8px 8px 0 0;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            margin: 4rem 0;
         }
 
         .browser-chrome {
-            background: var(--slate);
-            padding: 0.75rem 1rem;
+            background: var(--off-white);
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--fog);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border-bottom: 1px solid var(--stone);
         }
 
-        .browser-dot {
+        .chrome-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chrome-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--pewter);
+            background: var(--mist);
         }
 
-        .browser-url {
+        .chrome-url {
             flex: 1;
-            background: var(--graphite);
+            margin-left: 1.5rem;
             padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--fog);
             border-radius: 4px;
-            font-size: 0.75rem;
-            color: var(--silver);
-            margin-left: 1rem;
+            font-size: 0.875rem;
+            color: var(--pewter);
         }
 
-        .browser-content {
+        .browser-viewport {
             background: var(--black);
-            min-height: 500px;
-            padding: 3rem;
+            padding: 6rem 4rem;
+            color: var(--white);
         }
 
         .mockup-hero {
             text-align: center;
-            padding: 4rem 2rem;
         }
 
         .mockup-eyebrow {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent);
@@ -305,27 +174,28 @@
         }
 
         .mockup-headline {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 900;
-            line-height: 1.1;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.05;
             letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .mockup-subhead {
             font-size: 1.125rem;
+            font-weight: 300;
             color: var(--mist);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            line-height: 1.6;
         }
 
         .mockup-stats {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 3rem;
-            margin-top: 3rem;
             padding-top: 3rem;
-            border-top: 1px solid var(--slate);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .mockup-stat {
@@ -333,202 +203,439 @@
         }
 
         .mockup-stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
+            font-size: 3rem;
+            font-weight: 200;
             color: var(--accent);
             margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
         .mockup-stat-label {
             font-size: 0.75rem;
+            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--pewter);
         }
 
-        /* Investment */
-        .investment-box {
-            background: var(--charcoal);
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            padding: 3rem;
-            margin: 4rem 0;
-            text-align: center;
+        /* Sitemap / Wireframe */
+        .sitemap {
+            margin: 5rem 0;
         }
 
-        .investment-title {
-            font-size: 1.5rem;
-            font-weight: 800;
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .sitemap-node {
+            background: var(--white);
+            border: 1px solid var(--fog);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .sitemap-node:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 216, 86, 0.1);
+        }
+
+        .sitemap-node::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            width: 1px;
+            height: 2rem;
+            background: var(--fog);
+        }
+
+        .sitemap-node:first-child::before {
+            display: none;
+        }
+
+        .node-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--pewter);
+            margin-bottom: 1rem;
+        }
+
+        .node-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .node-description {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .node-primary {
+            border: 2px solid var(--accent);
+            background: var(--accent-dim);
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            margin: 5rem 0;
+        }
+
+        .arch-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
-        .investment-price {
-            font-size: 4rem;
-            font-weight: 900;
+        .arch-block {
+            background: var(--off-white);
+            border: 1px solid var(--fog);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .arch-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .arch-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .arch-description {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .arch-value {
+            font-size: 0.75rem;
+            font-weight: 500;
             color: var(--accent);
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            margin: 5rem 0;
+        }
+
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--fog);
+        }
+
+        .comparison-header {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-right: 1px solid var(--fog);
+        }
+
+        .comparison-header:last-child {
+            border-right: none;
+        }
+
+        .comparison-row {
+            display: contents;
+        }
+
+        .comparison-cell {
+            padding: 1.75rem 2rem;
+            border-top: 1px solid var(--fog);
+            border-right: 1px solid var(--fog);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .comparison-cell:nth-child(even) {
+            border-right: none;
+        }
+
+        .comparison-cell.negative {
+            color: var(--stone);
+        }
+
+        .comparison-cell.positive {
+            background: var(--accent-dim);
+        }
+
+        /* Investment */
+        .investment {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem;
+            text-align: center;
+            margin: 5rem 0;
+        }
+
+        .investment-amount {
+            font-size: 6rem;
+            font-weight: 200;
+            letter-spacing: -0.03em;
             margin-bottom: 1rem;
             line-height: 1;
         }
 
-        .investment-compare {
-            font-size: 0.9375rem;
+        .investment-label {
+            font-size: 1rem;
+            font-weight: 400;
             color: var(--silver);
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .investment-includes {
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
             text-align: left;
-            max-width: 600px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--slate);
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .investment-includes ul {
-            list-style: none;
-        }
-
-        .investment-includes li {
-            padding: 0.75rem 0;
+        .investment-item {
             font-size: 0.9375rem;
+            line-height: 1.7;
             color: var(--mist);
         }
 
-        .investment-includes li::before {
-            content: "✓";
+        .investment-item::before {
+            content: '—';
             color: var(--accent);
-            font-weight: 700;
-            margin-right: 1rem;
+            margin-right: 0.75rem;
         }
 
-        /* CTA */
-        .cta-section {
+        /* Timeline */
+        .timeline {
+            margin: 5rem 0;
+        }
+
+        .timeline-track {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--fog);
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .timeline-item {
             text-align: center;
-            padding: 4rem 2rem;
-            background: var(--charcoal);
-            border-radius: 8px;
-            border: 1px solid var(--slate);
         }
 
-        .cta-title {
-            font-size: 2rem;
-            font-weight: 800;
+        .timeline-marker {
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+        }
+
+        .timeline-week {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--pewter);
             margin-bottom: 1rem;
         }
 
-        .cta-text {
-            font-size: 1.125rem;
-            color: var(--silver);
-            margin-bottom: 2rem;
+        .timeline-deliverable {
+            font-size: 0.9375rem;
+            font-weight: 400;
+            color: var(--graphite);
+            line-height: 1.5;
         }
 
-        .cta-button {
+        /* Footer */
+        .footer {
+            padding: 6rem 3rem;
+            text-align: center;
+            background: var(--off-white);
+        }
+
+        .footer-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-text {
+            font-size: 1.125rem;
+            color: var(--stone);
+            margin-bottom: 3rem;
+        }
+
+        .footer-cta {
             display: inline-block;
-            font-size: 0.875rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
             padding: 1.25rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .footer-cta:hover {
             background: var(--accent);
             color: var(--black);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .comparison-grid {
+        @media (max-width: 1024px) {
+            .section {
+                padding: 5rem 2rem;
+            }
+
+            .sitemap-grid,
+            .arch-row,
+            .comparison-table,
+            .investment-grid,
+            .timeline-items {
                 grid-template-columns: 1fr;
             }
 
             .mockup-stats {
-                flex-direction: column;
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .investment-price {
+            .comparison-header,
+            .comparison-cell {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
                 font-size: 3rem;
+            }
+
+            .investment-amount {
+                font-size: 4rem;
+            }
+
+            .browser-viewport {
+                padding: 3rem 2rem;
+            }
+
+            .mockup-stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="proposal-header">
-            <h1 class="proposal-title">NEO Site Redesign</h1>
-            <p class="proposal-subtitle">Transforming neopave.com into a premium sales & conversion tool</p>
-        </header>
+    <div class="page">
 
-        <!-- Problem -->
+        <!-- Hero -->
+        <section class="hero-section">
+            <div>
+                <h1 class="hero-title">NEO<br>Digital Redesign</h1>
+                <p class="hero-meta">Proposal for TechniSoil Industrial — January 2026</p>
+            </div>
+        </section>
+
+        <!-- Problem Statement -->
         <section class="section">
-            <div class="section-label">The Problem</div>
-            <h2 class="section-title">Your Current Site Undersells Your Technology</h2>
-            <p class="section-intro">
-                Neopave.com has good bones, but it's not converting enterprise clients or municipal decision-makers at the rate it should. Here's what's holding it back—and how we fix it.
-            </p>
+            <div class="section-inner">
+                <span class="section-number">01 — OPPORTUNITY</span>
+                <h2 class="section-title">Your technology is proven.<br>Your digital presence isn't.</h2>
+                <p class="section-lead">
+                    Neopave.com has the foundation, but it doesn't convert enterprise clients or municipal decision-makers at the rate your technology deserves. The architecture is there. The content needs curation.
+                </p>
 
-            <div class="comparison-grid">
-                <div class="comparison-item">
-                    <div class="comparison-header">
-                        <span class="comparison-badge badge-current">Current</span>
-                        <span class="comparison-title">neopave.com Today</span>
-                    </div>
-                    <div class="comparison-visual">Screenshot Placeholder</div>
-                    <div class="comparison-content">
-                        <ul class="comparison-list">
-                            <li>Single long-scroll page — hard to navigate for busy decision-makers</li>
-                            <li>Performance data buried below the fold</li>
-                            <li>No dedicated project portfolio showcase</li>
-                            <li>Investor content mixed with customer messaging</li>
-                            <li>Mobile experience breaks on smaller screens</li>
-                            <li>No clear conversion path for enterprise inquiries</li>
-                            <li>Typography and spacing feels crowded</li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="comparison">
+                    <div class="comparison-table">
+                        <div class="comparison-header">Current State</div>
+                        <div class="comparison-header">Proposed Solution</div>
 
-                <div class="comparison-item">
-                    <div class="comparison-header">
-                        <span class="comparison-badge badge-proposed">Proposed</span>
-                        <span class="comparison-title">NEO v2 — Premium Commercial Site</span>
-                    </div>
-                    <div class="comparison-visual">New Design Preview</div>
-                    <div class="comparison-content">
-                        <ul class="comparison-list">
-                            <li>Multi-page architecture with clear navigation</li>
-                            <li>LA testing data front-and-center on homepage</li>
-                            <li>Dedicated project gallery with case studies</li>
-                            <li>Separate /investors portal (password-protected)</li>
-                            <li>Perfect mobile experience, all screen sizes</li>
-                            <li>Strategic CTAs optimized for enterprise conversions</li>
-                            <li>Premium typography with generous spacing</li>
-                        </ul>
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">Single long-scroll page — difficult navigation for busy decision-makers</div>
+                            <div class="comparison-cell positive">Multi-page architecture with clear information hierarchy</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">LA testing data buried below fold</div>
+                            <div class="comparison-cell positive">Performance metrics front-and-center on homepage</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">No dedicated project showcase</div>
+                            <div class="comparison-cell positive">Portfolio section with case studies and deployments</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">Investor content mixed with customer messaging</div>
+                            <div class="comparison-cell positive">Separate /investors portal (password-protected)</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">Mobile experience breaks on smaller screens</div>
+                            <div class="comparison-cell positive">Flawless responsive design across all devices</div>
+                        </div>
+
+                        <div class="comparison-row">
+                            <div class="comparison-cell negative">No clear conversion path for enterprise inquiries</div>
+                            <div class="comparison-cell positive">Strategic CTAs optimized for B2G/B2B conversions</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Mockup -->
+        <!-- Homepage Concept -->
         <section class="section">
-            <div class="section-label">Homepage Concept</div>
-            <h2 class="section-title">Lead with Performance. Close with Proof.</h2>
+            <div class="section-inner">
+                <span class="section-number">02 — HOMEPAGE CONCEPT</span>
+                <h2 class="section-title">Lead with performance.<br>Close with proof.</h2>
 
-            <div class="mockup-showcase">
-                <div class="mockup-label">NEO v2 — Homepage Hero</div>
-                <div class="mockup-browser">
+                <div class="browser-frame">
                     <div class="browser-chrome">
-                        <div class="browser-dot"></div>
-                        <div class="browser-dot"></div>
-                        <div class="browser-dot"></div>
-                        <div class="browser-url">neopave.com</div>
+                        <div class="chrome-dots">
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                        </div>
+                        <div class="chrome-url">neopave.com</div>
                     </div>
-                    <div class="browser-content">
+                    <div class="browser-viewport">
                         <div class="mockup-hero">
                             <div class="mockup-eyebrow">Proven Performance</div>
                             <h1 class="mockup-headline">Ambient Temperature.<br>Municipal Approved.<br>Zero Emissions.</h1>
@@ -538,7 +645,7 @@
                             <div class="mockup-stats">
                                 <div class="mockup-stat">
                                     <div class="mockup-stat-number">1,400+</div>
-                                    <div class="mockup-stat-label">LA City Tests Passed</div>
+                                    <div class="mockup-stat-label">LA City Tests</div>
                                 </div>
                                 <div class="mockup-stat">
                                     <div class="mockup-stat-number">0°</div>
@@ -546,7 +653,7 @@
                                 </div>
                                 <div class="mockup-stat">
                                     <div class="mockup-stat-number">5×</div>
-                                    <div class="mockup-stat-label">Stronger Than Asphalt</div>
+                                    <div class="mockup-stat-label">Stronger</div>
                                 </div>
                                 <div class="mockup-stat">
                                     <div class="mockup-stat-number">50+</div>
@@ -559,135 +666,154 @@
             </div>
         </section>
 
-        <!-- Features -->
+        <!-- Site Architecture -->
         <section class="section">
-            <div class="section-label">What You Get</div>
-            <h2 class="section-title">Premium Features That Drive Conversions</h2>
-            <p class="section-intro">
-                Every feature is designed to answer the questions enterprise buyers and municipal decision-makers ask—while building credibility and trust.
-            </p>
+            <div class="section-inner">
+                <span class="section-number">03 — SITE ARCHITECTURE</span>
+                <h2 class="section-title">Strategic information<br>architecture</h2>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">Performance Dashboard</h3>
-                    <p class="feature-description">
-                        Interactive data visualization showcasing LA testing results, durability metrics, and comparative performance vs. traditional asphalt.
-                    </p>
-                    <div class="feature-value">Builds immediate credibility with data-driven buyers</div>
+                <div class="sitemap">
+                    <div class="sitemap-grid">
+                        <div class="sitemap-node node-primary">
+                            <div class="node-label">Homepage</div>
+                            <div class="node-title">NEO Overview</div>
+                            <div class="node-description">Hero performance metrics, value proposition, immediate conversion opportunities</div>
+                        </div>
+
+                        <div class="sitemap-node">
+                            <div class="node-label">Section</div>
+                            <div class="node-title">Technology</div>
+                            <div class="node-description">Ambient bonding process, polymer engineering, environmental impact data</div>
+                        </div>
+
+                        <div class="sitemap-node">
+                            <div class="node-label">Section</div>
+                            <div class="node-title">Projects</div>
+                            <div class="node-description">International deployments, case studies, client testimonials, photo gallery</div>
+                        </div>
+
+                        <div class="sitemap-node">
+                            <div class="node-label">Section</div>
+                            <div class="node-title">Performance</div>
+                            <div class="node-description">LA testing results, durability metrics, comparative analysis vs. asphalt</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3 class="feature-title">Project Portfolio</h3>
-                    <p class="feature-description">
-                        Dedicated gallery showcasing international deployments—Imperial Palace, airports, Apple campuses—with before/after imagery and client testimonials.
-                    </p>
-                    <div class="feature-value">Proves global scale and enterprise trust</div>
-                </div>
+                <div class="architecture">
+                    <div class="arch-row">
+                        <div class="arch-block">
+                            <div class="arch-icon">📊</div>
+                            <div class="arch-title">Performance Dashboard</div>
+                            <div class="arch-description">Interactive visualization of LA testing data, durability metrics, and comparative performance</div>
+                            <div class="arch-value">Builds credibility</div>
+                        </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3 class="feature-title">Technology Deep Dive</h3>
-                    <p class="feature-description">
-                        Clean, scannable page explaining polymer engineering, ambient bonding process, and environmental impact—with downloadable technical specs.
-                    </p>
-                    <div class="feature-value">Answers technical objections before sales calls</div>
-                </div>
+                        <div class="arch-block">
+                            <div class="arch-icon">🌍</div>
+                            <div class="arch-title">Project Portfolio</div>
+                            <div class="arch-description">Showcase international deployments with case studies and client validation</div>
+                            <div class="arch-value">Proves global scale</div>
+                        </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3 class="feature-title">Investor Portal</h3>
-                    <p class="feature-description">
-                        Password-protected /investors section with financial data, roadmap, and partnership opportunities—keeps this separate from customer messaging.
-                    </p>
-                    <div class="feature-value">Professional investor experience without cluttering main site</div>
-                </div>
+                        <div class="arch-block">
+                            <div class="arch-icon">🔒</div>
+                            <div class="arch-title">Investor Portal</div>
+                            <div class="arch-description">Password-protected section for financial data and partnership opportunities</div>
+                            <div class="arch-value">Professional separation</div>
+                        </div>
+                    </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">Mobile-First Design</h3>
-                    <p class="feature-description">
-                        Perfect experience on all devices—decision-makers often browse on phones between meetings. Current site has responsive issues.
-                    </p>
-                    <div class="feature-value">Don't lose deals because site breaks on mobile</div>
-                </div>
+                    <div class="arch-row">
+                        <div class="arch-block">
+                            <div class="arch-icon">📱</div>
+                            <div class="arch-title">Mobile Excellence</div>
+                            <div class="arch-description">Flawless responsive design across all devices and screen sizes</div>
+                            <div class="arch-value">No lost conversions</div>
+                        </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3 class="feature-title">Enterprise Contact Flow</h3>
-                    <p class="feature-description">
-                        Strategic CTAs and contact forms optimized for municipal RFPs and enterprise procurement—collects the right info upfront.
-                    </p>
-                    <div class="feature-value">Higher quality leads, faster sales cycles</div>
-                </div>
+                        <div class="arch-block">
+                            <div class="arch-icon">💼</div>
+                            <div class="arch-title">Enterprise CTAs</div>
+                            <div class="arch-description">Strategic contact forms optimized for municipal RFPs and enterprise procurement</div>
+                            <div class="arch-value">Higher quality leads</div>
+                        </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Performance Optimized</h3>
-                    <p class="feature-description">
-                        Fast load times, optimized images, clean code—Google ranks faster sites higher, and impatient buyers won't wait.
-                    </p>
-                    <div class="feature-value">Better SEO, lower bounce rates</div>
+                        <div class="arch-block">
+                            <div class="arch-icon">⚡</div>
+                            <div class="arch-title">Performance Optimized</div>
+                            <div class="arch-description">Fast load times, optimized assets, clean code for better SEO and user experience</div>
+                            <div class="arch-value">Better rankings</div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3 class="feature-title">Analytics Integration</h3>
-                    <p class="feature-description">
-                        Built-in tracking to understand what content converts, where buyers spend time, and which pages drive enterprise inquiries.
-                    </p>
-                    <div class="feature-value">Data-driven optimization over time</div>
-                </div>
+        <!-- Timeline -->
+        <section class="section">
+            <div class="section-inner">
+                <span class="section-number">04 — TIMELINE</span>
+                <h2 class="section-title">Four-week delivery</h2>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">SEO Foundation</h3>
-                    <p class="feature-description">
-                        Proper metadata, schema markup, and content structure so municipalities searching "sustainable pavement" or "asphalt alternative" find you first.
-                    </p>
-                    <div class="feature-value">Organic lead generation at scale</div>
+                <div class="timeline">
+                    <div class="timeline-track">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-items">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-week">Week 1</div>
+                                <div class="timeline-deliverable">Architecture finalization<br>Content audit<br>Design system</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-week">Week 2</div>
+                                <div class="timeline-deliverable">Homepage build<br>Core pages<br>Initial review</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-week">Week 3</div>
+                                <div class="timeline-deliverable">Portfolio section<br>Investor portal<br>Mobile optimization</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-week">Week 4</div>
+                                <div class="timeline-deliverable">Refinements<br>Testing<br>Launch preparation</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Investment -->
-        <section class="section">
-            <div class="investment-box">
-                <h2 class="investment-title">Investment</h2>
-                <div class="investment-price">$7,500</div>
-                <p class="investment-compare">Complete package for NEO v2 + TSI Corporate Hub<br>
-                    <strong>vs. $20K-30K agency pricing</strong> | 3-4 week delivery vs. 12+ week timelines</p>
+        <div class="investment">
+            <div class="investment-amount">$7,500</div>
+            <div class="investment-label">Complete package — NEO v2 + TSI Corporate Hub</div>
 
-                <div class="investment-includes">
-                    <ul>
-                        <li><strong>NEO Commercial Site</strong> — Multi-page architecture, performance dashboard, project portfolio, technology pages</li>
-                        <li><strong>TSI Corporate Hub</strong> — Company story, leadership, Katerva Awards, unified brand design</li>
-                        <li><strong>Investor Portal</strong> — Password-protected section with financial data and partnership info</li>
-                        <li><strong>Mobile Optimization</strong> — Perfect experience across all devices and screen sizes</li>
-                        <li><strong>Analytics Setup</strong> — Tracking and conversion monitoring built-in</li>
-                        <li><strong>SEO Foundation</strong> — Metadata, schema, content structure for organic discovery</li>
-                        <li><strong>Technical Handoff</strong> — Clean documentation and knowledge transfer</li>
-                        <li><strong>2 Rounds of Revisions</strong> — Refinement based on your feedback</li>
-                    </ul>
-                </div>
+            <div class="investment-grid">
+                <div class="investment-item">NEO commercial site with multi-page architecture</div>
+                <div class="investment-item">TSI corporate hub with unified brand design</div>
+                <div class="investment-item">Password-protected investor portal</div>
+                <div class="investment-item">Performance dashboard and data visualization</div>
+                <div class="investment-item">Project portfolio with case studies</div>
+                <div class="investment-item">Mobile-first responsive design</div>
+                <div class="investment-item">Analytics integration and tracking setup</div>
+                <div class="investment-item">SEO foundation and metadata optimization</div>
+                <div class="investment-item">Technical documentation and handoff</div>
             </div>
+        </div>
 
-            <p class="section-intro" style="text-align: center;">
-                <strong>Individual Pricing:</strong> NEO v2 only: $5K | TSI Corporate only: $5K<br>
-                Bundle saves you $2,500 and ensures unified brand experience
-            </p>
+        <!-- Footer CTA -->
+        <section class="footer">
+            <h2 class="footer-title">Let's elevate your digital presence</h2>
+            <p class="footer-text">Available tomorrow afternoon to discuss the full scope.<br>First mockups ready within one week of kickoff.</p>
+            <a href="mailto:aaron@aaroncphelps.com?subject=NEO Redesign Discussion" class="footer-cta">Schedule a Call</a>
         </section>
 
-        <!-- CTA -->
-        <section class="cta-section">
-            <h2 class="cta-title">Let's Build This</h2>
-            <p class="cta-text">
-                I can start immediately and have mockups ready for review within a week.<br>
-                Free tomorrow afternoon to walk through the full vision.
-            </p>
-            <a href="mailto:aaron@aaroncphelps.com?subject=NEO Redesign - Let's Talk" class="cta-button">Schedule a Call</a>
-        </section>
     </div>
 </body>
 </html>
