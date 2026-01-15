@@ -120,7 +120,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           HEADER — MATCHES FOOTER STYLE WITH SCROLL EFFECT
+           HEADER — ARCHITECTURAL PRECISION
            ═══════════════════════════════════════════════════════════════ */
         header {
             position: fixed;
@@ -128,157 +128,59 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: var(--black);
-            border-top: 1px solid var(--charcoal);
+            background: rgba(0, 0, 0, 0.95);
             border-bottom: 1px solid var(--charcoal);
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .header-tactical-bar {
+            height: 1px;
+            background: var(--charcoal);
         }
 
         .header-inner {
             max-width: 1800px;
             margin: 0 auto;
-            padding: 1.5rem var(--space-lg);
+            padding: 1.25rem var(--space-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Scrolled state - compact header */
-        header.scrolled .header-inner {
-            padding: 0.75rem var(--space-lg);
-        }
-
-        .header-logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
+        .logo-text {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--white);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+            transition: color 0.3s ease;
         }
 
-        .header-logo:hover {
+        .logo-text:hover {
             color: var(--primary-green);
         }
 
-        /* Logo text wrapper for animation */
-        .logo-text {
+        nav {
             display: flex;
+            gap: var(--space-lg);
             align-items: center;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .logo-letter {
-            display: inline-block;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* T letter - special handling */
-        .logo-letter-t {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* T box background - appears on scroll */
-        .logo-t-box {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%) scale(0.8);
-            width: 2.5rem;
-            height: 2.5rem;
-            background: var(--graphite);
-            border-radius: 6px;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        /* Scrolled logo states - cascading letter animation */
-        header.scrolled .logo-letter:not(.logo-letter-t) {
-            opacity: 0;
-            transform: translateX(20px);
-            width: 0;
-            letter-spacing: 0;
-            margin: 0;
-        }
-
-        /* Staggered delays for each letter (e, c, h, n, i, S, o, i, l) */
-        header.scrolled .logo-letter:nth-child(2) { transition-delay: 0s; }
-        header.scrolled .logo-letter:nth-child(3) { transition-delay: 0.02s; }
-        header.scrolled .logo-letter:nth-child(4) { transition-delay: 0.04s; }
-        header.scrolled .logo-letter:nth-child(5) { transition-delay: 0.06s; }
-        header.scrolled .logo-letter:nth-child(6) { transition-delay: 0.08s; }
-        header.scrolled .logo-letter:nth-child(7) { transition-delay: 0.1s; }
-        header.scrolled .logo-letter:nth-child(8) { transition-delay: 0.12s; }
-        header.scrolled .logo-letter:nth-child(9) { transition-delay: 0.14s; }
-        header.scrolled .logo-letter:nth-child(10) { transition-delay: 0.16s; }
-
-        /* Reverse delays when scrolling back up */
-        header:not(.scrolled) .logo-letter:nth-child(2) { transition-delay: 0.16s; }
-        header:not(.scrolled) .logo-letter:nth-child(3) { transition-delay: 0.14s; }
-        header:not(.scrolled) .logo-letter:nth-child(4) { transition-delay: 0.12s; }
-        header:not(.scrolled) .logo-letter:nth-child(5) { transition-delay: 0.1s; }
-        header:not(.scrolled) .logo-letter:nth-child(6) { transition-delay: 0.08s; }
-        header:not(.scrolled) .logo-letter:nth-child(7) { transition-delay: 0.06s; }
-        header:not(.scrolled) .logo-letter:nth-child(8) { transition-delay: 0.04s; }
-        header:not(.scrolled) .logo-letter:nth-child(9) { transition-delay: 0.02s; }
-        header:not(.scrolled) .logo-letter:nth-child(10) { transition-delay: 0s; }
-
-        header.scrolled .logo-letter-t {
-            transform: translateX(0);
-            letter-spacing: 0;
-        }
-
-        header.scrolled .logo-t-box {
-            opacity: 1;
-            transform: translateY(-50%) scale(1);
-            transition-delay: 0.15s;
-        }
-
-        header:not(.scrolled) .logo-t-box {
-            transition-delay: 0s;
-        }
-
-        header.scrolled .logo-text {
-            padding-left: 0.65rem;
-        }
-
-        .header-contact {
+        nav a {
             font-family: var(--font-mono);
             font-size: 0.6875rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.1em;
-            text-transform: uppercase;
+            color: var(--stone);
             text-decoration: none;
-            padding: 0.875rem 1.5rem;
-            background: transparent;
-            border: 1px solid var(--charcoal);
-            color: var(--pewter);
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        /* Scrolled contact button - flush right */
-        header.scrolled .header-contact {
-            padding: 0.875rem 1.5rem;
-            margin-right: calc(-1 * var(--space-lg));
-            border-right: none;
-            border-top: none;
-            border-bottom: none;
-        }
-
-        .header-contact:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+        nav a:hover {
+            color: var(--white);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -552,31 +454,15 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           SUCCESS SECTION — WITH GLOBE BACKGROUND & SCROLL TRANSITION
+           SUCCESS SECTION — WITH GLOBE BACKGROUND
            ═══════════════════════════════════════════════════════════════ */
         .success-section {
-            --bg-opacity: 0;
-            background: var(--black);
+            background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
             color: var(--white);
             scroll-snap-align: center;
             min-height: 100vh;
             position: relative;
             overflow: hidden;
-        }
-
-        /* Green background overlay that fades in on scroll */
-        .success-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-green);
-            opacity: var(--bg-opacity);
-            z-index: 0;
-            will-change: opacity;
-            pointer-events: none;
         }
 
         .success-globe-bg {
@@ -590,12 +476,6 @@
             perspective: 2000px;
             z-index: 1;
             opacity: 0.5;
-            transition: opacity 0.5s ease;
-        }
-
-        /* Fade out globe as green bg fades in */
-        .success-section.transitioning .success-globe-bg {
-            opacity: calc(0.5 * (1 - var(--bg-opacity)));
         }
 
         .success-content {
@@ -820,31 +700,6 @@
             color: var(--primary-green);
             margin-bottom: var(--space-md);
             text-align: center;
-        }
-
-        .partnership-blurb {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
-        }
-
-        .partnership-blurb p {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 300;
-            line-height: 1.6;
-            color: var(--pewter);
-        }
-
-        .partnership-blurb a {
-            color: var(--primary-green);
-            text-decoration: none;
-            font-weight: 400;
-            transition: opacity 0.3s ease;
-        }
-
-        .partnership-blurb a:hover {
-            opacity: 0.7;
         }
 
         .client-grid {
@@ -1315,21 +1170,22 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           PROJECT CAROUSEL — Inverted green palette (fully green bg)
+           PROJECT CAROUSEL — 2.5 slides visible with peek effect
            ═══════════════════════════════════════════════════════════════ */
         .carousel-section {
             display: block;
             min-height: auto;
-            background: var(--primary-green);
+            border-top: 1px solid var(--charcoal);
             padding-bottom: 70px;
-            position: relative;
-            overflow: hidden;
         }
 
         .carousel-header {
             max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         .carousel-header-left {
@@ -1342,19 +1198,45 @@
             font-size: 2rem;
             font-weight: 500;
             letter-spacing: -0.02em;
-            color: var(--black);
         }
 
         .carousel-subtitle {
             font-family: var(--font-sans);
             font-size: 1rem;
             font-weight: 300;
-            color: rgba(0, 0, 0, 0.7);
-            max-width: 500px;
+            color: var(--pewter);
+            max-width: 400px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .carousel-nav button {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid var(--charcoal);
+            color: var(--pewter);
+            padding: 0.875rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav button:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
         }
 
         .carousel-container {
             overflow: hidden;
+            border-top: 1px solid var(--charcoal);
+            border-bottom: 1px solid var(--charcoal);
         }
 
         .carousel-track {
@@ -1411,14 +1293,14 @@
         .carousel-dot {
             width: 8px;
             height: 8px;
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--charcoal);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .carousel-dot.active {
-            background: var(--black);
+            background: var(--primary-green);
             width: 24px;
             border-radius: 4px;
         }
@@ -1434,6 +1316,10 @@
             section {
                 scroll-snap-align: none;
                 min-height: auto;
+            }
+
+            nav {
+                display: none;
             }
 
             /* Hero & CTA buttons */
@@ -1468,6 +1354,11 @@
             /* Carousel tablet */
             .carousel-slide {
                 flex: 0 0 50%;
+            }
+
+            .carousel-header {
+                flex-direction: column;
+                gap: 1.5rem;
             }
 
             /* Client grid */
@@ -1551,6 +1442,12 @@
             .carousel-slide {
                 flex: 0 0 85%;
             }
+
+            .carousel-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 640px) {
@@ -1597,6 +1494,12 @@
             .hero-eyebrow {
                 font-size: 0.5rem;
                 margin-bottom: var(--space-md);
+            }
+
+            /* Section spacing */
+            .carousel-nav button {
+                width: 40px;
+                height: 40px;
             }
 
             /* Footer text sizing */
@@ -1651,14 +1554,14 @@
 
     <!-- Military-Grade Header -->
     <header>
+        <div class="header-tactical-bar"></div>
         <div class="header-inner">
-            <a href="index.html" class="header-logo">
-                <span class="logo-t-box"></span>
-                <span class="logo-text">
-                    <span class="logo-letter logo-letter-t">T</span><span class="logo-letter">e</span><span class="logo-letter">c</span><span class="logo-letter">h</span><span class="logo-letter">n</span><span class="logo-letter">i</span><span class="logo-letter">S</span><span class="logo-letter">o</span><span class="logo-letter">i</span><span class="logo-letter">l</span>
-                </span>
-            </a>
-            <a href="#" class="header-contact">Contact</a>
+            <a href="index.html" class="logo-text">TechniSoil</a>
+            <nav>
+                <a href="technisoil-brand-house.html">Brand House</a>
+                <a href="https://technisoilind.com/reports.html" target="_blank">Reports</a>
+                <a href="https://technisoilind.com" target="_blank">Main Site</a>
+            </nav>
         </div>
     </header>
 
@@ -1773,6 +1676,10 @@
                 <h2 class="carousel-title">Projects</h2>
                 <p class="carousel-subtitle">Deployed infrastructure across three continents, from highways to runways.</p>
             </div>
+            <div class="carousel-nav">
+                <button id="prevBtn" aria-label="Previous">Scroll</button>
+                <button id="nextBtn" aria-label="Next">Scroll</button>
+            </div>
         </div>
 
         <div class="carousel-container">
@@ -1830,10 +1737,6 @@
     <section class="proof-section">
         <div class="section-inner">
             <div class="section-eyebrow">Trusted Worldwide</div>
-
-            <div class="partnership-blurb">
-                <p>We're expanding our global network in 2027. If you're interested in becoming a certified installation partner or distributor, <a href="#">let's talk</a>.</p>
-            </div>
 
             <div class="client-grid">
                 <div class="client-item">
@@ -1980,6 +1883,8 @@
         // Carousel functionality - 2.5 slides visible with peek
         (function() {
             const track = document.getElementById('carouselTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
             const dots = document.querySelectorAll('.carousel-dot');
 
             if (!track) return;
@@ -2011,6 +1916,9 @@
                 idx = idx <= 0 ? max() : idx - 1;
                 move();
             }
+
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
@@ -2097,42 +2005,6 @@
             initNeoLogo();
         }
 
-        // Section transition: Global Impact → Projects (black to green)
-        function initSectionTransition() {
-            const successSection = document.querySelector('.success-section');
-            if (!successSection) return;
-
-            const updateBackground = () => {
-                const rect = successSection.getBoundingClientRect();
-                const sectionHeight = successSection.offsetHeight;
-                const windowHeight = window.innerHeight;
-
-                // Calculate how far we've scrolled through the section
-                // Start transition when section is 40% scrolled through
-                // Complete when section bottom reaches top of viewport
-                const scrolledPast = windowHeight - rect.top;
-                const startPoint = sectionHeight * 0.4;
-                const endPoint = sectionHeight;
-
-                let progress = 0;
-                if (scrolledPast > startPoint) {
-                    progress = Math.min(1, (scrolledPast - startPoint) / (endPoint - startPoint));
-                }
-
-                successSection.style.setProperty('--bg-opacity', progress);
-
-                // Add transitioning class when progress > 0
-                if (progress > 0) {
-                    successSection.classList.add('transitioning');
-                } else {
-                    successSection.classList.remove('transitioning');
-                }
-            };
-
-            window.addEventListener('scroll', updateBackground, { passive: true });
-            updateBackground(); // Initial check
-        }
-
         // NEO Logo Scroll Animation
         function initNeoLogo() {
             const logo = document.getElementById('neoLogo');
@@ -2152,39 +2024,6 @@
             }, observerOptions);
 
             observer.observe(logo);
-        }
-
-        // Initialize section transition
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSectionTransition);
-        } else {
-            initSectionTransition();
-        }
-
-        // Header scroll effect
-        function initHeaderScroll() {
-            const header = document.querySelector('header');
-            if (!header) return;
-
-            const scrollThreshold = 80; // Pixels before triggering
-
-            const updateHeader = () => {
-                if (window.scrollY > scrollThreshold) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            };
-
-            window.addEventListener('scroll', updateHeader, { passive: true });
-            updateHeader(); // Initial check
-        }
-
-        // Initialize header scroll
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initHeaderScroll);
-        } else {
-            initHeaderScroll();
         }
     </script>
 </body>
