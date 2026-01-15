@@ -56,12 +56,12 @@
             --lime: #b0d17a;
 
             /* Functional Greens */
-            --primary-green: #6b9b37;
-            --green-glow: rgba(107, 155, 55, 0.3);
-            --green-dim: rgba(107, 155, 55, 0.1);
+            --primary-green: #00D856;
+            --green-glow: rgba(0, 216, 86, 0.3);
+            --green-dim: rgba(0, 216, 86, 0.1);
 
             /* Bright Accent for Success Section */
-            --neon-green: #4EFF00;
+            --success-orange: #e86833;
 
             /* Typography */
             --font-display: 'NEO', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -413,7 +413,7 @@
            SUCCESS SECTION — BOLD GREEN (TFG STYLE)
            ═══════════════════════════════════════════════════════════════ */
         .success-section {
-            background: var(--neon-green);
+            background: var(--success-orange);
             color: var(--black);
             scroll-snap-align: center;
             min-height: 100vh;
@@ -443,6 +443,126 @@
         .success-headline .stat {
             font-weight: 700;
             font-size: 1.1em;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            animation: statPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .success-headline .stat:nth-of-type(1) {
+            animation-delay: 0.2s;
+        }
+
+        .success-headline .stat:nth-of-type(2) {
+            animation-delay: 0.4s;
+        }
+
+        .success-headline .stat:nth-of-type(3) {
+            animation-delay: 0.6s;
+        }
+
+        .success-headline .stat:nth-of-type(4) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes statPop {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CAROUSEL SECTION — GIANT PARALLAX
+           ═══════════════════════════════════════════════════════════════ */
+        .carousel-section {
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+            min-height: 120vh;
+            scroll-snap-align: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+            transition: transform 0.1s ease-out;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
+            pointer-events: none;
+        }
+
+        .carousel-neo-logo {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: var(--space-xl);
+            width: 180px;
+            height: auto;
+            z-index: 10;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-neo-logo:hover {
+            opacity: 1;
+        }
+
+        .carousel-text-blurb {
+            position: absolute;
+            top: var(--space-xl);
+            right: var(--space-xl);
+            max-width: 400px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            padding: var(--space-lg);
+            border-left: 3px solid var(--primary-green);
+        }
+
+        .carousel-text-blurb h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+
+        .carousel-text-blurb p {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--fog);
+            line-height: 1.8;
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -846,7 +966,7 @@
         </div>
     </section>
 
-    <!-- Success Section — Bold Green -->
+    <!-- Success Section — Bold Orange -->
     <section class="success-section">
         <div class="section-inner">
             <div class="success-eyebrow">IMPACT</div>
@@ -855,6 +975,26 @@
                 <span class="stat">millions of pounds</span> of plastic waste while
                 delivering pavement that's <span class="stat">5× stronger</span>
                 than traditional asphalt and <span class="stat">100% toxic-fume free</span>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Giant Parallax Carousel -->
+    <section class="carousel-section">
+        <div class="carousel-slide">
+            <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg"
+                 alt="TechniSoil Construction Site"
+                 class="carousel-image"
+                 data-parallax="0.5">
+            <div class="carousel-overlay"></div>
+
+            <img src="https://neopave.com/wp-content/uploads/2025/07/Asset-1.png"
+                 alt="NEO"
+                 class="carousel-neo-logo">
+
+            <div class="carousel-text-blurb">
+                <h3>NEO Pave</h3>
+                <p>Advanced polymer pavement technology delivering unprecedented strength and sustainability. Built for the infrastructure of tomorrow.</p>
             </div>
         </div>
     </section>
@@ -1005,6 +1145,32 @@
                 }
             });
         });
+
+        // Parallax effect for carousel images
+        function initParallax() {
+            const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+            function updateParallax() {
+                parallaxElements.forEach(element => {
+                    const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
+                    const rect = element.getBoundingClientRect();
+                    const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                    const yPos = -(scrollPercent * 100 * speed);
+                    element.style.transform = `translateY(${yPos}px) scale(1.2)`;
+                });
+            }
+
+            window.addEventListener('scroll', updateParallax);
+            window.addEventListener('resize', updateParallax);
+            updateParallax();
+        }
+
+        // Initialize parallax on load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initParallax);
+        } else {
+            initParallax();
+        }
     </script>
 </body>
 </html>
