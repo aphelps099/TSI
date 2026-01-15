@@ -249,7 +249,7 @@
             height: 600px;
             perspective: 2000px;
             z-index: 2;
-            opacity: 0.15;
+            opacity: 0.35;
             transform: scale(3);
             pointer-events: none;
         }
@@ -444,7 +444,7 @@
             height: 800px;
             perspective: 2000px;
             z-index: 1;
-            opacity: 0.25;
+            opacity: 0.5;
         }
 
         .success-content {
@@ -526,25 +526,25 @@
             margin: -300px 0 0 -300px;
             border: 1px solid var(--primary-green);
             border-radius: 50%;
-            opacity: 0.15;
+            opacity: 0.3;
             transform-style: preserve-3d;
         }
 
         /* Create latitude lines */
-        .globe-ring:nth-child(1) { transform: rotateY(0deg); opacity: 0.25; }
-        .globe-ring:nth-child(2) { transform: rotateY(20deg); opacity: 0.12; }
-        .globe-ring:nth-child(3) { transform: rotateY(40deg); opacity: 0.15; }
-        .globe-ring:nth-child(4) { transform: rotateY(60deg); opacity: 0.12; }
-        .globe-ring:nth-child(5) { transform: rotateY(80deg); opacity: 0.15; }
-        .globe-ring:nth-child(6) { transform: rotateY(100deg); opacity: 0.12; }
-        .globe-ring:nth-child(7) { transform: rotateY(120deg); opacity: 0.15; }
-        .globe-ring:nth-child(8) { transform: rotateY(140deg); opacity: 0.12; }
-        .globe-ring:nth-child(9) { transform: rotateY(160deg); opacity: 0.25; }
+        .globe-ring:nth-child(1) { transform: rotateY(0deg); opacity: 0.5; }
+        .globe-ring:nth-child(2) { transform: rotateY(20deg); opacity: 0.25; }
+        .globe-ring:nth-child(3) { transform: rotateY(40deg); opacity: 0.3; }
+        .globe-ring:nth-child(4) { transform: rotateY(60deg); opacity: 0.25; }
+        .globe-ring:nth-child(5) { transform: rotateY(80deg); opacity: 0.3; }
+        .globe-ring:nth-child(6) { transform: rotateY(100deg); opacity: 0.25; }
+        .globe-ring:nth-child(7) { transform: rotateY(120deg); opacity: 0.3; }
+        .globe-ring:nth-child(8) { transform: rotateY(140deg); opacity: 0.25; }
+        .globe-ring:nth-child(9) { transform: rotateY(160deg); opacity: 0.5; }
 
         /* Horizontal rings (latitude) */
         .globe-ring:nth-child(10) {
             transform: rotateX(90deg);
-            opacity: 0.25;
+            opacity: 0.5;
             border-color: var(--primary-green);
         }
         .globe-ring:nth-child(11) {
@@ -552,28 +552,28 @@
             height: 500px;
             margin: -250px 0 0 -250px;
             transform: rotateX(90deg) translateZ(100px);
-            opacity: 0.15;
+            opacity: 0.3;
         }
         .globe-ring:nth-child(12) {
             width: 500px;
             height: 500px;
             margin: -250px 0 0 -250px;
             transform: rotateX(90deg) translateZ(-100px);
-            opacity: 0.15;
+            opacity: 0.3;
         }
         .globe-ring:nth-child(13) {
             width: 400px;
             height: 400px;
             margin: -200px 0 0 -200px;
             transform: rotateX(90deg) translateZ(200px);
-            opacity: 0.12;
+            opacity: 0.25;
         }
         .globe-ring:nth-child(14) {
             width: 400px;
             height: 400px;
             margin: -200px 0 0 -200px;
             transform: rotateX(90deg) translateZ(-200px);
-            opacity: 0.12;
+            opacity: 0.25;
         }
 
         /* Glow effect */
@@ -588,8 +588,8 @@
             border-radius: 50%;
             background: radial-gradient(
                 circle,
-                rgba(0, 216, 86, 0.08) 0%,
-                rgba(0, 216, 86, 0.03) 40%,
+                rgba(0, 216, 86, 0.15) 0%,
+                rgba(0, 216, 86, 0.08) 40%,
                 transparent 70%
             );
             animation: globeGlow 6s ease-in-out infinite;
@@ -597,8 +597,8 @@
         }
 
         @keyframes globeGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.02); }
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
         }
 
         /* ═══════════════════════════════════════════════════════════════
