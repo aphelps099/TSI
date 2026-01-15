@@ -120,7 +120,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           HEADER — MATCHES FOOTER STYLE
+           HEADER — MATCHES FOOTER STYLE WITH SCROLL EFFECT
            ═══════════════════════════════════════════════════════════════ */
         header {
             position: fixed;
@@ -131,6 +131,7 @@
             background: var(--black);
             border-top: 1px solid var(--charcoal);
             border-bottom: 1px solid var(--charcoal);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .header-inner {
@@ -140,6 +141,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Scrolled state - compact header */
+        header.scrolled .header-inner {
+            padding: 0.75rem var(--space-lg);
         }
 
         .header-logo {
@@ -150,11 +157,100 @@
             text-transform: uppercase;
             color: var(--white);
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .header-logo:hover {
             color: var(--primary-green);
+        }
+
+        /* Logo text wrapper for animation */
+        .logo-text {
+            display: flex;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .logo-letter {
+            display: inline-block;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* T letter - special handling */
+        .logo-letter-t {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* T box background - appears on scroll */
+        .logo-t-box {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) scale(0.8);
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--graphite);
+            border-radius: 6px;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* Scrolled logo states - cascading letter animation */
+        header.scrolled .logo-letter:not(.logo-letter-t) {
+            opacity: 0;
+            transform: translateX(20px);
+            width: 0;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        /* Staggered delays for each letter (e, c, h, n, i, S, o, i, l) */
+        header.scrolled .logo-letter:nth-child(2) { transition-delay: 0s; }
+        header.scrolled .logo-letter:nth-child(3) { transition-delay: 0.02s; }
+        header.scrolled .logo-letter:nth-child(4) { transition-delay: 0.04s; }
+        header.scrolled .logo-letter:nth-child(5) { transition-delay: 0.06s; }
+        header.scrolled .logo-letter:nth-child(6) { transition-delay: 0.08s; }
+        header.scrolled .logo-letter:nth-child(7) { transition-delay: 0.1s; }
+        header.scrolled .logo-letter:nth-child(8) { transition-delay: 0.12s; }
+        header.scrolled .logo-letter:nth-child(9) { transition-delay: 0.14s; }
+        header.scrolled .logo-letter:nth-child(10) { transition-delay: 0.16s; }
+
+        /* Reverse delays when scrolling back up */
+        header:not(.scrolled) .logo-letter:nth-child(2) { transition-delay: 0.16s; }
+        header:not(.scrolled) .logo-letter:nth-child(3) { transition-delay: 0.14s; }
+        header:not(.scrolled) .logo-letter:nth-child(4) { transition-delay: 0.12s; }
+        header:not(.scrolled) .logo-letter:nth-child(5) { transition-delay: 0.1s; }
+        header:not(.scrolled) .logo-letter:nth-child(6) { transition-delay: 0.08s; }
+        header:not(.scrolled) .logo-letter:nth-child(7) { transition-delay: 0.06s; }
+        header:not(.scrolled) .logo-letter:nth-child(8) { transition-delay: 0.04s; }
+        header:not(.scrolled) .logo-letter:nth-child(9) { transition-delay: 0.02s; }
+        header:not(.scrolled) .logo-letter:nth-child(10) { transition-delay: 0s; }
+
+        header.scrolled .logo-letter-t {
+            transform: translateX(0);
+            letter-spacing: 0;
+        }
+
+        header.scrolled .logo-t-box {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+            transition-delay: 0.15s;
+        }
+
+        header:not(.scrolled) .logo-t-box {
+            transition-delay: 0s;
+        }
+
+        header.scrolled .logo-text {
+            padding-left: 0.65rem;
         }
 
         .header-contact {
@@ -168,7 +264,16 @@
             background: transparent;
             border: 1px solid var(--charcoal);
             color: var(--pewter);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Scrolled contact button - flush right */
+        header.scrolled .header-contact {
+            padding: 0.875rem 1.5rem;
+            margin-right: calc(-1 * var(--space-lg));
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
         }
 
         .header-contact:hover {
@@ -1545,7 +1650,12 @@
     <!-- Military-Grade Header -->
     <header>
         <div class="header-inner">
-            <a href="index.html" class="header-logo">TechniSoil</a>
+            <a href="index.html" class="header-logo">
+                <span class="logo-t-box"></span>
+                <span class="logo-text">
+                    <span class="logo-letter logo-letter-t">T</span><span class="logo-letter">e</span><span class="logo-letter">c</span><span class="logo-letter">h</span><span class="logo-letter">n</span><span class="logo-letter">i</span><span class="logo-letter">S</span><span class="logo-letter">o</span><span class="logo-letter">i</span><span class="logo-letter">l</span>
+                </span>
+            </a>
             <a href="#" class="header-contact">Contact</a>
         </div>
     </header>
@@ -2033,6 +2143,32 @@
             document.addEventListener('DOMContentLoaded', initCarouselTransition);
         } else {
             initCarouselTransition();
+        }
+
+        // Header scroll effect
+        function initHeaderScroll() {
+            const header = document.querySelector('header');
+            if (!header) return;
+
+            const scrollThreshold = 80; // Pixels before triggering
+
+            const updateHeader = () => {
+                if (window.scrollY > scrollThreshold) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            };
+
+            window.addEventListener('scroll', updateHeader, { passive: true });
+            updateHeader(); // Initial check
+        }
+
+        // Initialize header scroll
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeaderScroll);
+        } else {
+            initHeaderScroll();
         }
     </script>
 </body>
