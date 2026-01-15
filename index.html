@@ -1111,6 +1111,174 @@
             color: var(--primary-green);
         }
 
+        .designer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .badge-a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: #0066FF;
+            color: white;
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .designer-badge:hover .badge-a {
+            background: var(--primary-green);
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           PROJECT CAROUSEL
+           ═══════════════════════════════════════════════════════════════ */
+        .carousel-section {
+            background: var(--black);
+            padding: var(--space-3xl) 0;
+        }
+
+        .carousel-header {
+            max-width: 1400px;
+            margin: 0 auto var(--space-2xl);
+            padding: 0 var(--space-lg);
+        }
+
+        .carousel-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin-bottom: var(--space-md);
+        }
+
+        .carousel-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: var(--space-lg);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 16/9;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--charcoal);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-xl);
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+        }
+
+        .carousel-caption-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-xs);
+        }
+
+        .carousel-caption-text {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            color: var(--mist);
+            line-height: 1.5;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 1px solid var(--slate);
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            border-color: var(--primary-green);
+            background: var(--primary-green);
+            color: var(--black);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            gap: var(--space-xs);
+            justify-content: center;
+            margin-top: var(--space-md);
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--slate);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-green);
+            width: 24px;
+            border-radius: 4px;
+        }
+
         /* ═══════════════════════════════════════════════════════════════
            RESPONSIVE
            ═══════════════════════════════════════════════════════════════ */
@@ -1288,6 +1456,76 @@
         </div>
     </section>
 
+    <!-- Project Showcase Carousel -->
+    <section class="carousel-section">
+        <div class="carousel-header">
+            <div class="carousel-eyebrow">Project Showcase</div>
+            <h2 class="carousel-title">Proven Performance</h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <img src="https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png" alt="Highway Installation">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-title">Highway Infrastructure</div>
+                        <div class="carousel-caption-text">High-performance pavement solutions engineered for extreme conditions</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="https://neopave.com/wp-content/uploads/2025/06/u2114533955_A_low-angle_shot_of_a_sleek_reflective_runway_stret_16c82c02-e239ad44a-scaled.jpg" alt="Runway Project">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-title">Aviation Infrastructure</div>
+                        <div class="carousel-caption-text">Precision surfaces built for critical transportation infrastructure</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="https://neopave.com/wp-content/uploads/2025/06/neo-qatar1_IN03-scaled.jpg" alt="Qatar Installation">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-title">International Deployments</div>
+                        <div class="carousel-caption-text">Global projects demonstrating durability across climates</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_101743-Large.jpg" alt="Field Installation">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-title">Field Installations</div>
+                        <div class="carousel-caption-text">Real-world applications proving long-term performance</div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg" alt="Construction Process">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-title">Installation Process</div>
+                        <div class="carousel-caption-text">Advanced deployment methodology delivering superior results</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
+            </div>
+
+            <div class="carousel-indicators" id="carouselIndicators">
+                <span class="carousel-dot active" data-index="0"></span>
+                <span class="carousel-dot" data-index="1"></span>
+                <span class="carousel-dot" data-index="2"></span>
+                <span class="carousel-dot" data-index="3"></span>
+                <span class="carousel-dot" data-index="4"></span>
+            </div>
+        </div>
+    </section>
+
     <!-- Client Proof -->
     <section class="proof-section">
         <div class="section-inner">
@@ -1385,16 +1623,16 @@
             <div class="footer-col">
                 <h4>Products</h4>
                 <ul>
-                    <li><a href="https://technisoilind.com">TechniSoil Industrial</a></li>
-                    <li><a href="https://neopave.com">NEO Pavement</a></li>
-                    <li><a href="https://technisoilind.com/reports.html">Technical Reports</a></li>
+                    <li><a href="#">TechniSoil Industrial</a></li>
+                    <li><a href="#">NEO Pavement</a></li>
+                    <li><a href="#">Technical Reports</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="technisoil-brand-house.html">Brand House</a></li>
+                    <li><a href="#">Brand House</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Careers</a></li>
                 </ul>
@@ -1414,12 +1652,77 @@
                 © 2026 TechniSoil Industrial. All rights reserved.
             </div>
             <div class="footer-credit">
-                Brand House by <a href="https://look-serious.com" target="_blank">Look Serious</a>
+                Design by <a href="https://aaronphelps.com" target="_blank" class="designer-badge"><span class="badge-a">A</span></a>
             </div>
         </div>
     </footer>
 
     <script>
+        // Right-click protection
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable common keyboard shortcuts for saving/inspecting
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S, Ctrl+U, F12, Ctrl+Shift+I, Ctrl+Shift+C
+            if ((e.ctrlKey && (e.key === 's' || e.key === 'u')) ||
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C'))) {
+                e.preventDefault();
+            }
+        });
+
+        // Carousel functionality
+        (function() {
+            const track = document.getElementById('carouselTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            if (!track) return;
+
+            let currentIndex = 0;
+            const slideCount = document.querySelectorAll('.carousel-slide').length;
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateCarousel();
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Auto-advance every 5 seconds
+            setInterval(nextSlide, 5000);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+        })();
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
