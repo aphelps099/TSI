@@ -1296,26 +1296,96 @@
                 display: none;
             }
 
+            /* Hero & CTA buttons */
             .hero-cta {
                 flex-direction: column;
+                width: 100%;
             }
 
             .btn {
                 text-align: center;
+                width: 100%;
+                padding: 1.25rem 2rem;
             }
 
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            /* NEO CTA buttons */
+            .neo-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-neo,
+            .btn-neo-ghost {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Carousel mobile optimization */
+            .carousel-section {
+                padding: var(--space-2xl) 0;
+            }
+
+            .carousel-header {
+                margin-bottom: var(--space-lg);
+                padding: 0 var(--space-md);
+            }
+
+            .carousel-container {
+                padding: 0 var(--space-md);
+            }
+
+            .carousel-slide {
+                border-radius: 4px;
+            }
+
+            .carousel-caption {
+                padding: var(--space-md);
+            }
+
+            .carousel-caption-title {
+                font-size: 1.125rem;
+            }
+
+            .carousel-caption-text {
+                font-size: 0.75rem;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
+
+            .carousel-controls {
+                margin-top: var(--space-md);
+            }
+
+            /* Client grid */
+            .client-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1px;
+            }
+
+            .client-item {
+                padding: var(--space-md);
+            }
+
+            /* Newsletter form */
             .newsletter-form {
                 flex-direction: column;
             }
 
-            .brands-grid {
-                grid-template-columns: 1fr;
+            .newsletter-input,
+            .newsletter-submit {
+                width: 100%;
             }
 
-            .client-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+            /* Footer */
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-xl);
@@ -1328,9 +1398,171 @@
             }
         }
 
+        @media (max-width: 768px) {
+            /* Section padding adjustments */
+            .section-inner {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            .carousel-section,
+            .proof-section {
+                padding: var(--space-2xl) 0 var(--space-xl);
+            }
+
+            /* Hero text sizing */
+            .hero-headline {
+                font-size: clamp(3rem, 12vw, 8rem);
+                line-height: 0.9;
+            }
+
+            .hero-subhead {
+                font-size: clamp(0.875rem, 3vw, 1.125rem);
+            }
+
+            /* Success section */
+            .success-headline {
+                font-size: clamp(1.25rem, 5vw, 2rem);
+            }
+
+            /* Katerva awards */
+            .katerva-callout {
+                padding-left: var(--space-md);
+            }
+
+            .katerva-title {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+
+            /* NEO section */
+            .neo-logo-container {
+                max-width: 240px;
+            }
+
+            .neo-description {
+                font-size: clamp(0.875rem, 3vw, 1rem);
+            }
+
+            /* Carousel mobile tweaks */
+            .carousel-title {
+                font-size: clamp(1.75rem, 6vw, 3rem);
+            }
+
+            .carousel-track {
+                gap: var(--space-md);
+            }
+
+            .carousel-caption {
+                padding: var(--space-sm) var(--space-md);
+            }
+
+            .carousel-caption-title {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .carousel-caption-text {
+                font-size: 0.6875rem;
+                line-height: 1.4;
+            }
+        }
+
         @media (max-width: 640px) {
+            /* Client logos - single column on small screens */
             .client-grid {
                 grid-template-columns: 1fr;
+                gap: 1px;
+            }
+
+            .client-item {
+                padding: var(--space-lg);
+                aspect-ratio: 2/1;
+            }
+
+            /* Buttons extra small screens */
+            .btn {
+                font-size: 0.625rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            /* Hero adjustments */
+            .hero-headline {
+                font-size: clamp(2.5rem, 14vw, 6rem);
+                margin-bottom: var(--space-lg);
+            }
+
+            .hero-eyebrow {
+                font-size: 0.5rem;
+                margin-bottom: var(--space-md);
+            }
+
+            /* Section spacing */
+            .carousel-section {
+                padding: var(--space-xl) 0;
+            }
+
+            .carousel-header {
+                margin-bottom: var(--space-md);
+            }
+
+            .carousel-eyebrow {
+                font-size: 0.5rem;
+            }
+
+            .carousel-title {
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
+            }
+
+            /* Footer text sizing */
+            .footer-brand-col h3 {
+                font-size: 1.25rem;
+            }
+
+            .footer-brand-col p {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra compact for very small screens */
+            .hero-headline {
+                font-size: clamp(2rem, 12vw, 4.5rem);
+            }
+
+            .carousel-caption {
+                padding: var(--space-xs) var(--space-sm);
+            }
+
+            .carousel-caption-title {
+                font-size: 0.875rem;
+            }
+
+            .carousel-caption-text {
+                font-size: 0.625rem;
+            }
+
+            .carousel-indicators {
+                margin-top: var(--space-sm);
+            }
+
+            .carousel-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .carousel-dot.active {
+                width: 18px;
+            }
+
+            .btn-neo,
+            .btn-neo-ghost {
+                padding: 1rem 2rem;
+                font-size: 0.625rem;
             }
         }
     </style>
@@ -1712,6 +1944,34 @@
                     updateCarousel();
                 });
             });
+
+            // Touch swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swiped left - next slide
+                        nextSlide();
+                    } else {
+                        // Swiped right - previous slide
+                        prevSlide();
+                    }
+                }
+            }
 
             // Auto-advance every 5 seconds
             setInterval(nextSlide, 5000);
