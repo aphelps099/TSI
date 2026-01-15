@@ -505,6 +505,53 @@
             }
         }
 
+        /* Katerva Awards - Collins & Co Design */
+        .katerva-callout {
+            position: relative;
+            max-width: 600px;
+            margin-top: var(--space-3xl);
+            padding-left: var(--space-lg);
+        }
+
+        .katerva-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-green);
+        }
+
+        .katerva-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--white);
+            margin-bottom: var(--space-xs);
+        }
+
+        .katerva-category {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin-bottom: var(--space-lg);
+        }
+
+        .katerva-quote {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.75);
+            font-style: italic;
+        }
+
         /* ═══════════════════════════════════════════════════════════════
            GLOBE — 3D WIREFRAME SPHERE (Used as background)
            ═══════════════════════════════════════════════════════════════ */
@@ -659,46 +706,6 @@
         .client-item:hover img {
             filter: grayscale(0) brightness(1) contrast(1);
             opacity: 1;
-        }
-
-        .award-callout {
-            max-width: 700px;
-            margin: var(--space-2xl) auto 0;
-            padding: var(--space-lg);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 2px solid var(--primary-green);
-            border-radius: 4px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .award-name {
-            font-family: var(--font-display);
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            font-weight: 700;
-            margin-bottom: var(--space-xs);
-            color: var(--white);
-        }
-
-        .award-category {
-            font-family: var(--font-mono);
-            font-size: 0.5625rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-sm);
-        }
-
-        .award-quote {
-            font-family: var(--font-sans);
-            font-size: 0.875rem;
-            font-weight: 300;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1291,6 +1298,21 @@
                 delivering pavement that's <span class="stat">5× stronger</span>
                 than traditional asphalt and <span class="stat">100% toxic-fume free</span>.
             </div>
+
+            <!-- Katerva Awards - Bold Typography -->
+            <div class="katerva-callout">
+                <div class="katerva-bar"></div>
+                <div class="katerva-content">
+                    <div class="katerva-title">The Katerva Awards</div>
+                    <div class="katerva-category">Finalist — Cities & Mobility</div>
+                    <p class="katerva-quote">
+                        "A new breed of companies are showing how innovation can be scaled for both
+                        business opportunities and global good. Led by resolute and independent thinkers,
+                        these companies are making dents in conventional ways of thinking to defy and
+                        fight for global change."
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1321,17 +1343,6 @@
                 <div class="client-item">
                     <img src="https://technisoilind.com/clients/logos/client-logo-008.png" alt="Client">
                 </div>
-            </div>
-
-            <div class="award-callout">
-                <div class="award-name">The Katerva Awards</div>
-                <div class="award-category">Finalist — Cities & Mobility</div>
-                <p class="award-quote">
-                    "A new breed of companies are showing how innovation can be scaled for both
-                    business opportunities and global good. Led by resolute and independent thinkers,
-                    these companies are making dents in conventional ways of thinking to defy and
-                    fight for global change."
-                </p>
             </div>
         </div>
     </section>
