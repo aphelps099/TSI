@@ -606,6 +606,11 @@
            ═══════════════════════════════════════════════════════════════ */
         .proof-section {
             background: var(--charcoal);
+            min-height: 50vh;
+        }
+
+        .proof-section .section-inner {
+            padding: var(--space-xl) var(--space-lg);
         }
 
         .section-eyebrow {
@@ -615,16 +620,16 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--primary-green);
-            margin-bottom: var(--space-xl);
+            margin-bottom: var(--space-md);
             text-align: center;
         }
 
         .client-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2px;
+            gap: 1px;
             background: var(--black);
-            margin-bottom: var(--space-3xl);
+            margin-bottom: var(--space-lg);
         }
 
         .client-item {
@@ -633,13 +638,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-lg);
+            padding: var(--space-md);
+            border: 1px solid rgba(0, 216, 86, 0.1);
             transition: all 0.4s ease;
         }
 
         .client-item:hover {
             background: var(--slate);
-            transform: translateY(-4px);
+            border-color: rgba(0, 216, 86, 0.3);
+            transform: translateY(-2px);
         }
 
         .client-item img {
@@ -657,36 +664,36 @@
         }
 
         .award-callout {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: var(--space-xl) var(--space-lg);
+            padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
             border-left: 2px solid var(--primary-green);
             background: var(--graphite);
         }
 
         .award-name {
             font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
             font-weight: 700;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-xs);
             color: var(--white);
         }
 
         .award-category {
             font-family: var(--font-mono);
-            font-size: 0.6875rem;
+            font-size: 0.5625rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--primary-green);
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-sm);
         }
 
         .award-quote {
             font-family: var(--font-sans);
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--mist);
             font-style: italic;
         }
@@ -696,6 +703,21 @@
            ═══════════════════════════════════════════════════════════════ */
         .neo-hero {
             min-height: 70vh;
+            background: var(--black);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Background image with fade-in */
+        .neo-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background:
                 linear-gradient(
                     180deg,
@@ -705,12 +727,16 @@
                     rgba(0, 0, 0, 0.85) 100%
                 ),
                 url('https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png') center center / cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
+            opacity: 0;
+            animation: neoBgFadeIn 0.5s ease forwards;
+            z-index: 1;
         }
 
+        @keyframes neoBgFadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Radial glow overlay */
         .neo-hero::before {
             content: '';
             position: absolute;
@@ -725,6 +751,7 @@
             );
             opacity: 0;
             animation: neoGlowIn 2s ease 0.5s forwards;
+            z-index: 2;
         }
 
         @keyframes neoGlowIn {
