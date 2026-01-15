@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- v1.1 - Clean state -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -311,7 +310,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 9999;
             opacity: 0.3;
             background-image: radial-gradient(circle at center, var(--slate) 1px, transparent 1px);
             background-size: 32px 32px;
@@ -324,7 +323,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 9998;
             background:
                 radial-gradient(ellipse at 0% 0%, rgba(0, 216, 86, 0.02) 0%, transparent 50%),
                 radial-gradient(ellipse at 100% 100%, rgba(0, 216, 86, 0.015) 0%, transparent 50%);
@@ -1340,10 +1339,9 @@
         }
 
         .carousel-title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
             color: var(--black);
         }
 
