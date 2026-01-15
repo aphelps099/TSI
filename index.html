@@ -473,96 +473,159 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           CAROUSEL SECTION — GIANT PARALLAX
+           GLOBE SECTION — 3D WIREFRAME SPHERE
            ═══════════════════════════════════════════════════════════════ */
-        .carousel-section {
-            background: var(--black);
+        .globe-section {
+            background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
             position: relative;
             overflow: hidden;
             min-height: 120vh;
             scroll-snap-align: center;
-        }
-
-        .carousel-track {
             display: flex;
-            height: 100%;
-            position: relative;
+            align-items: center;
+            justify-content: center;
         }
 
-        .carousel-slide {
-            flex: 0 0 100%;
+        .globe-container {
             position: relative;
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        .carousel-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7) contrast(1.1);
+            max-width: 800px;
+            height: 800px;
+            perspective: 2000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .globe {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            transform-style: preserve-3d;
             transition: transform 0.1s ease-out;
         }
 
-        .carousel-overlay {
+        /* Meridian circles forming the sphere */
+        .globe-ring {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.4) 0%,
-                rgba(0, 0, 0, 0.2) 50%,
-                rgba(0, 0, 0, 0.6) 100%
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            margin: -300px 0 0 -300px;
+            border: 1px solid var(--primary-green);
+            border-radius: 50%;
+            opacity: 0.3;
+            transform-style: preserve-3d;
+        }
+
+        /* Create latitude lines */
+        .globe-ring:nth-child(1) { transform: rotateY(0deg); opacity: 0.5; }
+        .globe-ring:nth-child(2) { transform: rotateY(20deg); }
+        .globe-ring:nth-child(3) { transform: rotateY(40deg); }
+        .globe-ring:nth-child(4) { transform: rotateY(60deg); }
+        .globe-ring:nth-child(5) { transform: rotateY(80deg); }
+        .globe-ring:nth-child(6) { transform: rotateY(100deg); }
+        .globe-ring:nth-child(7) { transform: rotateY(120deg); }
+        .globe-ring:nth-child(8) { transform: rotateY(140deg); }
+        .globe-ring:nth-child(9) { transform: rotateY(160deg); opacity: 0.5; }
+
+        /* Horizontal rings (latitude) */
+        .globe-ring:nth-child(10) {
+            transform: rotateX(90deg);
+            opacity: 0.5;
+            border-color: var(--primary-green);
+        }
+        .globe-ring:nth-child(11) {
+            width: 500px;
+            height: 500px;
+            margin: -250px 0 0 -250px;
+            transform: rotateX(90deg) translateZ(100px);
+            opacity: 0.3;
+        }
+        .globe-ring:nth-child(12) {
+            width: 500px;
+            height: 500px;
+            margin: -250px 0 0 -250px;
+            transform: rotateX(90deg) translateZ(-100px);
+            opacity: 0.3;
+        }
+        .globe-ring:nth-child(13) {
+            width: 400px;
+            height: 400px;
+            margin: -200px 0 0 -200px;
+            transform: rotateX(90deg) translateZ(200px);
+            opacity: 0.25;
+        }
+        .globe-ring:nth-child(14) {
+            width: 400px;
+            height: 400px;
+            margin: -200px 0 0 -200px;
+            transform: rotateX(90deg) translateZ(-200px);
+            opacity: 0.25;
+        }
+
+        /* Glow effect */
+        .globe::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 700px;
+            height: 700px;
+            margin: -350px 0 0 -350px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(0, 216, 86, 0.15) 0%,
+                rgba(0, 216, 86, 0.05) 40%,
+                transparent 70%
             );
+            animation: globeGlow 4s ease-in-out infinite;
             pointer-events: none;
         }
 
-        .carousel-neo-logo {
+        @keyframes globeGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .globe-content {
             position: absolute;
-            bottom: var(--space-xl);
-            left: var(--space-xl);
-            width: 180px;
-            height: auto;
-            z-index: 10;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            text-align: center;
+            max-width: 500px;
         }
 
-        .carousel-neo-logo:hover {
-            opacity: 1;
+        .globe-label {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin-bottom: var(--space-md);
         }
 
-        .carousel-text-blurb {
-            position: absolute;
-            top: var(--space-xl);
-            right: var(--space-xl);
-            max-width: 400px;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            padding: var(--space-lg);
-            border-left: 3px solid var(--primary-green);
-        }
-
-        .carousel-text-blurb h3 {
+        .globe-headline {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: -0.02em;
             text-transform: uppercase;
             color: var(--white);
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
 
-        .carousel-text-blurb p {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
+        .globe-desc {
+            font-family: var(--font-sans);
+            font-size: 1rem;
             font-weight: 300;
-            letter-spacing: 0.05em;
-            color: var(--fog);
             line-height: 1.8;
+            color: var(--mist);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -979,22 +1042,33 @@
         </div>
     </section>
 
-    <!-- Giant Parallax Carousel -->
-    <section class="carousel-section">
-        <div class="carousel-slide">
-            <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg"
-                 alt="TechniSoil Construction Site"
-                 class="carousel-image"
-                 data-parallax="0.5">
-            <div class="carousel-overlay"></div>
-
-            <img src="https://neopave.com/wp-content/uploads/2025/07/Asset-1.png"
-                 alt="NEO"
-                 class="carousel-neo-logo">
-
-            <div class="carousel-text-blurb">
-                <h3>NEO Pave</h3>
-                <p>Advanced polymer pavement technology delivering unprecedented strength and sustainability. Built for the infrastructure of tomorrow.</p>
+    <!-- 3D Wireframe Globe -->
+    <section class="globe-section">
+        <div class="globe-container">
+            <div class="globe" id="globe">
+                <!-- Meridian rings -->
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <!-- Latitude rings -->
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+            </div>
+            <div class="globe-content">
+                <div class="globe-label">Global Deployment</div>
+                <h2 class="globe-headline">Worldwide Infrastructure</h2>
+                <p class="globe-desc">
+                    From construction zones to city streets—NEO pavement technology is transforming infrastructure on three continents.
+                </p>
             </div>
         </div>
     </section>
@@ -1146,30 +1220,61 @@
             });
         });
 
-        // Parallax effect for carousel images
-        function initParallax() {
-            const parallaxElements = document.querySelectorAll('[data-parallax]');
+        // 3D Globe rotation based on scroll
+        function initGlobe() {
+            const globe = document.getElementById('globe');
+            if (!globe) return;
 
-            function updateParallax() {
-                parallaxElements.forEach(element => {
-                    const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
-                    const rect = element.getBoundingClientRect();
-                    const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-                    const yPos = -(scrollPercent * 100 * speed);
-                    element.style.transform = `translateY(${yPos}px) scale(1.2)`;
-                });
+            const globeSection = globe.closest('.globe-section');
+            let rotationX = -15;
+            let rotationY = 0;
+            let targetRotationY = 0;
+            let autoRotate = true;
+
+            function updateGlobeRotation() {
+                // Get section position
+                const rect = globeSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Calculate scroll progress through the section
+                const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+                // When section is in view, rotate based on scroll
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    targetRotationY = scrollProgress * 360;
+                    autoRotate = false;
+                } else {
+                    autoRotate = true;
+                }
+
+                // Smooth interpolation
+                rotationY += (targetRotationY - rotationY) * 0.1;
+
+                // Apply rotation
+                globe.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+                requestAnimationFrame(updateGlobeRotation);
             }
 
-            window.addEventListener('scroll', updateParallax);
-            window.addEventListener('resize', updateParallax);
-            updateParallax();
+            // Auto-rotation when not scrolling
+            let autoRotationAngle = 0;
+            function autoRotateGlobe() {
+                if (autoRotate) {
+                    autoRotationAngle += 0.2;
+                    targetRotationY = autoRotationAngle;
+                }
+                requestAnimationFrame(autoRotateGlobe);
+            }
+
+            updateGlobeRotation();
+            autoRotateGlobe();
         }
 
-        // Initialize parallax on load
+        // Initialize on load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initParallax);
+            document.addEventListener('DOMContentLoaded', initGlobe);
         } else {
-            initParallax();
+            initGlobe();
         }
     </script>
 </body>
