@@ -297,6 +297,23 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.6'/%3E%3C/svg%3E");
         }
 
+        .hero-vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                transparent 40%,
+                rgba(0, 0, 0, 0.4) 80%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            pointer-events: none;
+        }
+
         .hero-content {
             position: relative;
             z-index: 10;
@@ -1671,6 +1688,7 @@
         <div class="hero-bg"></div>
         <div class="gradient-overlay"></div>
         <div class="texture-grain"></div>
+        <div class="hero-vignette"></div>
 
         <!-- Cropped Globe Background -->
         <div class="hero-globe-bg">
@@ -1705,9 +1723,9 @@
                 </h1>
 
                 <p class="hero-subhead">
-                    While the world burns 1.7 trillion pounds of bitumen annually,
-                    we're building <strong>5× stronger roads from recycled plastic</strong>.
-                    Zero toxic fumes. Zero compromise.
+                    Every year, 1.7 trillion pounds of bitumen are burned into our atmosphere.
+                    We're engineering the alternative—<strong>transforming plastic waste into
+                    permanent infrastructure</strong> that outlasts asphalt by decades.
                 </p>
 
                 <div class="hero-cta">
@@ -1746,10 +1764,10 @@
         <div class="section-inner success-content">
             <div class="success-eyebrow">GLOBAL IMPACT</div>
             <div class="success-headline">
-                Deployed across <span class="stat">3 continents</span>—diverting
-                <span class="stat">millions of pounds</span> of plastic waste while
-                delivering pavement that's <span class="stat">5× stronger</span>
-                than traditional asphalt and <span class="stat">100% toxic-fume free</span>.
+                From <span class="stat">Apple campuses</span> to <span class="stat">international airports</span>,
+                our technology is rebuilding critical infrastructure on <span class="stat">3 continents</span>.
+                Every deployment diverts <span class="stat">tons of waste</span> from landfills while
+                setting new standards for durability.
             </div>
 
             <!-- Katerva Awards - Bold Typography -->
@@ -1891,10 +1909,10 @@
             </div>
 
             <p class="neo-description">
-                The 80-year-old road industry just met its successor. Polymer-based pavement
-                engineered for the electric era—proven through 1,400 LA city tests and deployed
-                at Apple, Google, Meta, and the Imperial Palace of Japan. <strong>5× stronger.</strong>
-                <strong>100% toxic-fume free.</strong> Zero heat required. Where asphalt ends, NEO begins.
+                After <strong>1,400 rigorous LA city tests</strong>, NEO became the first ambient-temperature
+                pavement approved for high-stress applications. No heating plants. No toxic emissions.
+                Just <strong>advanced polymer engineering</strong> that bonds at room temperature—deployed
+                everywhere from the Imperial Palace of Japan to Meta's headquarters.
             </p>
             <div class="neo-cta-group">
                 <a href="https://neopave.com" class="btn-neo">
