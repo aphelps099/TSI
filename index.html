@@ -79,6 +79,115 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
+           PASSWORD PROTECTION
+           ═══════════════════════════════════════════════════════════ */
+        #password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #password-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .password-container {
+            max-width: 400px;
+            width: 90%;
+            padding: var(--space-2xl) var(--space-lg);
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            text-align: center;
+        }
+
+        .password-logo {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-xl);
+        }
+
+        .password-title {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--mist);
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.01em;
+        }
+
+        #password-input {
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            padding: 1rem;
+            background: var(--graphite);
+            border: 1px solid var(--slate);
+            color: var(--white);
+            text-align: center;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+            transition: border-color 0.3s ease;
+        }
+
+        #password-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        #password-submit {
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1.25rem;
+            background: var(--primary-green);
+            border: 1px solid var(--primary-green);
+            color: var(--black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #password-submit:hover {
+            background: transparent;
+            color: var(--primary-green);
+        }
+
+        .password-error {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #ff4444;
+            margin-top: var(--space-sm);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-error.show {
+            opacity: 1;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
            RESET & BASE
            ═══════════════════════════════════════════════════════════════ */
         *, *::before, *::after {
@@ -1548,6 +1657,22 @@
     </style>
 </head>
 <body>
+    <!-- Password Protection Overlay -->
+    <div id="password-overlay">
+        <div class="password-container">
+            <div class="password-logo">TechniSoil.Ind</div>
+            <div class="password-title">Access Required</div>
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Enter password"
+                autocomplete="off"
+            />
+            <button id="password-submit">Enter</button>
+            <div class="password-error" id="password-error">Incorrect password</div>
+        </div>
+    </div>
+
     <!-- Architectural overlays -->
     <div class="pattern-overlay"></div>
     <div class="atmosphere"></div>
@@ -1864,6 +1989,50 @@
     </footer>
 
     <script>
+        // Password Protection
+        (function() {
+            const CORRECT_PASSWORD = 'TSI2026';  // Change this to your desired password
+            const overlay = document.getElementById('password-overlay');
+            const input = document.getElementById('password-input');
+            const submit = document.getElementById('password-submit');
+            const error = document.getElementById('password-error');
+
+            // Check if already authenticated
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                overlay.classList.add('hidden');
+                return;
+            }
+
+            function checkPassword() {
+                const entered = input.value;
+                if (entered === CORRECT_PASSWORD) {
+                    sessionStorage.setItem('authenticated', 'true');
+                    overlay.classList.add('hidden');
+                    input.value = '';
+                    error.classList.remove('show');
+                } else {
+                    error.classList.add('show');
+                    input.value = '';
+                    input.focus();
+                    // Shake animation
+                    overlay.querySelector('.password-container').style.animation = 'shake 0.4s';
+                    setTimeout(() => {
+                        overlay.querySelector('.password-container').style.animation = '';
+                    }, 400);
+                }
+            }
+
+            submit.addEventListener('click', checkPassword);
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+
+            // Focus input on load
+            setTimeout(() => input.focus(), 100);
+        })();
+
         // Right-click protection
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
