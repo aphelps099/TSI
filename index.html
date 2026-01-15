@@ -627,9 +627,9 @@
         .client-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1px;
+            gap: 2px;
             background: var(--black);
-            margin-bottom: var(--space-lg);
+            margin-bottom: 0;
         }
 
         .client-item {
@@ -638,15 +638,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--space-md);
-            border: 1px solid rgba(0, 216, 86, 0.1);
+            padding: var(--space-lg);
             transition: all 0.4s ease;
         }
 
         .client-item:hover {
             background: var(--slate);
-            border-color: rgba(0, 216, 86, 0.3);
-            transform: translateY(-2px);
+            transform: translateY(-4px);
         }
 
         .client-item img {
@@ -664,16 +662,21 @@
         }
 
         .award-callout {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+            max-width: 700px;
+            margin: var(--space-2xl) auto 0;
+            padding: var(--space-lg);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 2px solid var(--primary-green);
-            background: var(--graphite);
+            border-radius: 4px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .award-name {
             font-family: var(--font-display);
-            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
             font-weight: 700;
             margin-bottom: var(--space-xs);
             color: var(--white);
@@ -694,7 +697,7 @@
             font-size: 0.875rem;
             font-weight: 300;
             line-height: 1.6;
-            color: var(--mist);
+            color: rgba(255, 255, 255, 0.9);
             font-style: italic;
         }
 
