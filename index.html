@@ -584,9 +584,36 @@
             pointer-events: none;
         }
 
+        /* Sheen effect */
+        .globe::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            margin: -300px 0 0 -300px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 30%,
+                rgba(255, 255, 255, 0.2) 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 60%
+            );
+            animation: sheenRotate 8s linear infinite;
+            pointer-events: none;
+        }
+
         @keyframes globeGlow {
             0%, 100% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes sheenRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -598,6 +625,12 @@
             overflow: hidden;
             min-height: 120vh;
             scroll-snap-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .carousel-section.visible {
+            opacity: 1;
         }
 
         .carousel-slide {
@@ -655,6 +688,14 @@
             backdrop-filter: blur(20px);
             padding: var(--space-lg);
             border-left: 3px solid var(--primary-green);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-text-blurb.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .carousel-text-blurb h3 {
@@ -1280,7 +1321,7 @@
             });
         });
 
-        // Simple globe rotation based on scroll
+        // Simple globe rotation based on scroll (tilted like Earth)
         function initGlobe() {
             const globe = document.getElementById('globe');
             if (!globe) return;
@@ -1288,7 +1329,8 @@
             window.addEventListener('scroll', function() {
                 const scrollY = window.scrollY;
                 const rotation = scrollY * 0.1; // Slow rotation based on scroll
-                globe.style.transform = `rotateX(-15deg) rotateY(${rotation}deg)`;
+                // Earth's tilt is 23.5 degrees
+                globe.style.transform = `rotateX(-23deg) rotateY(${rotation}deg)`;
             });
         }
 
@@ -1311,15 +1353,45 @@
             updateParallax();
         }
 
+        // Fade in carousel section and text blurb
+        function initCarouselFade() {
+            const carouselSection = document.querySelector('.carousel-section');
+            const textBlurb = document.querySelector('.carousel-text-blurb');
+
+            if (!carouselSection) return;
+
+            function checkCarouselVisibility() {
+                const rect = carouselSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // When carousel is 30% into viewport, fade it in
+                if (rect.top < windowHeight * 0.7) {
+                    carouselSection.classList.add('visible');
+
+                    // Delay text blurb animation slightly
+                    setTimeout(() => {
+                        if (textBlurb) {
+                            textBlurb.classList.add('visible');
+                        }
+                    }, 400);
+                }
+            }
+
+            window.addEventListener('scroll', checkCarouselVisibility);
+            checkCarouselVisibility(); // Check on load
+        }
+
         // Initialize on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
                 initGlobe();
                 initParallax();
+                initCarouselFade();
             });
         } else {
             initGlobe();
             initParallax();
+            initCarouselFade();
         }
     </script>
 </body>
