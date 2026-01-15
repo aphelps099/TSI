@@ -1156,79 +1156,73 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           PROJECT CAROUSEL
+           PROJECT CAROUSEL — Reference Style
            ═══════════════════════════════════════════════════════════════ */
         .carousel-section {
-            background: var(--black);
-            padding: var(--space-3xl) 0;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .carousel-wrapper {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: grid;
-            grid-template-columns: 35% 65%;
-            gap: var(--space-2xl);
-            align-items: center;
-            width: 100%;
+            border-top: 1px solid var(--charcoal);
         }
 
         .carousel-header {
-            padding: var(--space-xl) 0;
-        }
-
-        .carousel-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.5625rem;
-            font-weight: 600;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .carousel-title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.03em;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
             color: var(--white);
-            line-height: 1;
+        }
+
+        .carousel-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-nav button {
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 1px solid var(--charcoal);
+            color: var(--white);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav button:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
         }
 
         .carousel-container {
-            position: relative;
             overflow: hidden;
-            width: 100%;
+            border-top: 1px solid var(--charcoal);
+            border-bottom: 1px solid var(--charcoal);
         }
 
         .carousel-track {
             display: flex;
-            gap: 0;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
 
         .carousel-slide {
-            min-width: 100%;
-            width: 100%;
-            flex-shrink: 0;
-            height: 60vh;
+            flex: 0 0 33.333%;
+            aspect-ratio: 4/3;
             position: relative;
-            border-radius: 4px;
             overflow: hidden;
-            background: var(--charcoal);
         }
 
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s ease;
         }
 
         .carousel-slide:hover img {
@@ -1240,63 +1234,34 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: var(--space-xl);
-            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
         }
 
         .carousel-caption-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--white);
-            margin-bottom: var(--space-xs);
+            margin-bottom: 0.25rem;
         }
 
         .carousel-caption-text {
-            font-family: var(--font-sans);
-            font-size: 0.875rem;
-            color: var(--mist);
-            line-height: 1.5;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            color: var(--pewter);
         }
 
-        .carousel-controls {
+        .carousel-dots {
             display: flex;
-            gap: var(--space-sm);
             justify-content: center;
-            margin-top: var(--space-xl);
-        }
-
-        .carousel-btn {
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: 1px solid var(--slate);
-            color: var(--white);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            border-color: var(--primary-green);
-            background: var(--primary-green);
-            color: var(--black);
-        }
-
-        .carousel-indicators {
-            display: flex;
-            gap: var(--space-xs);
-            justify-content: center;
-            margin-top: var(--space-md);
+            gap: 0.5rem;
+            padding: 2rem;
         }
 
         .carousel-dot {
             width: 8px;
             height: 8px;
-            background: var(--slate);
+            background: var(--charcoal);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1355,61 +1320,14 @@
             }
 
             /* Carousel mobile optimization */
-            .carousel-section {
-                padding: var(--space-2xl) 0;
-                min-height: auto;
-            }
-
-            .carousel-wrapper {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-                padding: 0 var(--space-md);
+            .carousel-slide {
+                flex: 0 0 50%;
             }
 
             .carousel-header {
-                padding: 0;
-                margin-bottom: 0;
-            }
-
-            .carousel-container {
-                padding: 0;
-                overflow: hidden;
-            }
-
-            .carousel-track {
-                gap: 0;
-            }
-
-            .carousel-slide {
-                border-radius: 0;
-                min-width: 100%;
-                height: 50vh;
-            }
-
-            .carousel-slide img {
-                pointer-events: none;
-            }
-
-            .carousel-caption {
-                padding: var(--space-md);
-            }
-
-            .carousel-caption-title {
-                font-size: 1.125rem;
-            }
-
-            .carousel-caption-text {
-                font-size: 0.75rem;
-            }
-
-            .carousel-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.5rem;
-            }
-
-            .carousel-controls {
-                margin-top: var(--space-md);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
             /* Client grid */
@@ -1490,40 +1408,12 @@
             }
 
             /* Carousel mobile tweaks */
-            .carousel-wrapper {
-                grid-template-columns: 1fr;
-                gap: var(--space-md);
-            }
-
-            .carousel-title {
-                font-size: clamp(1.75rem, 6vw, 3rem);
-            }
-
-            .carousel-track {
-                gap: 0;
-            }
-
-            .carousel-container {
-                padding: 0;
-            }
-
             .carousel-slide {
-                border-radius: 0;
-                height: 45vh;
+                flex: 0 0 85%;
             }
 
-            .carousel-caption {
-                padding: var(--space-sm) var(--space-md);
-            }
-
-            .carousel-caption-title {
-                font-size: 1rem;
-                margin-bottom: 0.25rem;
-            }
-
-            .carousel-caption-text {
-                font-size: 0.6875rem;
-                line-height: 1.4;
+            .carousel-header {
+                padding: 2rem var(--space-md);
             }
         }
 
@@ -1574,28 +1464,9 @@
             }
 
             /* Section spacing */
-            .carousel-section {
-                padding: var(--space-xl) 0;
-            }
-
-            .carousel-wrapper {
-                padding: 0 var(--space-sm);
-            }
-
-            .carousel-header {
-                margin-bottom: 0;
-            }
-
-            .carousel-eyebrow {
-                font-size: 0.5rem;
-            }
-
-            .carousel-title {
-                font-size: clamp(1.5rem, 8vw, 2.5rem);
-            }
-
-            .carousel-slide {
-                height: 40vh;
+            .carousel-nav button {
+                width: 40px;
+                height: 40px;
             }
 
             /* Footer text sizing */
@@ -1615,43 +1486,8 @@
             }
 
             /* Carousel ultra compact */
-            .carousel-container {
-                padding: 0;
-                overflow: hidden;
-            }
-
-            .carousel-track {
-                gap: 0;
-            }
-
             .carousel-slide {
-                border-radius: 0;
-                height: 35vh;
-            }
-
-            .carousel-caption {
-                padding: var(--space-xs) var(--space-sm);
-            }
-
-            .carousel-caption-title {
-                font-size: 0.875rem;
-            }
-
-            .carousel-caption-text {
-                font-size: 0.625rem;
-            }
-
-            .carousel-indicators {
-                margin-top: var(--space-sm);
-            }
-
-            .carousel-dot {
-                width: 6px;
-                height: 6px;
-            }
-
-            .carousel-dot.active {
-                width: 18px;
+                flex: 0 0 100%;
             }
 
             /* Logo grid - keep 2 columns, extra tight */
@@ -1802,73 +1638,62 @@
 
     <!-- Project Showcase Carousel -->
     <section class="carousel-section">
-        <div class="carousel-wrapper">
-            <div class="carousel-header">
-                <div class="carousel-eyebrow">Project Showcase</div>
-                <h2 class="carousel-title">Proven Performance</h2>
+        <div class="carousel-header">
+            <h2 class="carousel-title">Projects</h2>
+            <div class="carousel-nav">
+                <button id="prevBtn" aria-label="Previous">‹</button>
+                <button id="nextBtn" aria-label="Next">›</button>
             </div>
+        </div>
 
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
-                <!-- Slide 1 -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png" alt="Highway Installation">
                     <div class="carousel-caption">
                         <div class="carousel-caption-title">Highway Infrastructure</div>
-                        <div class="carousel-caption-text">High-performance pavement solutions engineered for extreme conditions</div>
+                        <div class="carousel-caption-text">High-traffic corridors</div>
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/06/u2114533955_A_low-angle_shot_of_a_sleek_reflective_runway_stret_16c82c02-e239ad44a-scaled.jpg" alt="Runway Project">
                     <div class="carousel-caption">
-                        <div class="carousel-caption-title">Aviation Infrastructure</div>
-                        <div class="carousel-caption-text">Precision surfaces built for critical transportation infrastructure</div>
+                        <div class="carousel-caption-title">Aviation</div>
+                        <div class="carousel-caption-text">Precision runway surfaces</div>
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/06/neo-qatar1_IN03-scaled.jpg" alt="Qatar Installation">
                     <div class="carousel-caption">
-                        <div class="carousel-caption-title">International Deployments</div>
-                        <div class="carousel-caption-text">Global projects demonstrating durability across climates</div>
+                        <div class="carousel-caption-title">International</div>
+                        <div class="carousel-caption-text">Global deployments</div>
                     </div>
                 </div>
 
-                <!-- Slide 4 -->
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_101743-Large.jpg" alt="Field Installation">
                     <div class="carousel-caption">
                         <div class="carousel-caption-title">Field Installations</div>
-                        <div class="carousel-caption-text">Real-world applications proving long-term performance</div>
+                        <div class="carousel-caption-text">Long-term performance</div>
                     </div>
                 </div>
 
-                <!-- Slide 5 -->
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg" alt="Construction Process">
                     <div class="carousel-caption">
-                        <div class="carousel-caption-title">Installation Process</div>
-                        <div class="carousel-caption-text">Advanced deployment methodology delivering superior results</div>
+                        <div class="carousel-caption-title">Process</div>
+                        <div class="carousel-caption-text">Ambient temperature application</div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">‹</button>
-                <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
-            </div>
-
-                <div class="carousel-indicators" id="carouselIndicators">
-                    <span class="carousel-dot active" data-index="0"></span>
-                    <span class="carousel-dot" data-index="1"></span>
-                    <span class="carousel-dot" data-index="2"></span>
-                    <span class="carousel-dot" data-index="3"></span>
-                    <span class="carousel-dot" data-index="4"></span>
-                </div>
-            </div>
+        <div class="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
         </div>
     </section>
 
@@ -2019,7 +1844,7 @@
             }
         });
 
-        // Carousel functionality
+        // Carousel functionality - multi-slide responsive
         (function() {
             const track = document.getElementById('carouselTrack');
             const prevBtn = document.getElementById('prevBtn');
@@ -2028,25 +1853,31 @@
 
             if (!track) return;
 
-            let currentIndex = 0;
-            const slideCount = document.querySelectorAll('.carousel-slide').length;
+            let idx = 0;
+            const slideCount = 5;
+            let perView = window.innerWidth <= 480 ? 1 : window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
 
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Update perView on resize
+            window.addEventListener('resize', () => {
+                perView = window.innerWidth <= 480 ? 1 : window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+                move();
+            });
 
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
+            function move() {
+                track.style.transform = `translateX(-${idx * (100 / perView)}%)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
             }
 
+            const max = () => Math.max(0, slideCount - perView);
+
             function nextSlide() {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateCarousel();
+                idx = idx >= max() ? 0 : idx + 1;
+                move();
             }
 
             function prevSlide() {
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateCarousel();
+                idx = idx <= 0 ? max() : idx - 1;
+                move();
             }
 
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
@@ -2054,54 +1885,30 @@
 
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
+                    idx = index;
+                    move();
                 });
             });
 
-            // Touch swipe support for mobile - improved
-            let touchStartX = 0;
-            let touchEndX = 0;
-            let touchStartY = 0;
-            let touchEndY = 0;
+            // Touch swipe support
+            let startX;
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
 
-            const container = document.querySelector('.carousel-container');
-
-            if (container) {
-                container.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-
-                container.addEventListener('touchmove', (e) => {
-                    touchEndX = e.touches[0].clientX;
-                    touchEndY = e.touches[0].clientY;
-                }, { passive: true });
-
-                container.addEventListener('touchend', () => {
-                    handleSwipe();
-                }, { passive: true });
-            }
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diffX = touchStartX - touchEndX;
-                const diffY = touchStartY - touchEndY;
-
-                // Only handle horizontal swipes (not vertical scrolls)
-                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
-                    if (diffX > 0) {
-                        // Swiped left - next slide
-                        nextSlide();
-                    } else {
-                        // Swiped right - previous slide
-                        prevSlide();
-                    }
+            track.addEventListener('touchend', (e) => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    idx = diff > 0 ? Math.min(idx + 1, max()) : Math.max(idx - 1, 0);
+                    move();
                 }
-            }
+            }, { passive: true });
 
-            // Auto-advance every 5 seconds
-            setInterval(nextSlide, 5000);
+            // Auto-advance every 6 seconds
+            setInterval(() => {
+                idx = idx >= max() ? 0 : idx + 1;
+                move();
+            }, 6000);
 
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
