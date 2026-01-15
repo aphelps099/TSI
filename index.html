@@ -731,6 +731,115 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
+           GRID PATTERN BACKGROUNDS
+           ═══════════════════════════════════════════════════════════════ */
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           POWER SECTION — 2-COLUMN DATA
+           ═══════════════════════════════════════════════════════════════ */
+        .power-section {
+            background: var(--black);
+            position: relative;
+            scroll-snap-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .power-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 1800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .power-column {
+            padding: var(--space-3xl);
+            position: relative;
+        }
+
+        .power-column-left {
+            border-right: 1px solid var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .power-column-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .power-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin-bottom: var(--space-lg);
+        }
+
+        .power-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .power-description {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--mist);
+            max-width: 600px;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .power-stats {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xl);
+        }
+
+        .power-stat-item {
+            border-left: 3px solid var(--primary-green);
+            padding-left: var(--space-lg);
+        }
+
+        .power-stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+
+        .power-stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pewter);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
            CAROUSEL SECTION — NEO PARALLAX
            ═══════════════════════════════════════════════════════════════ */
         .carousel-section {
@@ -1028,13 +1137,85 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           FOOTER — INDUSTRIAL GRADE INNOVATIVE
+           FOOTER — WITH NEWSLETTER
            ═══════════════════════════════════════════════════════════════ */
         footer {
             background: var(--black);
             border-top: 1px solid var(--charcoal);
-            padding: var(--space-2xl) var(--space-lg) var(--space-xl);
             scroll-snap-align: end;
+        }
+
+        .footer-newsletter {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+            border-bottom: 1px solid var(--charcoal);
+            text-align: center;
+        }
+
+        .newsletter-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .newsletter-subhead {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--pewter);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            padding: 1.25rem var(--space-lg);
+            background: var(--charcoal);
+            border: 1px solid var(--graphite);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background: var(--graphite);
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--pewter);
+        }
+
+        .newsletter-submit {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1.25rem 2.5rem;
+            background: var(--primary-green);
+            border: 1px solid var(--primary-green);
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--green-glow);
         }
 
         .footer-grid {
@@ -1043,7 +1224,7 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: var(--space-2xl);
-            padding-bottom: var(--space-2xl);
+            padding: var(--space-2xl) var(--space-lg);
             border-bottom: 1px solid var(--charcoal);
         }
 
@@ -1104,7 +1285,7 @@
         .footer-bottom {
             max-width: 1800px;
             margin: 0 auto;
-            padding-top: var(--space-lg);
+            padding: var(--space-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1163,6 +1344,19 @@
 
             .data-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .power-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .power-column-left {
+                border-right: none;
+                border-bottom: 1px solid var(--charcoal);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
             }
 
             .brands-grid {
@@ -1303,7 +1497,7 @@
     </section>
 
     <!-- Data Visualization Section -->
-    <section class="data-section">
+    <section class="data-section grid-pattern">
         <div class="section-inner">
             <div class="data-section-header">
                 <div class="data-eyebrow">Performance Data</div>
@@ -1426,6 +1620,38 @@
         </div>
     </section>
 
+    <!-- Power Section — 2-Column Data -->
+    <section class="power-section grid-pattern">
+        <div class="power-layout">
+            <div class="power-column power-column-left">
+                <div class="power-eyebrow">The Infrastructure Revolution</div>
+                <h2 class="power-headline">Redefining Permanence</h2>
+                <p class="power-description">
+                    TechniSoil Industrial isn't just building better roads—we're eliminating the 80-year-old asphalt dependency with polymer composite technology that outperforms, outlasts, and out-sustains every traditional pavement solution.
+                </p>
+            </div>
+
+            <div class="power-column power-column-right">
+                <div class="power-stats">
+                    <div class="power-stat-item">
+                        <div class="power-stat-number">2.5M+</div>
+                        <div class="power-stat-label">Square Feet Deployed</div>
+                    </div>
+
+                    <div class="power-stat-item">
+                        <div class="power-stat-number">15+</div>
+                        <div class="power-stat-label">Government Contracts</div>
+                    </div>
+
+                    <div class="power-stat-item">
+                        <div class="power-stat-number">100%</div>
+                        <div class="power-stat-label">Project Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Client Proof -->
     <section class="proof-section">
         <div class="section-inner">
@@ -1469,7 +1695,24 @@
     </section>
 
     <!-- Industrial-Grade Footer -->
-    <footer>
+    <footer class="grid-pattern">
+        <!-- Newsletter Signup -->
+        <div class="footer-newsletter">
+            <h2 class="newsletter-headline">Stay Informed</h2>
+            <p class="newsletter-subhead">
+                Get quarterly updates on infrastructure innovation, project deployments, and industry insights.
+            </p>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input
+                    type="email"
+                    class="newsletter-input"
+                    placeholder="your.email@company.com"
+                    required
+                />
+                <button type="submit" class="newsletter-submit">Subscribe</button>
+            </form>
+        </div>
+
         <div class="footer-grid">
             <div class="footer-brand-col">
                 <h3>TechniSoil</h3>
