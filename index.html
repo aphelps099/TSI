@@ -220,6 +220,35 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
+           ARCHITECTURAL OVERLAYS
+           ═══════════════════════════════════════════════════════════════ */
+        .pattern-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+            background-image: radial-gradient(circle at center, var(--slate) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .atmosphere {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background:
+                radial-gradient(ellipse at 0% 0%, rgba(0, 216, 86, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(0, 216, 86, 0.015) 0%, transparent 50%);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
            HERO
            ═══════════════════════════════════════════════════════════════ */
         .hero {
@@ -604,343 +633,6 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           DATA SECTION — PERFORMANCE METRICS
-           ═══════════════════════════════════════════════════════════════ */
-        .data-section {
-            background: linear-gradient(180deg, var(--charcoal) 0%, var(--graphite) 100%);
-            scroll-snap-align: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .data-section-header {
-            text-align: center;
-            margin-bottom: var(--space-3xl);
-        }
-
-        .data-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-md);
-        }
-
-        .data-headline {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            color: var(--white);
-            margin-bottom: var(--space-lg);
-        }
-
-        .data-subhead {
-            font-family: var(--font-sans);
-            font-size: 1.125rem;
-            font-weight: 300;
-            color: var(--mist);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            background: var(--black);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .data-card {
-            background: var(--graphite);
-            padding: var(--space-3xl);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .data-card:hover {
-            background: var(--slate);
-        }
-
-        .data-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary-green);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .data-card.visible::before {
-            transform: scaleX(1);
-        }
-
-        .data-metric {
-            display: flex;
-            align-items: baseline;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-xl);
-        }
-
-        .data-value {
-            font-family: var(--font-display);
-            font-size: clamp(4rem, 8vw, 8rem);
-            font-weight: 700;
-            color: var(--primary-green);
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-        }
-
-        .data-unit {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 300;
-            color: var(--white);
-            line-height: 1;
-        }
-
-        .data-label {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--pewter);
-            margin-bottom: var(--space-md);
-        }
-
-        .data-description {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 300;
-            color: var(--mist);
-            line-height: 1.8;
-            max-width: 400px;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           GRID PATTERN BACKGROUNDS
-           ═══════════════════════════════════════════════════════════════ */
-        .grid-pattern {
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           POWER SECTION — 2-COLUMN DATA
-           ═══════════════════════════════════════════════════════════════ */
-        .power-section {
-            background: var(--black);
-            position: relative;
-            scroll-snap-align: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .power-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            max-width: 1800px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .power-column {
-            padding: var(--space-3xl);
-            position: relative;
-        }
-
-        .power-column-left {
-            border-right: 1px solid var(--charcoal);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .power-column-right {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .power-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-lg);
-        }
-
-        .power-headline {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 6vw, 6rem);
-            font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            color: var(--white);
-            margin-bottom: var(--space-2xl);
-        }
-
-        .power-description {
-            font-family: var(--font-sans);
-            font-size: 1.25rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--mist);
-            max-width: 600px;
-            margin-bottom: var(--space-2xl);
-        }
-
-        .power-stats {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2xl);
-        }
-
-        .power-stat-item {
-            border-left: 3px solid var(--primary-green);
-            padding-left: var(--space-lg);
-        }
-
-        .power-stat-number {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            line-height: 1;
-            margin-bottom: var(--space-xs);
-        }
-
-        .power-stat-label {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--pewter);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           CAROUSEL SECTION — NEO PARALLAX
-           ═══════════════════════════════════════════════════════════════ */
-        .carousel-section {
-            background: var(--black);
-            position: relative;
-            overflow: hidden;
-            min-height: 120vh;
-            scroll-snap-align: center;
-            opacity: 0;
-            transition: opacity 0.8s ease-out;
-        }
-
-        .carousel-section.visible {
-            opacity: 1;
-        }
-
-        .carousel-slide {
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-            width: 100%;
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7) contrast(1.1);
-            transition: transform 0.1s ease-out;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.4) 0%,
-                rgba(0, 0, 0, 0.2) 50%,
-                rgba(0, 0, 0, 0.6) 100%
-            );
-            pointer-events: none;
-        }
-
-        .carousel-neo-logo {
-            position: absolute;
-            bottom: var(--space-xl);
-            left: var(--space-xl);
-            width: 180px;
-            height: auto;
-            z-index: 10;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-neo-logo:hover {
-            opacity: 1;
-        }
-
-        .carousel-text-blurb {
-            position: absolute;
-            top: var(--space-xl);
-            right: var(--space-xl);
-            max-width: 400px;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            padding: var(--space-lg);
-            border-left: 3px solid var(--primary-green);
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .carousel-text-blurb.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .carousel-text-blurb h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--white);
-            margin-bottom: var(--space-sm);
-        }
-
-        .carousel-text-blurb p {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            color: var(--fog);
-            line-height: 1.8;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
            BRAND CARDS
            ═══════════════════════════════════════════════════════════════ */
         .brands-section {
@@ -1137,7 +829,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           FOOTER — WITH NEWSLETTER
+           FOOTER — REFINED NEWSLETTER
            ═══════════════════════════════════════════════════════════════ */
         footer {
             background: var(--black);
@@ -1146,76 +838,80 @@
         }
 
         .footer-newsletter {
-            max-width: 1800px;
+            max-width: 800px;
             margin: 0 auto;
             padding: var(--space-3xl) var(--space-lg);
             border-bottom: 1px solid var(--charcoal);
             text-align: center;
         }
 
-        .newsletter-headline {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
+        .newsletter-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.5625rem;
+            letter-spacing: 0.25em;
+            color: var(--stone);
             text-transform: uppercase;
-            color: var(--white);
             margin-bottom: var(--space-md);
         }
 
-        .newsletter-subhead {
+        .newsletter-headline {
             font-family: var(--font-sans);
-            font-size: 1rem;
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
             font-weight: 300;
-            color: var(--pewter);
-            margin-bottom: var(--space-2xl);
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: var(--space-lg);
+            line-height: 1.3;
         }
 
         .newsletter-form {
-            max-width: 600px;
+            max-width: 480px;
             margin: 0 auto;
             display: flex;
             gap: var(--space-sm);
+            border: 1px solid var(--slate);
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form:focus-within {
+            border-color: var(--primary-green);
         }
 
         .newsletter-input {
             flex: 1;
             font-family: var(--font-mono);
-            font-size: 0.875rem;
-            padding: 1.25rem var(--space-lg);
-            background: var(--charcoal);
-            border: 1px solid var(--graphite);
+            font-size: 0.8125rem;
+            padding: 1rem var(--space-md);
+            background: transparent;
+            border: none;
             color: var(--white);
-            transition: all 0.3s ease;
         }
 
         .newsletter-input:focus {
             outline: none;
-            border-color: var(--primary-green);
-            background: var(--graphite);
         }
 
         .newsletter-input::placeholder {
-            color: var(--pewter);
+            color: var(--stone);
         }
 
         .newsletter-submit {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 1.25rem 2.5rem;
-            background: var(--primary-green);
-            border: 1px solid var(--primary-green);
-            color: var(--white);
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-left: 1px solid var(--slate);
+            color: var(--silver);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .newsletter-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--green-glow);
+            color: var(--white);
         }
 
         .footer-grid {
@@ -1342,19 +1038,6 @@
                 text-align: center;
             }
 
-            .data-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .power-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .power-column-left {
-                border-right: none;
-                border-bottom: 1px solid var(--charcoal);
-            }
-
             .newsletter-form {
                 flex-direction: column;
             }
@@ -1383,18 +1066,14 @@
             .client-grid {
                 grid-template-columns: 1fr;
             }
-
-            .data-value {
-                font-size: 4rem;
-            }
-
-            .data-unit {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Architectural overlays -->
+    <div class="pattern-overlay"></div>
+    <div class="atmosphere"></div>
+
     <!-- Military-Grade Header -->
     <header>
         <div class="header-tactical-bar"></div>
@@ -1496,85 +1175,6 @@
         </div>
     </section>
 
-    <!-- Data Visualization Section -->
-    <section class="data-section grid-pattern">
-        <div class="section-inner">
-            <div class="data-section-header">
-                <div class="data-eyebrow">Performance Data</div>
-                <h2 class="data-headline">Built to Last</h2>
-                <p class="data-subhead">
-                    Engineered with precision. Tested for permanence. Proven in the field.
-                </p>
-            </div>
-
-            <div class="data-grid">
-                <div class="data-card">
-                    <div class="data-label">Projected Lifespan</div>
-                    <div class="data-metric">
-                        <div class="data-value"><span class="count" data-target="50">0</span></div>
-                        <div class="data-unit">Years</div>
-                    </div>
-                    <div class="data-description">
-                        Designed for permanence. NEO pavement outlasts traditional asphalt by decades with minimal maintenance required.
-                    </div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-label">Strength vs Asphalt</div>
-                    <div class="data-metric">
-                        <div class="data-value"><span class="count" data-target="5">0</span></div>
-                        <div class="data-unit">× Stronger</div>
-                    </div>
-                    <div class="data-description">
-                        Five times the load-bearing capacity of conventional asphalt under standardized ASTM testing protocols.
-                    </div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-label">VOC Emissions</div>
-                    <div class="data-metric">
-                        <div class="data-value"><span class="count" data-target="0">0</span></div>
-                        <div class="data-unit">%</div>
-                    </div>
-                    <div class="data-description">
-                        Zero volatile organic compounds. Zero toxic fumes during installation. Safe for workers and communities.
-                    </div>
-                </div>
-
-                <div class="data-card">
-                    <div class="data-label">Plastic Waste Diverted</div>
-                    <div class="data-metric">
-                        <div class="data-value"><span class="count" data-target="1">0</span></div>
-                        <div class="data-unit">M+ lbs</div>
-                    </div>
-                    <div class="data-description">
-                        Millions of pounds of post-consumer plastic waste repurposed into high-performance infrastructure annually.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEO Parallax Carousel -->
-    <section class="carousel-section">
-        <div class="carousel-slide">
-            <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg"
-                 alt="TechniSoil Construction Site"
-                 class="carousel-image"
-                 data-parallax="0.5">
-            <div class="carousel-overlay"></div>
-
-            <img src="https://neopave.com/wp-content/uploads/2025/07/Asset-1.png"
-                 alt="NEO"
-                 class="carousel-neo-logo">
-
-            <div class="carousel-text-blurb">
-                <h3>NEO Pave</h3>
-                <p>Advanced polymer pavement technology delivering unprecedented strength and sustainability. Built for the infrastructure of tomorrow.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Brand Architecture -->
     <section class="brands-section">
         <div class="section-inner">
@@ -1616,38 +1216,6 @@
                         <span class="brand-link">Investor Kit</span>
                     </div>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Power Section — 2-Column Data -->
-    <section class="power-section grid-pattern">
-        <div class="power-layout">
-            <div class="power-column power-column-left">
-                <div class="power-eyebrow">The Infrastructure Revolution</div>
-                <h2 class="power-headline">Redefining Permanence</h2>
-                <p class="power-description">
-                    TechniSoil Industrial isn't just building better roads—we're eliminating the 80-year-old asphalt dependency with polymer composite technology that outperforms, outlasts, and out-sustains every traditional pavement solution.
-                </p>
-            </div>
-
-            <div class="power-column power-column-right">
-                <div class="power-stats">
-                    <div class="power-stat-item">
-                        <div class="power-stat-number">2.5M+</div>
-                        <div class="power-stat-label">Square Feet Deployed</div>
-                    </div>
-
-                    <div class="power-stat-item">
-                        <div class="power-stat-number">15+</div>
-                        <div class="power-stat-label">Government Contracts</div>
-                    </div>
-
-                    <div class="power-stat-item">
-                        <div class="power-stat-number">100%</div>
-                        <div class="power-stat-label">Project Success Rate</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1698,15 +1266,15 @@
     <footer class="grid-pattern">
         <!-- Newsletter Signup -->
         <div class="footer-newsletter">
-            <h2 class="newsletter-headline">Stay Informed</h2>
-            <p class="newsletter-subhead">
-                Get quarterly updates on infrastructure innovation, project deployments, and industry insights.
-            </p>
+            <div class="newsletter-eyebrow">Updates</div>
+            <h2 class="newsletter-headline">
+                Quarterly insights on infrastructure innovation and project deployments.
+            </h2>
             <form class="newsletter-form" onsubmit="return false;">
                 <input
                     type="email"
                     class="newsletter-input"
-                    placeholder="your.email@company.com"
+                    placeholder="your@email.com"
                     required
                 />
                 <button type="submit" class="newsletter-submit">Subscribe</button>
@@ -1800,129 +1368,13 @@
             });
         }
 
-        // Animate data cards and count-up numbers
-        function initDataCards() {
-            const dataCards = document.querySelectorAll('.data-card');
-            const counters = document.querySelectorAll('.count');
-            let animated = false;
-
-            function animateCount(element, delay = 0) {
-                setTimeout(() => {
-                    const target = parseInt(element.getAttribute('data-target'));
-                    const duration = 2500;
-                    const startTime = performance.now();
-
-                    function update(currentTime) {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-
-                        // Smooth easing
-                        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-                        const current = Math.floor(easeOutCubic * target);
-
-                        element.textContent = current;
-
-                        if (progress < 1) {
-                            requestAnimationFrame(update);
-                        } else {
-                            element.textContent = target;
-                        }
-                    }
-
-                    requestAnimationFrame(update);
-                }, delay);
-            }
-
-            function checkDataCardsVisibility() {
-                if (animated) return;
-
-                const windowHeight = window.innerHeight;
-                const firstCard = dataCards[0];
-
-                if (firstCard) {
-                    const rect = firstCard.getBoundingClientRect();
-                    if (rect.top < windowHeight * 0.7) {
-                        animated = true;
-
-                        // Stagger card animations
-                        dataCards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.add('visible');
-                            }, index * 150);
-                        });
-
-                        // Stagger counter animations
-                        counters.forEach((counter, index) => {
-                            animateCount(counter, index * 150 + 400);
-                        });
-                    }
-                }
-            }
-
-            window.addEventListener('scroll', checkDataCardsVisibility);
-            checkDataCardsVisibility();
-        }
-
-        // Parallax effect for carousel image
-        function initParallax() {
-            const parallaxElements = document.querySelectorAll('[data-parallax]');
-
-            function updateParallax() {
-                parallaxElements.forEach(element => {
-                    const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
-                    const rect = element.getBoundingClientRect();
-                    const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
-                    const yPos = -(scrollPercent * 100 * speed);
-                    element.style.transform = `translateY(${yPos}px) scale(1.2)`;
-                });
-            }
-
-            window.addEventListener('scroll', updateParallax);
-            window.addEventListener('resize', updateParallax);
-            updateParallax();
-        }
-
-        // Fade in carousel section and text blurb
-        function initCarouselFade() {
-            const carouselSection = document.querySelector('.carousel-section');
-            const textBlurb = document.querySelector('.carousel-text-blurb');
-
-            if (!carouselSection) return;
-
-            function checkCarouselVisibility() {
-                const rect = carouselSection.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-
-                // When carousel is 30% into viewport, fade it in
-                if (rect.top < windowHeight * 0.7) {
-                    carouselSection.classList.add('visible');
-
-                    // Delay text blurb animation slightly
-                    setTimeout(() => {
-                        if (textBlurb) {
-                            textBlurb.classList.add('visible');
-                        }
-                    }, 400);
-                }
-            }
-
-            window.addEventListener('scroll', checkCarouselVisibility);
-            checkCarouselVisibility(); // Check on load
-        }
-
         // Initialize on load
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
                 initGlobe();
-                initDataCards();
-                initParallax();
-                initCarouselFade();
             });
         } else {
             initGlobe();
-            initDataCards();
-            initParallax();
-            initCarouselFade();
         }
     </script>
 </body>
