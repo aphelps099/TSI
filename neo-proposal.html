@@ -544,7 +544,6 @@
         .investment-item:nth-child(6) { animation-delay: 0.35s; }
         .investment-item:nth-child(7) { animation-delay: 0.4s; }
         .investment-item:nth-child(8) { animation-delay: 0.45s; }
-        .investment-item:nth-child(9) { animation-delay: 0.5s; }
 
         .investment-item::before {
             content: counter(investment-counter);
@@ -666,12 +665,25 @@
         /* Logo */
         .hero-logo {
             margin-bottom: 3rem;
+            opacity: 0;
         }
 
         .hero-logo svg {
             width: 200px;
             height: auto;
             fill: var(--black);
+        }
+
+        .hero-section.hero-loaded .hero-logo {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+        }
+
+        .hero-section.hero-loaded .hero-title {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        .hero-section.hero-loaded .hero-meta {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
         }
 
         /* Password Protection */
@@ -792,11 +804,11 @@
         }
 
         .hero-title {
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+            opacity: 0;
         }
 
         .hero-meta {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+            opacity: 0;
         }
 
         .section {
@@ -1222,7 +1234,6 @@
 
             <div class="investment-list">
                 <div class="investment-item">NEO commercial site with multi-page architecture</div>
-                <div class="investment-item">TSI corporate hub with unified brand design</div>
                 <div class="investment-item">Password-protected investor portal</div>
                 <div class="investment-item">Performance dashboard and data visualization</div>
                 <div class="investment-item">Project portfolio with case studies</div>
@@ -1250,10 +1261,12 @@
             const input = document.getElementById('password-input');
             const submit = document.getElementById('password-submit');
             const error = document.getElementById('password-error');
+            const heroSection = document.querySelector('.hero-section');
 
             // Check if already authenticated
             if (sessionStorage.getItem('authenticated') === 'true') {
                 overlay.classList.add('hidden');
+                setTimeout(() => heroSection.classList.add('hero-loaded'), 100);
                 return;
             }
 
@@ -1264,6 +1277,8 @@
                     overlay.classList.add('hidden');
                     input.value = '';
                     error.classList.remove('show');
+                    // Trigger hero animation after overlay fades
+                    setTimeout(() => heroSection.classList.add('hero-loaded'), 500);
                 } else {
                     error.classList.add('show');
                     input.value = '';
