@@ -228,6 +228,20 @@
             overflow: hidden;
         }
 
+        .hero-globe-bg {
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 100%;
+            max-width: 600px;
+            height: 600px;
+            perspective: 2000px;
+            z-index: 2;
+            opacity: 0.2;
+            transform: scale(3);
+            pointer-events: none;
+        }
+
         .hero-bg {
             position: absolute;
             top: 0;
@@ -512,7 +526,7 @@
             width: 600px;
             height: 600px;
             margin: -300px 0 0 -300px;
-            border: 1px solid var(--primary-green);
+            border: 2px solid var(--primary-green);
             border-radius: 50%;
             opacity: 0.3;
             transform-style: preserve-3d;
@@ -584,36 +598,102 @@
             pointer-events: none;
         }
 
-        /* Sheen effect */
-        .globe::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 600px;
-            height: 600px;
-            margin: -300px 0 0 -300px;
-            border-radius: 50%;
-            background: linear-gradient(
-                135deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.1) 30%,
-                rgba(255, 255, 255, 0.2) 40%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 60%
-            );
-            animation: sheenRotate 8s linear infinite;
-            pointer-events: none;
-        }
-
         @keyframes globeGlow {
             0%, 100% { opacity: 0.6; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.05); }
         }
 
-        @keyframes sheenRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* ═══════════════════════════════════════════════════════════════
+           DATA SECTION — ANIMATED CHARTS
+           ═══════════════════════════════════════════════════════════════ */
+        .data-section {
+            background: var(--charcoal);
+            scroll-snap-align: center;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-2xl);
+        }
+
+        .data-card {
+            background: var(--graphite);
+            padding: var(--space-2xl);
+            border-top: 3px solid var(--primary-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-green);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease;
+        }
+
+        .data-card.visible::before {
+            transform: scaleX(1);
+        }
+
+        .data-label {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--pewter);
+            margin-bottom: var(--space-sm);
+        }
+
+        .data-value {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: var(--space-md);
+        }
+
+        .data-value .count {
+            display: inline-block;
+            color: var(--primary-green);
+        }
+
+        .data-description {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: var(--mist);
+            line-height: 1.7;
+        }
+
+        .data-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--slate);
+            margin-top: var(--space-lg);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .data-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--leaf));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .data-card.visible .data-bar-fill {
+            transform: scaleX(1);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1094,6 +1174,28 @@
         <div class="gradient-overlay"></div>
         <div class="texture-grain"></div>
 
+        <!-- Cropped Globe Background -->
+        <div class="hero-globe-bg">
+            <div class="globe" id="hero-globe">
+                <!-- Meridian rings -->
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <!-- Latitude rings -->
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+                <div class="globe-ring"></div>
+            </div>
+        </div>
+
         <div class="section-inner">
             <div class="hero-content">
                 <div class="hero-eyebrow">The End of Asphalt</div>
@@ -1150,6 +1252,57 @@
                 <span class="stat">millions of pounds</span> of plastic waste while
                 delivering pavement that's <span class="stat">5× stronger</span>
                 than traditional asphalt and <span class="stat">100% toxic-fume free</span>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Visualization Section -->
+    <section class="data-section">
+        <div class="section-inner">
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">Lifespan</div>
+                    <div class="data-value"><span class="count" data-target="50">0</span>+ Years</div>
+                    <div class="data-description">
+                        Designed for permanence. NEO pavement outlasts traditional asphalt by decades.
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-label">Strength Multiplier</div>
+                    <div class="data-value"><span class="count" data-target="5">0</span>×</div>
+                    <div class="data-description">
+                        Five times stronger than conventional asphalt under load testing.
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-label">VOC Emissions</div>
+                    <div class="data-value"><span class="count" data-target="0">0</span>%</div>
+                    <div class="data-description">
+                        Zero volatile organic compounds. Zero toxic fumes during installation.
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-bar-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-label">Plastic Diverted</div>
+                    <div class="data-value"><span class="count" data-target="1">0</span>M+ lbs</div>
+                    <div class="data-description">
+                        Millions of pounds of plastic waste diverted from landfills annually.
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1321,17 +1474,86 @@
             });
         });
 
-        // Simple globe rotation based on scroll (tilted like Earth)
+        // Globe rotation based on scroll (tilted like Earth)
         function initGlobe() {
-            const globe = document.getElementById('globe');
-            if (!globe) return;
+            const heroGlobe = document.getElementById('hero-globe');
+            const successGlobe = document.getElementById('globe');
 
             window.addEventListener('scroll', function() {
                 const scrollY = window.scrollY;
-                const rotation = scrollY * 0.1; // Slow rotation based on scroll
-                // Earth's tilt is 23.5 degrees
-                globe.style.transform = `rotateX(-23deg) rotateY(${rotation}deg)`;
+
+                // Hero globe - slower rotation
+                if (heroGlobe) {
+                    const heroRotation = scrollY * 0.05; // Slower rotation
+                    heroGlobe.style.transform = `rotateX(-23deg) rotateY(${heroRotation}deg)`;
+                }
+
+                // Success globe - normal speed
+                if (successGlobe) {
+                    const successRotation = scrollY * 0.1;
+                    successGlobe.style.transform = `rotateX(-23deg) rotateY(${successRotation}deg)`;
+                }
             });
+        }
+
+        // Animate data cards and count-up numbers
+        function initDataCards() {
+            const dataCards = document.querySelectorAll('.data-card');
+            const counters = document.querySelectorAll('.count');
+            let animated = false;
+
+            function animateCount(element) {
+                const target = parseInt(element.getAttribute('data-target'));
+                const duration = 2000;
+                const start = 0;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    const easeOutQuad = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(easeOutQuad * target);
+
+                    element.textContent = current;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.textContent = target;
+                    }
+                }
+
+                requestAnimationFrame(update);
+            }
+
+            function checkDataCardsVisibility() {
+                const windowHeight = window.innerHeight;
+
+                dataCards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < windowHeight * 0.8 && !animated) {
+                        card.classList.add('visible');
+                    }
+                });
+
+                // Animate counters once
+                if (!animated) {
+                    const firstCard = dataCards[0];
+                    if (firstCard) {
+                        const rect = firstCard.getBoundingClientRect();
+                        if (rect.top < windowHeight * 0.8) {
+                            animated = true;
+                            counters.forEach(counter => {
+                                setTimeout(() => animateCount(counter), 300);
+                            });
+                        }
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', checkDataCardsVisibility);
+            checkDataCardsVisibility();
         }
 
         // Parallax effect for carousel image
@@ -1385,11 +1607,13 @@
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
                 initGlobe();
+                initDataCards();
                 initParallax();
                 initCarouselFade();
             });
         } else {
             initGlobe();
+            initDataCards();
             initParallax();
             initCarouselFade();
         }
