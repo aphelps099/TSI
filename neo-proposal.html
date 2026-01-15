@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Site Redesign — Proposal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #000000;
+            --charcoal: #0a0a0a;
+            --graphite: #1a1a1a;
+            --slate: #2a2a2a;
+            --stone: #404040;
+            --pewter: #707070;
+            --silver: #a0a0a0;
+            --mist: #d0d0d0;
+            --white: #ffffff;
+            --accent: #00D856;
+            --red: #ff4444;
+
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Header */
+        .proposal-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid var(--slate);
+        }
+
+        .proposal-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .proposal-subtitle {
+            font-size: 1.125rem;
+            color: var(--silver);
+            font-weight: 400;
+        }
+
+        /* Problem Section */
+        .section {
+            margin-bottom: 8rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pewter);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--mist);
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .comparison-item {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            padding: 1.5rem;
+            background: var(--graphite);
+            border-bottom: 1px solid var(--slate);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .comparison-badge {
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.375rem 0.75rem;
+            border-radius: 2px;
+        }
+
+        .badge-current {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .badge-proposed {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .comparison-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .comparison-visual {
+            aspect-ratio: 16/9;
+            background: var(--slate);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pewter);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .comparison-content {
+            padding: 2rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--slate);
+            font-size: 0.9375rem;
+            color: var(--mist);
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list li::before {
+            content: "—";
+            margin-right: 0.75rem;
+            color: var(--pewter);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-description {
+            font-size: 0.9375rem;
+            color: var(--silver);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-value {
+            font-size: 0.8125rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Mockup Showcase */
+        .mockup-showcase {
+            background: var(--charcoal);
+            border: 1px solid var(--slate);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .mockup-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--pewter);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .mockup-browser {
+            background: var(--graphite);
+            border: 1px solid var(--stone);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        .browser-chrome {
+            background: var(--slate);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--stone);
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--pewter);
+        }
+
+        .browser-url {
+            flex: 1;
+            background: var(--graphite);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--silver);
+            margin-left: 1rem;
+        }
+
+        .browser-content {
+            background: var(--black);
+            min-height: 500px;
+            padding: 3rem;
+        }
+
+        .mockup-hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .mockup-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .mockup-headline {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .mockup-subhead {
+            font-size: 1.125rem;
+            color: var(--mist);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .mockup-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--slate);
+        }
+
+        .mockup-stat {
+            text-align: center;
+        }
+
+        .mockup-stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .mockup-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--pewter);
+        }
+
+        /* Investment */
+        .investment-box {
+            background: var(--charcoal);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .investment-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .investment-price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .investment-compare {
+            font-size: 0.9375rem;
+            color: var(--silver);
+            margin-bottom: 2rem;
+        }
+
+        .investment-includes {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--slate);
+        }
+
+        .investment-includes ul {
+            list-style: none;
+        }
+
+        .investment-includes li {
+            padding: 0.75rem 0;
+            font-size: 0.9375rem;
+            color: var(--mist);
+        }
+
+        .investment-includes li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--charcoal);
+            border-radius: 8px;
+            border: 1px solid var(--slate);
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.125rem;
+            color: var(--silver);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1.25rem 3rem;
+            background: var(--accent);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mockup-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .investment-price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="proposal-header">
+            <h1 class="proposal-title">NEO Site Redesign</h1>
+            <p class="proposal-subtitle">Transforming neopave.com into a premium sales & conversion tool</p>
+        </header>
+
+        <!-- Problem -->
+        <section class="section">
+            <div class="section-label">The Problem</div>
+            <h2 class="section-title">Your Current Site Undersells Your Technology</h2>
+            <p class="section-intro">
+                Neopave.com has good bones, but it's not converting enterprise clients or municipal decision-makers at the rate it should. Here's what's holding it back—and how we fix it.
+            </p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-header">
+                        <span class="comparison-badge badge-current">Current</span>
+                        <span class="comparison-title">neopave.com Today</span>
+                    </div>
+                    <div class="comparison-visual">Screenshot Placeholder</div>
+                    <div class="comparison-content">
+                        <ul class="comparison-list">
+                            <li>Single long-scroll page — hard to navigate for busy decision-makers</li>
+                            <li>Performance data buried below the fold</li>
+                            <li>No dedicated project portfolio showcase</li>
+                            <li>Investor content mixed with customer messaging</li>
+                            <li>Mobile experience breaks on smaller screens</li>
+                            <li>No clear conversion path for enterprise inquiries</li>
+                            <li>Typography and spacing feels crowded</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-header">
+                        <span class="comparison-badge badge-proposed">Proposed</span>
+                        <span class="comparison-title">NEO v2 — Premium Commercial Site</span>
+                    </div>
+                    <div class="comparison-visual">New Design Preview</div>
+                    <div class="comparison-content">
+                        <ul class="comparison-list">
+                            <li>Multi-page architecture with clear navigation</li>
+                            <li>LA testing data front-and-center on homepage</li>
+                            <li>Dedicated project gallery with case studies</li>
+                            <li>Separate /investors portal (password-protected)</li>
+                            <li>Perfect mobile experience, all screen sizes</li>
+                            <li>Strategic CTAs optimized for enterprise conversions</li>
+                            <li>Premium typography with generous spacing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mockup -->
+        <section class="section">
+            <div class="section-label">Homepage Concept</div>
+            <h2 class="section-title">Lead with Performance. Close with Proof.</h2>
+
+            <div class="mockup-showcase">
+                <div class="mockup-label">NEO v2 — Homepage Hero</div>
+                <div class="mockup-browser">
+                    <div class="browser-chrome">
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-url">neopave.com</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="mockup-hero">
+                            <div class="mockup-eyebrow">Proven Performance</div>
+                            <h1 class="mockup-headline">Ambient Temperature.<br>Municipal Approved.<br>Zero Emissions.</h1>
+                            <p class="mockup-subhead">
+                                The first pavement system approved by the City of Los Angeles for high-stress applications—without heating plants, toxic fumes, or performance compromises.
+                            </p>
+                            <div class="mockup-stats">
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-number">1,400+</div>
+                                    <div class="mockup-stat-label">LA City Tests Passed</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-number">0°</div>
+                                    <div class="mockup-stat-label">Heat Required</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-number">5×</div>
+                                    <div class="mockup-stat-label">Stronger Than Asphalt</div>
+                                </div>
+                                <div class="mockup-stat">
+                                    <div class="mockup-stat-number">50+</div>
+                                    <div class="mockup-stat-label">Year Lifespan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section">
+            <div class="section-label">What You Get</div>
+            <h2 class="section-title">Premium Features That Drive Conversions</h2>
+            <p class="section-intro">
+                Every feature is designed to answer the questions enterprise buyers and municipal decision-makers ask—while building credibility and trust.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Performance Dashboard</h3>
+                    <p class="feature-description">
+                        Interactive data visualization showcasing LA testing results, durability metrics, and comparative performance vs. traditional asphalt.
+                    </p>
+                    <div class="feature-value">Builds immediate credibility with data-driven buyers</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Project Portfolio</h3>
+                    <p class="feature-description">
+                        Dedicated gallery showcasing international deployments—Imperial Palace, airports, Apple campuses—with before/after imagery and client testimonials.
+                    </p>
+                    <div class="feature-value">Proves global scale and enterprise trust</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">Technology Deep Dive</h3>
+                    <p class="feature-description">
+                        Clean, scannable page explaining polymer engineering, ambient bonding process, and environmental impact—with downloadable technical specs.
+                    </p>
+                    <div class="feature-value">Answers technical objections before sales calls</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Investor Portal</h3>
+                    <p class="feature-description">
+                        Password-protected /investors section with financial data, roadmap, and partnership opportunities—keeps this separate from customer messaging.
+                    </p>
+                    <div class="feature-value">Professional investor experience without cluttering main site</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Mobile-First Design</h3>
+                    <p class="feature-description">
+                        Perfect experience on all devices—decision-makers often browse on phones between meetings. Current site has responsive issues.
+                    </p>
+                    <div class="feature-value">Don't lose deals because site breaks on mobile</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="feature-title">Enterprise Contact Flow</h3>
+                    <p class="feature-description">
+                        Strategic CTAs and contact forms optimized for municipal RFPs and enterprise procurement—collects the right info upfront.
+                    </p>
+                    <div class="feature-value">Higher quality leads, faster sales cycles</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Performance Optimized</h3>
+                    <p class="feature-description">
+                        Fast load times, optimized images, clean code—Google ranks faster sites higher, and impatient buyers won't wait.
+                    </p>
+                    <div class="feature-value">Better SEO, lower bounce rates</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Analytics Integration</h3>
+                    <p class="feature-description">
+                        Built-in tracking to understand what content converts, where buyers spend time, and which pages drive enterprise inquiries.
+                    </p>
+                    <div class="feature-value">Data-driven optimization over time</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">SEO Foundation</h3>
+                    <p class="feature-description">
+                        Proper metadata, schema markup, and content structure so municipalities searching "sustainable pavement" or "asphalt alternative" find you first.
+                    </p>
+                    <div class="feature-value">Organic lead generation at scale</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment -->
+        <section class="section">
+            <div class="investment-box">
+                <h2 class="investment-title">Investment</h2>
+                <div class="investment-price">$7,500</div>
+                <p class="investment-compare">Complete package for NEO v2 + TSI Corporate Hub<br>
+                    <strong>vs. $20K-30K agency pricing</strong> | 3-4 week delivery vs. 12+ week timelines</p>
+
+                <div class="investment-includes">
+                    <ul>
+                        <li><strong>NEO Commercial Site</strong> — Multi-page architecture, performance dashboard, project portfolio, technology pages</li>
+                        <li><strong>TSI Corporate Hub</strong> — Company story, leadership, Katerva Awards, unified brand design</li>
+                        <li><strong>Investor Portal</strong> — Password-protected section with financial data and partnership info</li>
+                        <li><strong>Mobile Optimization</strong> — Perfect experience across all devices and screen sizes</li>
+                        <li><strong>Analytics Setup</strong> — Tracking and conversion monitoring built-in</li>
+                        <li><strong>SEO Foundation</strong> — Metadata, schema, content structure for organic discovery</li>
+                        <li><strong>Technical Handoff</strong> — Clean documentation and knowledge transfer</li>
+                        <li><strong>2 Rounds of Revisions</strong> — Refinement based on your feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="section-intro" style="text-align: center;">
+                <strong>Individual Pricing:</strong> NEO v2 only: $5K | TSI Corporate only: $5K<br>
+                Bundle saves you $2,500 and ensures unified brand experience
+            </p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2 class="cta-title">Let's Build This</h2>
+            <p class="cta-text">
+                I can start immediately and have mockups ready for review within a week.<br>
+                Free tomorrow afternoon to walk through the full vision.
+            </p>
+            <a href="mailto:aaron@aaroncphelps.com?subject=NEO Redesign - Let's Talk" class="cta-button">Schedule a Call</a>
+        </section>
+    </div>
+</body>
+</html>
