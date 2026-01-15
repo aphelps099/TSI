@@ -100,7 +100,7 @@
         .section-title-yet {
             display: block;
             margin-top: 0.5rem;
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
         }
 
         .section-lead {
@@ -237,6 +237,7 @@
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 2rem;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
         .mockup-headline {
@@ -245,6 +246,7 @@
             line-height: 1.05;
             letter-spacing: -0.02em;
             margin-bottom: 2rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
         }
 
         .mockup-subhead {
@@ -254,6 +256,7 @@
             max-width: 700px;
             margin: 0 auto 4rem;
             line-height: 1.6;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
         }
 
         .mockup-stats {
@@ -301,7 +304,13 @@
             padding: 2rem;
             position: relative;
             transition: all 0.3s ease;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
+
+        .sitemap-node:nth-child(1) { animation-delay: 0.1s; }
+        .sitemap-node:nth-child(2) { animation-delay: 0.2s; }
+        .sitemap-node:nth-child(3) { animation-delay: 0.3s; }
+        .sitemap-node:nth-child(4) { animation-delay: 0.4s; }
 
         .sitemap-node:hover {
             border-color: var(--accent);
@@ -364,7 +373,15 @@
             text-align: center;
             border-right: 1px solid var(--fog);
             border-bottom: 1px solid var(--fog);
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
+
+        .arch-block:nth-child(1) { animation-delay: 0.1s; }
+        .arch-block:nth-child(2) { animation-delay: 0.2s; }
+        .arch-block:nth-child(3) { animation-delay: 0.3s; }
+        .arch-block:nth-child(4) { animation-delay: 0.4s; }
+        .arch-block:nth-child(5) { animation-delay: 0.5s; }
+        .arch-block:nth-child(6) { animation-delay: 0.6s; }
 
         .arch-block:nth-child(3n) {
             border-right: none;
@@ -493,7 +510,18 @@
             padding: 0.5rem 0 0.5rem 2.5rem;
             position: relative;
             counter-increment: investment-counter;
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
+
+        .investment-item:nth-child(1) { animation-delay: 0.1s; }
+        .investment-item:nth-child(2) { animation-delay: 0.15s; }
+        .investment-item:nth-child(3) { animation-delay: 0.2s; }
+        .investment-item:nth-child(4) { animation-delay: 0.25s; }
+        .investment-item:nth-child(5) { animation-delay: 0.3s; }
+        .investment-item:nth-child(6) { animation-delay: 0.35s; }
+        .investment-item:nth-child(7) { animation-delay: 0.4s; }
+        .investment-item:nth-child(8) { animation-delay: 0.45s; }
+        .investment-item:nth-child(9) { animation-delay: 0.5s; }
 
         .investment-item::before {
             content: counter(investment-counter);
@@ -507,10 +535,21 @@
         }
 
         /* Timeline */
-        .timeline {
-            margin: 5rem 0;
+        .section-timeline {
             background: var(--accent);
-            padding: 4rem 3rem;
+        }
+
+        .section-timeline .section-number {
+            color: var(--black);
+        }
+
+        .section-timeline .section-title {
+            color: var(--black);
+        }
+
+        .timeline {
+            margin: 0;
+            padding: 0;
         }
 
         .timeline-track {
@@ -526,7 +565,13 @@
 
         .timeline-item {
             text-align: center;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
 
         .timeline-marker {
             width: 12px;
@@ -700,11 +745,11 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(60px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
@@ -718,55 +763,55 @@
         }
 
         .hero-title {
-            animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
         }
 
         .hero-meta {
-            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s backwards;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
         }
 
         .section-number {
-            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
 
         .section-title {
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
         }
 
         .section-lead {
-            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
         }
 
         .browser-frame {
             opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(80px) scale(0.95);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .browser-frame.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .comparison-table {
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
         .sitemap {
-            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
         .architecture {
-            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
-        .timeline {
-            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+        .timeline-items {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
         }
 
         .investment {
-            animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
         }
 
         /* Responsive */
@@ -978,11 +1023,6 @@
                             <div class="mockup-grid">
                                 <div class="mockup-card">
                                     <div class="mockup-card-image"></div>
-                                    <div class="mockup-card-title">Highway Infrastructure</div>
-                                    <div class="mockup-card-meta">High-traffic corridors • USA</div>
-                                </div>
-                                <div class="mockup-card">
-                                    <div class="mockup-card-image"></div>
                                     <div class="mockup-card-title">Enterprise Campuses</div>
                                     <div class="mockup-card-meta">Apple, Meta • California</div>
                                 </div>
@@ -1094,7 +1134,7 @@
         </section>
 
         <!-- Timeline -->
-        <section class="section">
+        <section class="section section-timeline">
             <div class="section-inner">
                 <span class="section-number">04 — TIMELINE</span>
                 <h2 class="section-title">30 days</h2>
