@@ -347,20 +347,25 @@
         /* Architecture Diagram */
         .architecture {
             margin: 5rem 0;
-        }
-
-        .arch-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 0;
         }
 
         .arch-block {
             background: var(--off-white);
-            border: 1px solid var(--fog);
             padding: 2.5rem;
             text-align: center;
+            border-right: 1px solid var(--fog);
+            border-bottom: 1px solid var(--fog);
+        }
+
+        .arch-block:nth-child(3n) {
+            border-right: none;
+        }
+
+        .arch-block:nth-child(n+4) {
+            border-bottom: none;
         }
 
         .arch-icon {
@@ -465,49 +470,45 @@
             font-size: 1rem;
             font-weight: 400;
             color: var(--silver);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
-        .investment-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            text-align: left;
-            max-width: 1000px;
+        .investment-list {
+            max-width: 600px;
             margin: 0 auto;
-            padding-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            counter-reset: investment-counter;
         }
 
         .investment-item {
-            font-size: 0.9375rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.8;
             color: var(--mist);
+            padding: 1rem 0 1rem 3rem;
+            position: relative;
+            counter-increment: investment-counter;
         }
 
         .investment-item::before {
-            content: '—';
+            content: counter(investment-counter);
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--accent);
-            margin-right: 0.75rem;
+            width: 2rem;
         }
 
         /* Timeline */
         .timeline {
             margin: 5rem 0;
+            background: var(--accent);
+            padding: 4rem 3rem;
         }
 
         .timeline-track {
             position: relative;
-            padding: 3rem 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            top: 4rem;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--fog);
         }
 
         .timeline-items {
@@ -524,7 +525,7 @@
         .timeline-marker {
             width: 12px;
             height: 12px;
-            background: var(--accent);
+            background: var(--white);
             border-radius: 50%;
             margin: 0 auto 2rem;
         }
@@ -534,14 +535,14 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--pewter);
+            color: var(--black);
             margin-bottom: 1rem;
         }
 
         .timeline-deliverable {
             font-size: 0.9375rem;
             font-weight: 400;
-            color: var(--graphite);
+            color: var(--black);
             line-height: 1.5;
         }
 
@@ -591,6 +592,102 @@
             width: 200px;
             height: auto;
             fill: var(--black);
+        }
+
+        /* Password Protection */
+        #password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #password-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .password-container {
+            max-width: 400px;
+            width: 90%;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .password-logo {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--black);
+            margin-bottom: 3rem;
+        }
+
+        .password-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--graphite);
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        #password-input {
+            width: 100%;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            padding: 1rem;
+            background: var(--off-white);
+            border: 1px solid var(--fog);
+            color: var(--black);
+            text-align: center;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #password-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        #password-submit {
+            width: 100%;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1.25rem;
+            background: var(--black);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #password-submit:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .password-error {
+            font-size: 0.75rem;
+            color: #ff4444;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-error.show {
+            opacity: 1;
         }
 
         /* Animations */
@@ -665,11 +762,22 @@
             }
 
             .sitemap-grid,
-            .arch-row,
+            .architecture,
             .comparison-table,
-            .investment-grid,
             .timeline-items {
                 grid-template-columns: 1fr;
+            }
+
+            .arch-block {
+                border-right: none;
+            }
+
+            .arch-block:nth-child(n+2) {
+                border-bottom: 1px solid var(--fog);
+            }
+
+            .arch-block:last-child {
+                border-bottom: none;
             }
 
             .mockup-stats {
@@ -711,6 +819,22 @@
     </style>
 </head>
 <body>
+    <!-- Password Protection Overlay -->
+    <div id="password-overlay">
+        <div class="password-container">
+            <div class="password-logo">NEO Proposal</div>
+            <div class="password-title">Access Required</div>
+            <input
+                type="password"
+                id="password-input"
+                placeholder="Enter password"
+                autocomplete="off"
+            />
+            <button id="password-submit">Enter</button>
+            <div class="password-error" id="password-error">Incorrect password</div>
+        </div>
+    </div>
+
     <div class="page">
 
         <!-- Hero -->
@@ -910,50 +1034,46 @@
                 </div>
 
                 <div class="architecture">
-                    <div class="arch-row">
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">analytics</span></div>
-                            <div class="arch-title">Performance Dashboard</div>
-                            <div class="arch-description">Interactive visualization of LA testing data, durability metrics, and comparative performance</div>
-                            <div class="arch-value">Builds credibility</div>
-                        </div>
-
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">public</span></div>
-                            <div class="arch-title">Project Portfolio</div>
-                            <div class="arch-description">Showcase international deployments with case studies and client validation</div>
-                            <div class="arch-value">Proves global scale</div>
-                        </div>
-
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">lock</span></div>
-                            <div class="arch-title">Investor Portal</div>
-                            <div class="arch-description">Password-protected section for financial data and partnership opportunities</div>
-                            <div class="arch-value">Professional separation</div>
-                        </div>
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">analytics</span></div>
+                        <div class="arch-title">Performance Dashboard</div>
+                        <div class="arch-description">Interactive visualization of LA testing data, durability metrics, and comparative performance</div>
+                        <div class="arch-value">Builds credibility</div>
                     </div>
 
-                    <div class="arch-row">
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">smartphone</span></div>
-                            <div class="arch-title">Mobile Excellence</div>
-                            <div class="arch-description">Flawless responsive design across all devices and screen sizes</div>
-                            <div class="arch-value">No lost conversions</div>
-                        </div>
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">public</span></div>
+                        <div class="arch-title">Project Portfolio</div>
+                        <div class="arch-description">Showcase international deployments with case studies and client validation</div>
+                        <div class="arch-value">Proves global scale</div>
+                    </div>
 
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">business_center</span></div>
-                            <div class="arch-title">Enterprise CTAs</div>
-                            <div class="arch-description">Strategic contact forms optimized for municipal RFPs and enterprise procurement</div>
-                            <div class="arch-value">Higher quality leads</div>
-                        </div>
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">lock</span></div>
+                        <div class="arch-title">Investor Portal</div>
+                        <div class="arch-description">Password-protected section for financial data and partnership opportunities</div>
+                        <div class="arch-value">Professional separation</div>
+                    </div>
 
-                        <div class="arch-block">
-                            <div class="arch-icon"><span class="material-icons">bolt</span></div>
-                            <div class="arch-title">Performance Optimized</div>
-                            <div class="arch-description">Fast load times, optimized assets, clean code for better SEO and user experience</div>
-                            <div class="arch-value">Better rankings</div>
-                        </div>
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">smartphone</span></div>
+                        <div class="arch-title">Mobile Excellence</div>
+                        <div class="arch-description">Flawless responsive design across all devices and screen sizes</div>
+                        <div class="arch-value">No lost conversions</div>
+                    </div>
+
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">business_center</span></div>
+                        <div class="arch-title">Enterprise CTAs</div>
+                        <div class="arch-description">Strategic contact forms optimized for municipal RFPs and enterprise procurement</div>
+                        <div class="arch-value">Higher quality leads</div>
+                    </div>
+
+                    <div class="arch-block">
+                        <div class="arch-icon"><span class="material-icons">bolt</span></div>
+                        <div class="arch-title">Performance Optimized</div>
+                        <div class="arch-description">Fast load times, optimized assets, clean code for better SEO and user experience</div>
+                        <div class="arch-value">Better rankings</div>
                     </div>
                 </div>
             </div>
@@ -967,7 +1087,6 @@
 
                 <div class="timeline">
                     <div class="timeline-track">
-                        <div class="timeline-line"></div>
                         <div class="timeline-items">
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
@@ -1003,7 +1122,7 @@
             <div class="investment-amount">$7,500</div>
             <div class="investment-label">Complete package — NEO v2</div>
 
-            <div class="investment-grid">
+            <div class="investment-list">
                 <div class="investment-item">NEO commercial site with multi-page architecture</div>
                 <div class="investment-item">TSI corporate hub with unified brand design</div>
                 <div class="investment-item">Password-protected investor portal</div>
@@ -1024,5 +1143,46 @@
         </section>
 
     </div>
+
+    <script>
+        // Password Protection
+        (function() {
+            const CORRECT_PASSWORD = 'TSI2026';
+            const overlay = document.getElementById('password-overlay');
+            const input = document.getElementById('password-input');
+            const submit = document.getElementById('password-submit');
+            const error = document.getElementById('password-error');
+
+            // Check if already authenticated
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                overlay.classList.add('hidden');
+                return;
+            }
+
+            function checkPassword() {
+                const entered = input.value;
+                if (entered === CORRECT_PASSWORD) {
+                    sessionStorage.setItem('authenticated', 'true');
+                    overlay.classList.add('hidden');
+                    input.value = '';
+                    error.classList.remove('show');
+                } else {
+                    error.classList.add('show');
+                    input.value = '';
+                    input.focus();
+                }
+            }
+
+            submit.addEventListener('click', checkPassword);
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+
+            // Focus input on load
+            setTimeout(() => input.focus(), 100);
+        })();
+    </script>
 </body>
 </html>
