@@ -158,10 +158,69 @@
             background: var(--black);
             padding: 6rem 4rem;
             color: var(--white);
+            position: relative;
+        }
+
+        .browser-viewport::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                transparent 40%,
+                rgba(0, 0, 0, 0.4) 80%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+            pointer-events: none;
         }
 
         .mockup-hero {
             text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mockup-projects {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mockup-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mockup-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+        }
+
+        .mockup-card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--graphite);
+            margin-bottom: 1rem;
+        }
+
+        .mockup-card-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .mockup-card-meta {
+            font-size: 0.75rem;
+            color: var(--pewter);
         }
 
         .mockup-eyebrow {
@@ -517,6 +576,71 @@
             color: var(--black);
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-title {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s backwards;
+        }
+
+        .hero-meta {
+            animation: fadeIn 0.6s ease 0.5s backwards;
+        }
+
+        .section-number {
+            animation: fadeIn 0.5s ease backwards;
+        }
+
+        .section-title {
+            animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+        }
+
+        .section-lead {
+            animation: fadeIn 0.6s ease 0.2s backwards;
+        }
+
+        .browser-frame {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+        }
+
+        .comparison-table {
+            animation: fadeIn 0.7s ease 0.2s backwards;
+        }
+
+        .sitemap {
+            animation: fadeIn 0.6s ease 0.2s backwards;
+        }
+
+        .architecture {
+            animation: fadeIn 0.6s ease 0.3s backwards;
+        }
+
+        .timeline {
+            animation: fadeIn 0.6s ease 0.2s backwards;
+        }
+
+        .investment {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .section {
@@ -532,6 +656,10 @@
             }
 
             .mockup-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mockup-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -557,6 +685,10 @@
             .mockup-stats {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .mockup-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -658,6 +790,59 @@
                                 <div class="mockup-stat">
                                     <div class="mockup-stat-number">50+</div>
                                     <div class="mockup-stat-label">Year Lifespan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="browser-frame" style="margin-top: 4rem;">
+                    <div class="browser-chrome">
+                        <div class="chrome-dots">
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                        </div>
+                        <div class="chrome-url">neopave.com/projects</div>
+                    </div>
+                    <div class="browser-viewport">
+                        <div class="mockup-projects">
+                            <div class="mockup-eyebrow">Global Deployments</div>
+                            <h2 class="mockup-headline" style="font-size: clamp(2rem, 4vw, 3.5rem);">Proven Infrastructure<br>Across Three Continents</h2>
+                            <p class="mockup-subhead" style="margin-bottom: 3rem;">
+                                From highways to runways, NEO systems are rebuilding critical infrastructure worldwide.
+                            </p>
+
+                            <div class="mockup-grid">
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">Highway Infrastructure</div>
+                                    <div class="mockup-card-meta">High-traffic corridors • USA</div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">Aviation Runways</div>
+                                    <div class="mockup-card-meta">Precision surfaces • International</div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">Enterprise Campuses</div>
+                                    <div class="mockup-card-meta">Apple, Meta • California</div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">International Projects</div>
+                                    <div class="mockup-card-meta">Imperial Palace • Japan</div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">Municipal Roads</div>
+                                    <div class="mockup-card-meta">City deployments • Qatar</div>
+                                </div>
+                                <div class="mockup-card">
+                                    <div class="mockup-card-image"></div>
+                                    <div class="mockup-card-title">Field Testing</div>
+                                    <div class="mockup-card-meta">Long-term performance studies</div>
                                 </div>
                             </div>
                         </div>
