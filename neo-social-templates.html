@@ -3,71 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEO Social Media Templates — LinkedIn</title>
+    <title>NEO Social Assets — LinkedIn</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         /* ═══════════════════════════════════════════════════════════════
-           CUSTOM FONTS
-           ═══════════════════════════════════════════════════════════════ */
-        @font-face {
-            font-family: 'NEO';
-            src: url('assets/fonts/neo-thin.woff2') format('woff2');
-            font-weight: 100 300;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'NEO';
-            src: url('assets/fonts/neo-bold.woff2') format('woff2');
-            font-weight: 600 900;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           DESIGN TOKENS
+           DESIGN TOKENS — Pentagram Minimal
            ═══════════════════════════════════════════════════════════════ */
         :root {
-            /* Grey/Green/Black Palette */
             --black: #000000;
+            --near-black: #0a0a0a;
             --charcoal: #1a1a1a;
             --graphite: #2a2a2a;
-            --slate: #3a3a3a;
-            --stone: #4a4a4a;
-            --concrete: #5a5a5a;
-            --ash: #6a6a6a;
-            --pewter: #7a7a7a;
-            --silver: #9a9a9a;
-            --mist: #b8b8b8;
-            --fog: #d4d4d4;
-            --white: #f5f5f5;
+            --slate: #404040;
+            --pewter: #888888;
+            --silver: #b0b0b0;
+            --mist: #d0d0d0;
+            --off-white: #f8f8f8;
+            --white: #ffffff;
 
-            /* Green Accent System */
-            --primary-green: #00D856;
-            --green-glow: rgba(0, 216, 86, 0.3);
-            --green-dim: rgba(0, 216, 86, 0.1);
+            --accent: #00D856;
+            --accent-dim: rgba(0, 216, 86, 0.15);
 
-            /* Typography */
-            --font-display: 'NEO', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-mono: 'Roboto Mono', 'Consolas', monospace;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-            /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-            --space-2xl: 6rem;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           RESET & BASE
+           BASE
            ═══════════════════════════════════════════════════════════════ */
         *, *::before, *::after {
             margin: 0;
@@ -76,557 +43,890 @@
         }
 
         html {
-            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 300;
+            font-family: var(--font-primary);
+            font-size: 15px;
+            font-weight: 400;
             line-height: 1.6;
-            background: var(--charcoal);
+            background: var(--black);
             color: var(--white);
-            padding: var(--space-lg);
+            padding: 0;
         }
 
         /* ═══════════════════════════════════════════════════════════════
            HEADER
            ═══════════════════════════════════════════════════════════════ */
-        .page-header {
-            max-width: 1400px;
-            margin: 0 auto var(--space-2xl);
-            padding-bottom: var(--space-lg);
-            border-bottom: 1px solid var(--slate);
+        .masthead {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--graphite);
+            z-index: 1000;
+            padding: 2rem 3rem;
         }
 
-        .page-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
+        .masthead-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .masthead-title {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: -0.02em;
             color: var(--white);
-            margin-bottom: var(--space-sm);
         }
 
-        .page-subtitle {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            letter-spacing: 0.1em;
-            color: var(--pewter);
+        .masthead-meta {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            color: var(--pewter);
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           SOCIAL MEDIA CARD TEMPLATES
+           GRID LAYOUT
            ═══════════════════════════════════════════════════════════════ */
-        .templates-container {
-            max-width: 1400px;
+        .canvas {
+            max-width: 1600px;
             margin: 0 auto;
+            padding: 140px 3rem 6rem;
+        }
+
+        .asset-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-            gap: var(--space-xl);
+            gap: 6rem;
         }
 
-        .social-card {
-            background: var(--black);
-            border: 1px solid var(--slate);
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 1200/630;
+        .asset-item {
+            border-top: 1px solid var(--graphite);
+            padding-top: 3rem;
+        }
+
+        .asset-header {
             display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3rem;
         }
 
-        .social-card:hover {
-            border-color: var(--primary-green);
+        .asset-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pewter);
         }
 
-        .social-card-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: var(--space-xl);
+        .asset-specs {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--slate);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LINKEDIN BANNER — 1584 x 396
+           ═══════════════════════════════════════════════════════════════ */
+        .banner-linkedin {
             position: relative;
-            z-index: 10;
-        }
-
-        .social-card-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
+            aspect-ratio: 1584/396;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.6s var(--ease);
+        }
+
+        .banner-linkedin:hover {
+            transform: translateY(-2px);
+        }
+
+        .banner-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image:
+                linear-gradient(var(--slate) 1px, transparent 1px),
+                linear-gradient(90deg, var(--slate) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .banner-content {
+            position: relative;
             height: 100%;
-            z-index: 1;
+            padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .banner-logo-neo {
+            width: 240px;
+            height: auto;
+        }
+
+        .banner-logo-neo svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .banner-logo-neo path {
+            fill: var(--white);
+        }
+
+        .banner-tagline {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        .banner-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .banner-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .banner-stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .banner-stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .banner-stat-label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--pewter);
+        }
+
+        .banner-url {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--pewter);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SOCIAL CARDS — 1200 x 630
+           ═══════════════════════════════════════════════════════════════ */
+        .card-linkedin {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1200/630;
+            background: var(--near-black);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.6s var(--ease);
+        }
+
+        .card-linkedin:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-bg-image {
+            position: absolute;
+            inset: 0;
             background-size: cover;
             background-position: center;
-            filter: grayscale(1) contrast(1.6) brightness(0.4);
-            opacity: 0.5;
+            filter: grayscale(100%) contrast(1.2) brightness(0.3);
+            opacity: 0.4;
         }
 
-        .social-card-overlay {
+        .card-gradient {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
+            inset: 0;
             background: linear-gradient(
                 135deg,
-                rgba(0, 0, 0, 0.85) 0%,
-                rgba(0, 0, 0, 0.75) 50%,
-                rgba(0, 0, 0, 0.9) 100%
+                rgba(0, 0, 0, 0.95) 0%,
+                rgba(0, 0, 0, 0.85) 50%,
+                rgba(0, 0, 0, 0.92) 100%
             );
         }
 
+        .card-grid-overlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image:
+                linear-gradient(var(--white) 1px, transparent 1px),
+                linear-gradient(90deg, var(--white) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .card-content {
+            position: relative;
+            height: 100%;
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .card-eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-md);
+            color: var(--accent);
+            margin-bottom: 2rem;
         }
 
         .card-headline {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: 56px;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 0.95;
             letter-spacing: -0.02em;
-            text-transform: uppercase;
             color: var(--white);
-            margin-bottom: var(--space-md);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
         }
 
-        .card-stat-group {
-            display: flex;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-lg);
-            flex-wrap: wrap;
+        .card-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
         }
 
-        .card-stat {
-            display: flex;
-            flex-direction: column;
+        .card-metric {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.25rem;
         }
 
-        .card-stat-number {
-            font-family: var(--font-display);
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
+        .card-metric-number {
+            font-size: 42px;
             font-weight: 900;
-            color: var(--primary-green);
             line-height: 1;
-            margin-bottom: var(--space-xs);
+            color: var(--white);
+            margin-bottom: 0.5rem;
         }
 
-        .card-stat-label {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            letter-spacing: 0.1em;
+        .card-metric-label {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--pewter);
+            line-height: 1.4;
         }
 
-        .card-description {
-            font-family: var(--font-sans);
-            font-size: 0.875rem;
+        .card-body {
+            font-size: 15px;
+            font-weight: 400;
             line-height: 1.6;
-            color: var(--mist);
+            color: var(--silver);
+            max-width: 600px;
             margin-bottom: auto;
         }
 
-        .card-footer {
-            margin-top: var(--space-lg);
-            padding-top: var(--space-md);
-            border-top: 1px solid var(--slate);
+        .card-footer-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--graphite);
         }
 
-        .card-logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 900;
+        .card-logo-neo {
+            width: 120px;
+            height: auto;
+        }
+
+        .card-logo-neo svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-logo-neo path {
+            fill: var(--white);
+        }
+
+        .card-url {
+            font-size: 11px;
+            font-weight: 600;
             letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--white);
-        }
-
-        .card-cta {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
             color: var(--pewter);
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           DOWNLOAD CONTROLS
+           CONTROLS
            ═══════════════════════════════════════════════════════════════ */
-        .card-controls {
-            padding: var(--space-md);
-            background: var(--graphite);
-            border-top: 1px solid var(--slate);
+        .asset-controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 20;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .card-label {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            letter-spacing: 0.1em;
-            color: var(--silver);
-            text-transform: uppercase;
-        }
-
-        .download-btn {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--slate);
-            color: var(--pewter);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        /* ═══════════════════════════════════════════════════════════════
-           CAPTION TEMPLATES
-           ═══════════════════════════════════════════════════════════════ */
-        .caption-section {
-            max-width: 1400px;
-            margin: var(--space-2xl) auto 0;
-            padding-top: var(--space-2xl);
-            border-top: 1px solid var(--slate);
-        }
-
-        .caption-header {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 600;
+        .btn {
+            font-family: var(--font-primary);
+            font-size: 9px;
+            font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--primary-green);
-            margin-bottom: var(--space-lg);
+            padding: 0.875rem 1.75rem;
+            background: transparent;
+            border: 1px solid var(--graphite);
+            color: var(--pewter);
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
         }
 
-        .caption-box {
-            background: var(--graphite);
-            border: 1px solid var(--slate);
-            padding: var(--space-lg);
-            margin-bottom: var(--space-md);
-            position: relative;
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
-        .caption-title {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            letter-spacing: 0.15em;
+        .btn-primary {
+            background: var(--white);
+            border-color: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--black);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CAPTION LIBRARY
+           ═══════════════════════════════════════════════════════════════ */
+        .caption-library {
+            margin-top: 8rem;
+            padding-top: 6rem;
+            border-top: 1px solid var(--graphite);
+        }
+
+        .caption-library-header {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--silver);
-            margin-bottom: var(--space-sm);
+            color: var(--pewter);
+            margin-bottom: 3rem;
+        }
+
+        .caption-item {
+            position: relative;
+            background: var(--near-black);
+            border: 1px solid var(--graphite);
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s var(--ease);
+        }
+
+        .caption-item:hover {
+            border-color: var(--slate);
+        }
+
+        .caption-meta {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 1.5rem;
         }
 
         .caption-text {
-            font-family: var(--font-sans);
-            font-size: 0.9375rem;
-            line-height: 1.7;
-            color: var(--white);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--mist);
             white-space: pre-line;
         }
 
-        .copy-btn {
+        .caption-copy-btn {
             position: absolute;
-            top: var(--space-md);
-            right: var(--space-md);
-            font-family: var(--font-mono);
-            font-size: 0.5625rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-family: var(--font-primary);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             background: transparent;
-            border: 1px solid var(--slate);
+            border: 1px solid var(--graphite);
             color: var(--pewter);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--ease);
         }
 
-        .copy-btn:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+        .caption-copy-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
-        .copy-btn.copied {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+        .caption-copy-btn.copied {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--black);
         }
 
         /* ═══════════════════════════════════════════════════════════════
            RESPONSIVE
            ═══════════════════════════════════════════════════════════════ */
-        @media (max-width: 768px) {
-            .templates-container {
-                grid-template-columns: 1fr;
+        @media (max-width: 1200px) {
+            .masthead {
+                padding: 1.5rem 2rem;
             }
 
-            body {
-                padding: var(--space-md);
+            .canvas {
+                padding: 120px 2rem 4rem;
+            }
+
+            .card-headline {
+                font-size: 42px;
+            }
+
+            .card-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .canvas {
+                padding: 100px 1.5rem 3rem;
+            }
+
+            .asset-grid {
+                gap: 4rem;
+            }
+
+            .card-headline {
+                font-size: 32px;
+            }
+
+            .card-metrics {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .banner-content {
+                padding: 2rem;
+            }
+
+            .banner-stats {
+                gap: 1.5rem;
+            }
+
+            .banner-stat-number {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="page-header">
-        <h1 class="page-title">NEO Social Templates</h1>
-        <p class="page-subtitle">LinkedIn — Municipalities & International Governments</p>
-    </div>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <h1 class="masthead-title">NEO Social Assets</h1>
+            <p class="masthead-meta">LinkedIn — Municipal & Government</p>
+        </div>
+    </header>
 
-    <div class="templates-container">
-        <!-- Template 1: LA City Testing Success -->
-        <div class="social-card" data-template="la-testing">
-            <div class="social-card-bg" style="background-image: url('https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png');"></div>
-            <div class="social-card-overlay"></div>
-            <div class="social-card-content">
-                <div class="card-eyebrow">Proven Performance</div>
-                <h2 class="card-headline">1,400+ Tests.<br>Zero Hot Mix.</h2>
-                <div class="card-stat-group">
-                    <div class="card-stat">
-                        <div class="card-stat-number">1,400+</div>
-                        <div class="card-stat-label">LA City Tests Passed</div>
-                    </div>
-                    <div class="card-stat">
-                        <div class="card-stat-number">0°</div>
-                        <div class="card-stat-label">Heat Required</div>
-                    </div>
-                    <div class="card-stat">
-                        <div class="card-stat-number">5x</div>
-                        <div class="card-stat-label">Stronger Than Asphalt</div>
+    <main class="canvas">
+        <div class="asset-grid">
+
+            <!-- LinkedIn Banner -->
+            <article class="asset-item">
+                <div class="asset-header">
+                    <h2 class="asset-label">LinkedIn Banner</h2>
+                    <span class="asset-specs">1584 × 396 px</span>
+                </div>
+
+                <div class="banner-linkedin">
+                    <div class="banner-grid"></div>
+                    <div class="banner-content">
+                        <div>
+                            <div class="banner-logo-neo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.5 180">
+                                    <path d="M180,162V9c0-4.95-4.05-9-9-9h-18c-4.95,0-9,4.05-9,9v114.43L41.93,6.77c-3.26-3.73-5.93-6.77-14.93-6.77H9C4.05,0,0,4.05,0,9v162c0,4.95,4.05,9,9,9h18c4.95,0,9-4.05,9-9V56.57l102.07,116.66c3.26,3.73,9.98,6.77,14.93,6.77h9c9.9,0,18-8.1,18-18Z"/>
+                                    <path d="M247.5,108h81c29.7,0,54-24.3,54-54S358.2,0,328.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h81c4.95,0,9-4.05,9-9v-18c0-4.95-4.05-9-9-9h-81c-9.9,0-18-8.1-18-18v-9c0-4.95,4.05-9,9-9ZM238.5,54c0-9.9,8.1-18,18-18h72c9.9,0,18,8.1,18,18s-8.1,18-18,18h-81c-4.95,0-9-4.05-9-9v-9Z"/>
+                                    <path d="M526.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h72c29.7,0,54-24.3,54-54V54c0-29.7-24.3-54-54-54ZM490.5,153c-34.79,0-63-28.21-63-63s28.21-63,63-63,63,28.21,63,63-28.21,63-63,63Z"/>
+                                </svg>
+                            </div>
+                            <div class="banner-tagline">Ambient Temperature Pavement Systems</div>
+                        </div>
+                        <div class="banner-footer">
+                            <div class="banner-stats">
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">1,400+</div>
+                                    <div class="banner-stat-label">LA City Tests</div>
+                                </div>
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">0°</div>
+                                    <div class="banner-stat-label">Heat Required</div>
+                                </div>
+                                <div class="banner-stat-item">
+                                    <div class="banner-stat-number">3</div>
+                                    <div class="banner-stat-label">Continents</div>
+                                </div>
+                            </div>
+                            <div class="banner-url">NEOPAVE.COM</div>
+                        </div>
                     </div>
                 </div>
-                <p class="card-description">
-                    NEO is the first ambient-temperature pavement system approved for high-stress municipal applications. No heating plants. No toxic emissions. Just advanced polymer engineering.
-                </p>
-                <div class="card-footer">
-                    <div class="card-logo">NEO</div>
-                    <div class="card-cta">neopave.com</div>
+
+                <div class="asset-controls">
+                    <button class="btn btn-primary" onclick="downloadAsset(this, 'neo-linkedin-banner')">Download PNG</button>
+                    <button class="btn" onclick="copyToClipboard(this, 'Banner copied to clipboard')">Copy</button>
                 </div>
-            </div>
-            <div class="card-controls">
-                <span class="card-label">LA City Testing Success</span>
-                <button class="download-btn" onclick="downloadCard(this)">Download Image</button>
-            </div>
+            </article>
+
+            <!-- Card 1: LA Testing -->
+            <article class="asset-item">
+                <div class="asset-header">
+                    <h2 class="asset-label">LA City Performance</h2>
+                    <span class="asset-specs">1200 × 630 px</span>
+                </div>
+
+                <div class="card-linkedin">
+                    <div class="card-bg-image" style="background-image: url('https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="card-grid-overlay"></div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-eyebrow">Proven Performance</div>
+                            <h3 class="card-headline">Rigorous Testing.<br>Zero Compromise.</h3>
+                            <div class="card-metrics">
+                                <div class="card-metric">
+                                    <div class="card-metric-number">1,400+</div>
+                                    <div class="card-metric-label">LA City Tests Passed</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">0°</div>
+                                    <div class="card-metric-label">Heating Required</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">5×</div>
+                                    <div class="card-metric-label">Stronger Than Asphalt</div>
+                                </div>
+                            </div>
+                            <p class="card-body">
+                                First ambient-temperature pavement approved for high-stress municipal applications. Advanced polymer engineering that eliminates emissions while exceeding traditional performance standards.
+                            </p>
+                        </div>
+                        <div class="card-footer-bar">
+                            <div class="card-logo-neo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.5 180">
+                                    <path d="M180,162V9c0-4.95-4.05-9-9-9h-18c-4.95,0-9,4.05-9,9v114.43L41.93,6.77c-3.26-3.73-5.93-6.77-14.93-6.77H9C4.05,0,0,4.05,0,9v162c0,4.95,4.05,9,9,9h18c4.95,0,9-4.05,9-9V56.57l102.07,116.66c3.26,3.73,9.98,6.77,14.93,6.77h9c9.9,0,18-8.1,18-18Z"/>
+                                    <path d="M247.5,108h81c29.7,0,54-24.3,54-54S358.2,0,328.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h81c4.95,0,9-4.05,9-9v-18c0-4.95-4.05-9-9-9h-81c-9.9,0-18-8.1-18-18v-9c0-4.95,4.05-9,9-9ZM238.5,54c0-9.9,8.1-18,18-18h72c9.9,0,18,8.1,18,18s-8.1,18-18,18h-81c-4.95,0-9-4.05-9-9v-9Z"/>
+                                    <path d="M526.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h72c29.7,0,54-24.3,54-54V54c0-29.7-24.3-54-54-54ZM490.5,153c-34.79,0-63-28.21-63-63s28.21-63,63-63,63,28.21,63,63-28.21,63-63,63Z"/>
+                                </svg>
+                            </div>
+                            <div class="card-url">NEOPAVE.COM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-controls">
+                    <button class="btn btn-primary" onclick="downloadAsset(this, 'neo-la-testing')">Download PNG</button>
+                    <button class="btn" onclick="copyToClipboard(this, 'Card copied to clipboard')">Copy</button>
+                </div>
+            </article>
+
+            <!-- Card 2: Global Deployment -->
+            <article class="asset-item">
+                <div class="asset-header">
+                    <h2 class="asset-label">International Projects</h2>
+                    <span class="asset-specs">1200 × 630 px</span>
+                </div>
+
+                <div class="card-linkedin">
+                    <div class="card-bg-image" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/neo-qatar1_IN03-scaled.jpg');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="card-grid-overlay"></div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-eyebrow">Global Infrastructure</div>
+                            <h3 class="card-headline">Proven Across<br>Three Continents.</h3>
+                            <div class="card-metrics">
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Global</div>
+                                    <div class="card-metric-label">Deployment Scale</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">100%</div>
+                                    <div class="card-metric-label">Recycled Materials</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">50+</div>
+                                    <div class="card-metric-label">Year Lifespan</div>
+                                </div>
+                            </div>
+                            <p class="card-body">
+                                From the Imperial Palace of Japan to international airports, NEO systems rebuild critical infrastructure while diverting waste from landfills and setting new durability standards.
+                            </p>
+                        </div>
+                        <div class="card-footer-bar">
+                            <div class="card-logo-neo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.5 180">
+                                    <path d="M180,162V9c0-4.95-4.05-9-9-9h-18c-4.95,0-9,4.05-9,9v114.43L41.93,6.77c-3.26-3.73-5.93-6.77-14.93-6.77H9C4.05,0,0,4.05,0,9v162c0,4.95,4.05,9,9,9h18c4.95,0,9-4.05,9-9V56.57l102.07,116.66c3.26,3.73,9.98,6.77,14.93,6.77h9c9.9,0,18-8.1,18-18Z"/>
+                                    <path d="M247.5,108h81c29.7,0,54-24.3,54-54S358.2,0,328.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h81c4.95,0,9-4.05,9-9v-18c0-4.95-4.05-9-9-9h-81c-9.9,0-18-8.1-18-18v-9c0-4.95,4.05-9,9-9ZM238.5,54c0-9.9,8.1-18,18-18h72c9.9,0,18,8.1,18,18s-8.1,18-18,18h-81c-4.95,0-9-4.05-9-9v-9Z"/>
+                                    <path d="M526.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h72c29.7,0,54-24.3,54-54V54c0-29.7-24.3-54-54-54ZM490.5,153c-34.79,0-63-28.21-63-63s28.21-63,63-63,63,28.21,63,63-28.21,63-63,63Z"/>
+                                </svg>
+                            </div>
+                            <div class="card-url">NEOPAVE.COM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-controls">
+                    <button class="btn btn-primary" onclick="downloadAsset(this, 'neo-international')">Download PNG</button>
+                    <button class="btn" onclick="copyToClipboard(this, 'Card copied to clipboard')">Copy</button>
+                </div>
+            </article>
+
+            <!-- Card 3: Enterprise -->
+            <article class="asset-item">
+                <div class="asset-header">
+                    <h2 class="asset-label">Enterprise Applications</h2>
+                    <span class="asset-specs">1200 × 630 px</span>
+                </div>
+
+                <div class="card-linkedin">
+                    <div class="card-bg-image" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/u2114533955_A_low-angle_shot_of_a_sleek_reflective_runway_stret_16c82c02-e239ad44a-scaled.jpg');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="card-grid-overlay"></div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-eyebrow">Enterprise Grade</div>
+                            <h3 class="card-headline">Engineered for<br>Critical Infrastructure.</h3>
+                            <div class="card-metrics">
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Apple</div>
+                                    <div class="card-metric-label">Campus Deployments</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Meta</div>
+                                    <div class="card-metric-label">Headquarters</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Airports</div>
+                                    <div class="card-metric-label">Aviation Infrastructure</div>
+                                </div>
+                            </div>
+                            <p class="card-body">
+                                When performance cannot be compromised, enterprise clients choose NEO. Zero toxic emissions, decades of durability, proven under extreme conditions.
+                            </p>
+                        </div>
+                        <div class="card-footer-bar">
+                            <div class="card-logo-neo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.5 180">
+                                    <path d="M180,162V9c0-4.95-4.05-9-9-9h-18c-4.95,0-9,4.05-9,9v114.43L41.93,6.77c-3.26-3.73-5.93-6.77-14.93-6.77H9C4.05,0,0,4.05,0,9v162c0,4.95,4.05,9,9,9h18c4.95,0,9-4.05,9-9V56.57l102.07,116.66c3.26,3.73,9.98,6.77,14.93,6.77h9c9.9,0,18-8.1,18-18Z"/>
+                                    <path d="M247.5,108h81c29.7,0,54-24.3,54-54S358.2,0,328.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h81c4.95,0,9-4.05,9-9v-18c0-4.95-4.05-9-9-9h-81c-9.9,0-18-8.1-18-18v-9c0-4.95,4.05-9,9-9ZM238.5,54c0-9.9,8.1-18,18-18h72c9.9,0,18,8.1,18,18s-8.1,18-18,18h-81c-4.95,0-9-4.05-9-9v-9Z"/>
+                                    <path d="M526.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h72c29.7,0,54-24.3,54-54V54c0-29.7-24.3-54-54-54ZM490.5,153c-34.79,0-63-28.21-63-63s28.21-63,63-63,63,28.21,63,63-28.21,63-63,63Z"/>
+                                </svg>
+                            </div>
+                            <div class="card-url">NEOPAVE.COM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-controls">
+                    <button class="btn btn-primary" onclick="downloadAsset(this, 'neo-enterprise')">Download PNG</button>
+                    <button class="btn" onclick="copyToClipboard(this, 'Card copied to clipboard')">Copy</button>
+                </div>
+            </article>
+
+            <!-- Card 4: Sustainability -->
+            <article class="asset-item">
+                <div class="asset-header">
+                    <h2 class="asset-label">Circular Economy</h2>
+                    <span class="asset-specs">1200 × 630 px</span>
+                </div>
+
+                <div class="card-linkedin">
+                    <div class="card-bg-image" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/20201202_101743-Large.jpg');"></div>
+                    <div class="card-gradient"></div>
+                    <div class="card-grid-overlay"></div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-eyebrow">Sustainable Systems</div>
+                            <h3 class="card-headline">Waste Becomes<br>Infrastructure.</h3>
+                            <div class="card-metrics">
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Tons</div>
+                                    <div class="card-metric-label">Waste Diverted</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Zero</div>
+                                    <div class="card-metric-label">Emissions</div>
+                                </div>
+                                <div class="card-metric">
+                                    <div class="card-metric-number">Real</div>
+                                    <div class="card-metric-label">Impact, Not Offsets</div>
+                                </div>
+                            </div>
+                            <p class="card-body">
+                                Every NEO deployment transforms plastic waste into permanent infrastructure. No greenwashing. No offsets. Just engineered circular economy solutions that outperform traditional systems.
+                            </p>
+                        </div>
+                        <div class="card-footer-bar">
+                            <div class="card-logo-neo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580.5 180">
+                                    <path d="M180,162V9c0-4.95-4.05-9-9-9h-18c-4.95,0-9,4.05-9,9v114.43L41.93,6.77c-3.26-3.73-5.93-6.77-14.93-6.77H9C4.05,0,0,4.05,0,9v162c0,4.95,4.05,9,9,9h18c4.95,0,9-4.05,9-9V56.57l102.07,116.66c3.26,3.73,9.98,6.77,14.93,6.77h9c9.9,0,18-8.1,18-18Z"/>
+                                    <path d="M247.5,108h81c29.7,0,54-24.3,54-54S358.2,0,328.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h81c4.95,0,9-4.05,9-9v-18c0-4.95-4.05-9-9-9h-81c-9.9,0-18-8.1-18-18v-9c0-4.95,4.05-9,9-9ZM238.5,54c0-9.9,8.1-18,18-18h72c9.9,0,18,8.1,18,18s-8.1,18-18,18h-81c-4.95,0-9-4.05-9-9v-9Z"/>
+                                    <path d="M526.5,0h-72c-29.7,0-54,24.3-54,54v72c0,29.7,24.3,54,54,54h72c29.7,0,54-24.3,54-54V54c0-29.7-24.3-54-54-54ZM490.5,153c-34.79,0-63-28.21-63-63s28.21-63,63-63,63,28.21,63,63-28.21,63-63,63Z"/>
+                                </svg>
+                            </div>
+                            <div class="card-url">NEOPAVE.COM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-controls">
+                    <button class="btn btn-primary" onclick="downloadAsset(this, 'neo-sustainability')">Download PNG</button>
+                    <button class="btn" onclick="copyToClipboard(this, 'Card copied to clipboard')">Copy</button>
+                </div>
+            </article>
+
         </div>
 
-        <!-- Template 2: International Deployments -->
-        <div class="social-card" data-template="international">
-            <div class="social-card-bg" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/neo-qatar1_IN03-scaled.jpg');"></div>
-            <div class="social-card-overlay"></div>
-            <div class="social-card-content">
-                <div class="card-eyebrow">Global Infrastructure</div>
-                <h2 class="card-headline">Proven on<br>3 Continents</h2>
-                <div class="card-stat-group">
-                    <div class="card-stat">
-                        <div class="card-stat-number">3</div>
-                        <div class="card-stat-label">Continents</div>
-                    </div>
-                    <div class="card-stat">
-                        <div class="card-stat-number">100%</div>
-                        <div class="card-stat-label">Recycled Materials</div>
-                    </div>
-                </div>
-                <p class="card-description">
-                    From the Imperial Palace of Japan to international airports, NEO pavement systems are rebuilding critical infrastructure while diverting waste from landfills.
-                </p>
-                <div class="card-footer">
-                    <div class="card-logo">NEO</div>
-                    <div class="card-cta">neopave.com</div>
-                </div>
+        <!-- Caption Library -->
+        <section class="caption-library">
+            <h2 class="caption-library-header">Caption Library</h2>
+
+            <div class="caption-item">
+                <button class="caption-copy-btn" onclick="copyCaptionText(this)">Copy</button>
+                <div class="caption-meta">LA Testing — Technical Authority</div>
+                <div class="caption-text">After 1,400+ rigorous tests, NEO became the first ambient-temperature pavement system approved by the City of Los Angeles for high-stress municipal applications.
+
+No heating plants. No toxic emissions. Just advanced polymer engineering that bonds at room temperature—eliminating the 1.7 trillion pounds of bitumen burned annually by traditional hot-mix asphalt.
+
+The data is clear: sustainable infrastructure can outperform conventional systems by decades.
+
+neopave.com
+
+#Infrastructure #MunicipalEngineering #Innovation #Sustainability</div>
             </div>
-            <div class="card-controls">
-                <span class="card-label">International Deployments</span>
-                <button class="download-btn" onclick="downloadCard(this)">Download Image</button>
-            </div>
-        </div>
 
-        <!-- Template 3: Enterprise Installations -->
-        <div class="social-card" data-template="enterprise">
-            <div class="social-card-bg" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/u2114533955_A_low-angle_shot_of_a_sleek_reflective_runway_stret_16c82c02-e239ad44a-scaled.jpg');"></div>
-            <div class="social-card-overlay"></div>
-            <div class="social-card-content">
-                <div class="card-eyebrow">Enterprise Grade</div>
-                <h2 class="card-headline">Built for<br>Performance</h2>
-                <div class="card-stat-group">
-                    <div class="card-stat">
-                        <div class="card-stat-number">50+</div>
-                        <div class="card-stat-label">Years Lifespan</div>
-                    </div>
-                    <div class="card-stat">
-                        <div class="card-stat-number">Zero</div>
-                        <div class="card-stat-label">Toxic Emissions</div>
-                    </div>
-                </div>
-                <p class="card-description">
-                    Deployed at Apple campuses, Meta headquarters, and critical aviation infrastructure. NEO outperforms traditional asphalt by decades without environmental compromise.
-                </p>
-                <div class="card-footer">
-                    <div class="card-logo">NEO</div>
-                    <div class="card-cta">neopave.com</div>
-                </div>
-            </div>
-            <div class="card-controls">
-                <span class="card-label">Enterprise Installations</span>
-                <button class="download-btn" onclick="downloadCard(this)">Download Image</button>
-            </div>
-        </div>
-
-        <!-- Template 4: Sustainability Focus -->
-        <div class="social-card" data-template="sustainability">
-            <div class="social-card-bg" style="background-image: url('https://neopave.com/wp-content/uploads/2025/06/20201202_101743-Large.jpg');"></div>
-            <div class="social-card-overlay"></div>
-            <div class="social-card-content">
-                <div class="card-eyebrow">Sustainable Infrastructure</div>
-                <h2 class="card-headline">Waste to<br>Pavement</h2>
-                <div class="card-stat-group">
-                    <div class="card-stat">
-                        <div class="card-stat-number">Tons</div>
-                        <div class="card-stat-label">Waste Diverted</div>
-                    </div>
-                    <div class="card-stat">
-                        <div class="card-stat-number">$0</div>
-                        <div class="card-stat-label">Carbon Offset Costs</div>
-                    </div>
-                </div>
-                <p class="card-description">
-                    Every NEO deployment transforms plastic waste into permanent infrastructure. No greenwashing. No offsets. Just real circular economy engineering.
-                </p>
-                <div class="card-footer">
-                    <div class="card-logo">NEO</div>
-                    <div class="card-cta">neopave.com</div>
-                </div>
-            </div>
-            <div class="card-controls">
-                <span class="card-label">Sustainability Story</span>
-                <button class="download-btn" onclick="downloadCard(this)">Download Image</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- LinkedIn Caption Templates -->
-    <div class="caption-section">
-        <h2 class="caption-header">LinkedIn Captions</h2>
-
-        <div class="caption-box">
-            <button class="copy-btn" onclick="copyCaptionToClipboard(this)">Copy</button>
-            <div class="caption-title">LA City Testing — Technical Credibility</div>
-            <div class="caption-text">After 1,400+ rigorous tests, NEO became the first ambient-temperature pavement system approved by the City of Los Angeles for high-stress applications.
-
-No heating plants. No toxic emissions. Just advanced polymer engineering that bonds at room temperature.
-
-Traditional hot-mix asphalt burns 1.7 trillion pounds of bitumen into our atmosphere annually. NEO eliminates that entirely while outperforming conventional pavement by decades.
-
-The data is in. The technology is proven. Infrastructure doesn't have to compromise the environment.
-
-Learn more: neopave.com
-
-#Infrastructure #Sustainability #Innovation #MunicipalEngineering</div>
-        </div>
-
-        <div class="caption-box">
-            <button class="copy-btn" onclick="copyCaptionToClipboard(this)">Copy</button>
-            <div class="caption-title">International Deployments — Global Proof</div>
-            <div class="caption-text">From highways to runways, NEO pavement systems are deployed across three continents.
-
-The Imperial Palace of Japan. Meta headquarters. International airports. Every installation proves the same thing: sustainable infrastructure can outperform traditional systems.
+            <div class="caption-item">
+                <button class="caption-copy-btn" onclick="copyCaptionText(this)">Copy</button>
+                <div class="caption-meta">International — Global Credibility</div>
+                <div class="caption-text">From the Imperial Palace of Japan to international airports, NEO pavement systems are deployed across three continents.
 
 100% recycled materials. Zero heating required. Decades of durability.
 
-This isn't experimental technology. It's proven engineering reshaping how cities and nations build.
+This isn't experimental technology—it's proven engineering reshaping how cities and nations build critical infrastructure without environmental compromise.
 
 See the projects: neopave.com
 
-#GlobalInfrastructure #CircularEconomy #SmartCities #SustainableDevelopment</div>
-        </div>
+#GlobalInfrastructure #SmartCities #CircularEconomy #SustainableDevelopment</div>
+            </div>
 
-        <div class="caption-box">
-            <button class="copy-btn" onclick="copyCaptionToClipboard(this)">Copy</button>
-            <div class="caption-title">Enterprise Grade — Performance Focus</div>
-            <div class="caption-text">Apple campuses. Meta headquarters. Critical aviation infrastructure.
+            <div class="caption-item">
+                <button class="caption-copy-btn" onclick="copyCaptionText(this)">Copy</button>
+                <div class="caption-meta">Enterprise — Performance Focus</div>
+                <div class="caption-text">When enterprise clients need pavement that performs under extreme conditions, they choose NEO.
 
-When enterprise clients need pavement that performs under extreme conditions, they choose NEO.
+Apple campuses. Meta headquarters. Critical aviation infrastructure.
 
-5x stronger than asphalt. 50+ year lifespan. Zero toxic emissions during installation.
+5× stronger than asphalt. 50+ year lifespan. Zero toxic emissions.
 
-The numbers don't lie. Traditional hot-mix asphalt fails under municipal stress tests. NEO exceeds them—without environmental compromise.
+Forward-thinking municipalities and corporations recognize that sustainability and performance aren't trade-offs—they're requirements.
 
-That's why forward-thinking municipalities and corporations are making the switch.
+Technical specifications: neopave.com
 
-Technical specs: neopave.com
+#EnterpriseInfrastructure #Performance #FutureOfConstruction</div>
+            </div>
 
-#EnterpriseInfrastructure #Performance #Innovation #FutureOfConstruction</div>
-        </div>
+            <div class="caption-item">
+                <button class="caption-copy-btn" onclick="copyCaptionText(this)">Copy</button>
+                <div class="caption-meta">Sustainability — Real Impact</div>
+                <div class="caption-text">Every NEO deployment diverts tons of plastic waste from landfills and transforms it into permanent infrastructure.
 
-        <div class="caption-box">
-            <button class="copy-btn" onclick="copyCaptionToClipboard(this)">Copy</button>
-            <div class="caption-title">Sustainability — Real Impact</div>
-            <div class="caption-text">Every year, we divert tons of plastic waste from landfills and transform it into permanent infrastructure.
+This isn't greenwashing. This isn't carbon offsetting. This is real circular economy engineering that eliminates emissions at the source while building infrastructure that outlasts traditional asphalt by decades.
 
-This isn't greenwashing. This isn't carbon offsetting. This is real circular economy engineering.
+Cities and governments worldwide are discovering that the future of infrastructure is already here.
 
-NEO pavement systems use 100% recycled materials and eliminate the need for heating plants—cutting emissions at the source while building infrastructure that outlasts traditional asphalt by decades.
+Learn more: neopave.com
 
-Cities and governments worldwide are recognizing that sustainability and performance aren't trade-offs. They're requirements.
+#CircularEconomy #WasteToValue #ClimateAction #SustainableInfrastructure</div>
+            </div>
 
-Discover the technology: neopave.com
-
-#CircularEconomy #WasteToValue #SustainableInfrastructure #ClimateAction</div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
-        function downloadCard(button) {
-            // In production, this would use html2canvas or similar to export the card
-            alert('Download functionality would be implemented with html2canvas library.\n\nFor now, take a screenshot of the card above.');
-            button.textContent = 'Downloaded!';
+        function downloadAsset(button, assetName) {
+            // In production, use html2canvas or similar for actual export
+            alert(`Download functionality:\n\nThis would export "${assetName}" as a high-quality PNG.\n\nImplement using html2canvas or similar library for production use.`);
+
+            const originalText = button.textContent;
+            button.textContent = 'Downloaded';
+            button.style.background = 'var(--accent)';
+            button.style.borderColor = 'var(--accent)';
+
             setTimeout(() => {
-                button.textContent = 'Download Image';
+                button.textContent = originalText;
+                button.style.background = '';
+                button.style.borderColor = '';
             }, 2000);
         }
 
-        function copyCaptionToClipboard(button) {
-            const captionBox = button.parentElement;
-            const captionText = captionBox.querySelector('.caption-text').textContent.trim();
+        function copyToClipboard(button, message) {
+            alert(message || 'Copied to clipboard');
+
+            const originalText = button.textContent;
+            button.textContent = 'Copied';
+
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+
+        function copyCaptionText(button) {
+            const captionItem = button.closest('.caption-item');
+            const captionText = captionItem.querySelector('.caption-text').textContent.trim();
 
             navigator.clipboard.writeText(captionText).then(() => {
-                button.textContent = 'Copied!';
+                button.textContent = 'Copied';
                 button.classList.add('copied');
+
                 setTimeout(() => {
                     button.textContent = 'Copy';
                     button.classList.remove('copied');
                 }, 2000);
+            }).catch(() => {
+                alert('Caption text:\n\n' + captionText);
             });
         }
 
-        // Disable right-click on social cards (protect designs)
-        document.querySelectorAll('.social-card').forEach(card => {
-            card.addEventListener('contextmenu', function(e) {
+        // Disable right-click on assets
+        document.querySelectorAll('.card-linkedin, .banner-linkedin').forEach(element => {
+            element.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
             });
         });
