@@ -120,7 +120,7 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           HEADER — ARCHITECTURAL PRECISION
+           HEADER — MATCHES FOOTER STYLE
            ═══════════════════════════════════════════════════════════════ */
         header {
             position: fixed;
@@ -128,59 +128,52 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
+            background: var(--black);
+            border-top: 1px solid var(--charcoal);
             border-bottom: 1px solid var(--charcoal);
-        }
-
-        .header-tactical-bar {
-            height: 1px;
-            background: var(--charcoal);
         }
 
         .header-inner {
             max-width: 1800px;
             margin: 0 auto;
-            padding: 1.25rem var(--space-lg);
+            padding: 1.5rem var(--space-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo-text {
-            font-family: var(--font-mono);
-            font-size: 0.6875rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+        .header-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--white);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .logo-text:hover {
+        .header-logo:hover {
             color: var(--primary-green);
         }
 
-        nav {
-            display: flex;
-            gap: var(--space-lg);
-            align-items: center;
-        }
-
-        nav a {
+        .header-contact {
             font-family: var(--font-mono);
             font-size: 0.6875rem;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.1em;
-            color: var(--stone);
-            text-decoration: none;
             text-transform: uppercase;
-            transition: color 0.3s ease;
-            position: relative;
+            text-decoration: none;
+            padding: 0.875rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--charcoal);
+            color: var(--pewter);
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--white);
+        .header-contact:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1314,10 +1307,6 @@
                 min-height: auto;
             }
 
-            nav {
-                display: none;
-            }
-
             /* Hero & CTA buttons */
             .hero-cta {
                 flex-direction: column;
@@ -1533,14 +1522,9 @@
 
     <!-- Military-Grade Header -->
     <header>
-        <div class="header-tactical-bar"></div>
         <div class="header-inner">
-            <a href="index.html" class="logo-text">TechniSoil</a>
-            <nav>
-                <a href="technisoil-brand-house.html">Brand House</a>
-                <a href="https://technisoilind.com/reports.html" target="_blank">Reports</a>
-                <a href="https://technisoilind.com" target="_blank">Main Site</a>
-            </nav>
+            <a href="index.html" class="header-logo">TechniSoil</a>
+            <a href="#" class="header-contact">Contact</a>
         </div>
     </header>
 
