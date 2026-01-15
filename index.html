@@ -1144,12 +1144,24 @@
         .carousel-section {
             background: var(--black);
             padding: var(--space-3xl) 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-wrapper {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: var(--space-2xl);
+            align-items: center;
+            width: 100%;
         }
 
         .carousel-header {
-            max-width: 1400px;
-            margin: 0 auto var(--space-2xl);
-            padding: 0 var(--space-lg);
+            padding: var(--space-xl) 0;
         }
 
         .carousel-eyebrow {
@@ -1159,7 +1171,7 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--primary-green);
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
         }
 
         .carousel-title {
@@ -1174,9 +1186,6 @@
 
         .carousel-container {
             position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
             overflow: hidden;
         }
 
@@ -1190,9 +1199,9 @@
         .carousel-slide {
             min-width: 100%;
             flex-shrink: 0;
-            aspect-ratio: 16/9;
+            height: 60vh;
             position: relative;
-            border-radius: 0;
+            border-radius: 4px;
             overflow: hidden;
             background: var(--charcoal);
         }
@@ -1330,11 +1339,18 @@
             /* Carousel mobile optimization */
             .carousel-section {
                 padding: var(--space-2xl) 0;
+                min-height: auto;
+            }
+
+            .carousel-wrapper {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+                padding: 0 var(--space-md);
             }
 
             .carousel-header {
-                margin-bottom: var(--space-lg);
-                padding: 0 var(--space-md);
+                padding: 0;
+                margin-bottom: 0;
             }
 
             .carousel-container {
@@ -1349,6 +1365,7 @@
             .carousel-slide {
                 border-radius: 0;
                 min-width: 100%;
+                height: 50vh;
             }
 
             .carousel-slide img {
@@ -1455,6 +1472,11 @@
             }
 
             /* Carousel mobile tweaks */
+            .carousel-wrapper {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
             .carousel-title {
                 font-size: clamp(1.75rem, 6vw, 3rem);
             }
@@ -1469,6 +1491,7 @@
 
             .carousel-slide {
                 border-radius: 0;
+                height: 45vh;
             }
 
             .carousel-caption {
@@ -1531,8 +1554,12 @@
                 padding: var(--space-xl) 0;
             }
 
+            .carousel-wrapper {
+                padding: 0 var(--space-sm);
+            }
+
             .carousel-header {
-                margin-bottom: var(--space-md);
+                margin-bottom: 0;
             }
 
             .carousel-eyebrow {
@@ -1541,6 +1568,10 @@
 
             .carousel-title {
                 font-size: clamp(1.5rem, 8vw, 2.5rem);
+            }
+
+            .carousel-slide {
+                height: 40vh;
             }
 
             /* Footer text sizing */
@@ -1571,6 +1602,7 @@
 
             .carousel-slide {
                 border-radius: 0;
+                height: 35vh;
             }
 
             .carousel-caption {
@@ -1738,13 +1770,14 @@
 
     <!-- Project Showcase Carousel -->
     <section class="carousel-section">
-        <div class="carousel-header">
-            <div class="carousel-eyebrow">Project Showcase</div>
-            <h2 class="carousel-title">Proven Performance</h2>
-        </div>
+        <div class="carousel-wrapper">
+            <div class="carousel-header">
+                <div class="carousel-eyebrow">Project Showcase</div>
+                <h2 class="carousel-title">Proven Performance</h2>
+            </div>
 
-        <div class="carousel-container">
-            <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
                 <!-- Slide 1 -->
                 <div class="carousel-slide">
                     <img src="https://neopave.com/wp-content/uploads/2025/07/hzcxcm_Highway_road_with_beautiful_mountain_landscape__golden_h_904372f3-10e2-44ca-a4a1-d7afea69bd6c.png" alt="Highway Installation">
@@ -1796,12 +1829,13 @@
                 <button class="carousel-btn" id="nextBtn" aria-label="Next slide">›</button>
             </div>
 
-            <div class="carousel-indicators" id="carouselIndicators">
-                <span class="carousel-dot active" data-index="0"></span>
-                <span class="carousel-dot" data-index="1"></span>
-                <span class="carousel-dot" data-index="2"></span>
-                <span class="carousel-dot" data-index="3"></span>
-                <span class="carousel-dot" data-index="4"></span>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                    <span class="carousel-dot" data-index="3"></span>
+                    <span class="carousel-dot" data-index="4"></span>
+                </div>
             </div>
         </div>
     </section>
