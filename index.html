@@ -702,6 +702,31 @@
             text-align: center;
         }
 
+        .partnership-blurb {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .partnership-blurb p {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--pewter);
+        }
+
+        .partnership-blurb a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+
+        .partnership-blurb a:hover {
+            opacity: 0.7;
+        }
+
         .client-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1170,12 +1195,12 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           PROJECT CAROUSEL — 2.5 slides visible with peek effect
+           PROJECT CAROUSEL — Inverted green palette
            ═══════════════════════════════════════════════════════════════ */
         .carousel-section {
             display: block;
             min-height: auto;
-            border-top: 1px solid var(--charcoal);
+            background: var(--primary-green);
             padding-bottom: 70px;
         }
 
@@ -1183,9 +1208,6 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 3rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
         }
 
         .carousel-header-left {
@@ -1198,45 +1220,19 @@
             font-size: 2rem;
             font-weight: 500;
             letter-spacing: -0.02em;
+            color: var(--black);
         }
 
         .carousel-subtitle {
             font-family: var(--font-sans);
             font-size: 1rem;
             font-weight: 300;
-            color: var(--pewter);
-            max-width: 400px;
-        }
-
-        .carousel-nav {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .carousel-nav button {
-            font-family: var(--font-mono);
-            font-size: 0.6875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: transparent;
-            border: 1px solid var(--charcoal);
-            color: var(--pewter);
-            padding: 0.875rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-nav button:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+            color: rgba(0, 0, 0, 0.7);
+            max-width: 500px;
         }
 
         .carousel-container {
             overflow: hidden;
-            border-top: 1px solid var(--charcoal);
-            border-bottom: 1px solid var(--charcoal);
         }
 
         .carousel-track {
@@ -1293,14 +1289,14 @@
         .carousel-dot {
             width: 8px;
             height: 8px;
-            background: var(--charcoal);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .carousel-dot.active {
-            background: var(--primary-green);
+            background: var(--black);
             width: 24px;
             border-radius: 4px;
         }
@@ -1354,11 +1350,6 @@
             /* Carousel tablet */
             .carousel-slide {
                 flex: 0 0 50%;
-            }
-
-            .carousel-header {
-                flex-direction: column;
-                gap: 1.5rem;
             }
 
             /* Client grid */
@@ -1442,12 +1433,6 @@
             .carousel-slide {
                 flex: 0 0 85%;
             }
-
-            .carousel-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
         }
 
         @media (max-width: 640px) {
@@ -1494,12 +1479,6 @@
             .hero-eyebrow {
                 font-size: 0.5rem;
                 margin-bottom: var(--space-md);
-            }
-
-            /* Section spacing */
-            .carousel-nav button {
-                width: 40px;
-                height: 40px;
             }
 
             /* Footer text sizing */
@@ -1676,10 +1655,6 @@
                 <h2 class="carousel-title">Projects</h2>
                 <p class="carousel-subtitle">Deployed infrastructure across three continents, from highways to runways.</p>
             </div>
-            <div class="carousel-nav">
-                <button id="prevBtn" aria-label="Previous">Scroll</button>
-                <button id="nextBtn" aria-label="Next">Scroll</button>
-            </div>
         </div>
 
         <div class="carousel-container">
@@ -1737,6 +1712,10 @@
     <section class="proof-section">
         <div class="section-inner">
             <div class="section-eyebrow">Trusted Worldwide</div>
+
+            <div class="partnership-blurb">
+                <p>We're expanding our global network in 2027. If you're interested in becoming a certified installation partner or distributor, <a href="#">let's talk</a>.</p>
+            </div>
 
             <div class="client-grid">
                 <div class="client-item">
@@ -1883,8 +1862,6 @@
         // Carousel functionality - 2.5 slides visible with peek
         (function() {
             const track = document.getElementById('carouselTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
             const dots = document.querySelectorAll('.carousel-dot');
 
             if (!track) return;
@@ -1916,9 +1893,6 @@
                 idx = idx <= 0 ? max() : idx - 1;
                 move();
             }
-
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
