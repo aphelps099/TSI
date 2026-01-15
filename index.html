@@ -1182,15 +1182,17 @@
 
         .carousel-track {
             display: flex;
-            gap: var(--space-lg);
+            gap: 0;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
         }
 
         .carousel-slide {
             min-width: 100%;
+            flex-shrink: 0;
             aspect-ratio: 16/9;
             position: relative;
-            border-radius: 8px;
+            border-radius: 0;
             overflow: hidden;
             background: var(--charcoal);
         }
@@ -1336,11 +1338,21 @@
             }
 
             .carousel-container {
-                padding: 0 var(--space-md);
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .carousel-track {
+                gap: 0;
             }
 
             .carousel-slide {
-                border-radius: 4px;
+                border-radius: 0;
+                min-width: 100%;
+            }
+
+            .carousel-slide img {
+                pointer-events: none;
             }
 
             .carousel-caption {
@@ -1448,7 +1460,15 @@
             }
 
             .carousel-track {
-                gap: var(--space-md);
+                gap: 0;
+            }
+
+            .carousel-container {
+                padding: 0;
+            }
+
+            .carousel-slide {
+                border-radius: 0;
             }
 
             .carousel-caption {
@@ -1469,13 +1489,18 @@
         @media (max-width: 640px) {
             /* Client logos - single column on small screens */
             .client-grid {
-                grid-template-columns: 1fr;
-                gap: 1px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2px;
             }
 
             .client-item {
                 padding: var(--space-lg);
-                aspect-ratio: 2/1;
+                aspect-ratio: 3/2;
+            }
+
+            .client-item img {
+                max-width: 90%;
+                max-height: 90%;
             }
 
             /* Buttons extra small screens */
@@ -1534,6 +1559,20 @@
                 font-size: clamp(2rem, 12vw, 4.5rem);
             }
 
+            /* Carousel ultra compact */
+            .carousel-container {
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .carousel-track {
+                gap: 0;
+            }
+
+            .carousel-slide {
+                border-radius: 0;
+            }
+
             .carousel-caption {
                 padding: var(--space-xs) var(--space-sm);
             }
@@ -1557,6 +1596,15 @@
 
             .carousel-dot.active {
                 width: 18px;
+            }
+
+            /* Logo grid - keep 2 columns */
+            .client-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .client-item {
+                padding: var(--space-md);
             }
 
             .btn-neo,
@@ -1945,25 +1993,38 @@
                 });
             });
 
-            // Touch swipe support for mobile
+            // Touch swipe support for mobile - improved
             let touchStartX = 0;
             let touchEndX = 0;
+            let touchStartY = 0;
+            let touchEndY = 0;
 
-            track.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            const container = document.querySelector('.carousel-container');
 
-            track.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, { passive: true });
+            if (container) {
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+
+                container.addEventListener('touchmove', (e) => {
+                    touchEndX = e.touches[0].clientX;
+                    touchEndY = e.touches[0].clientY;
+                }, { passive: true });
+
+                container.addEventListener('touchend', () => {
+                    handleSwipe();
+                }, { passive: true });
+            }
 
             function handleSwipe() {
                 const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
+                const diffX = touchStartX - touchEndX;
+                const diffY = touchStartY - touchEndY;
 
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
+                // Only handle horizontal swipes (not vertical scrolls)
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+                    if (diffX > 0) {
                         // Swiped left - next slide
                         nextSlide();
                     } else {
