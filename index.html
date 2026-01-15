@@ -552,15 +552,31 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           SUCCESS SECTION — WITH GLOBE BACKGROUND
+           SUCCESS SECTION — WITH GLOBE BACKGROUND & SCROLL TRANSITION
            ═══════════════════════════════════════════════════════════════ */
         .success-section {
-            background: linear-gradient(180deg, var(--black) 0%, var(--charcoal) 100%);
+            --bg-opacity: 0;
+            background: var(--black);
             color: var(--white);
             scroll-snap-align: center;
             min-height: 100vh;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Green background overlay that fades in on scroll */
+        .success-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-green);
+            opacity: var(--bg-opacity);
+            z-index: 0;
+            will-change: opacity;
+            pointer-events: none;
         }
 
         .success-globe-bg {
@@ -574,6 +590,12 @@
             perspective: 2000px;
             z-index: 1;
             opacity: 0.5;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Fade out globe as green bg fades in */
+        .success-section.transitioning .success-globe-bg {
+            opacity: calc(0.5 * (1 - var(--bg-opacity)));
         }
 
         .success-content {
@@ -1293,34 +1315,15 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           PROJECT CAROUSEL — Inverted green palette with scroll transition
+           PROJECT CAROUSEL — Inverted green palette (fully green bg)
            ═══════════════════════════════════════════════════════════════ */
         .carousel-section {
-            --bg-opacity: 0;
             display: block;
             min-height: auto;
-            background: var(--black);
+            background: var(--primary-green);
             padding-bottom: 70px;
             position: relative;
             overflow: hidden;
-        }
-
-        .carousel-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-green);
-            opacity: var(--bg-opacity);
-            z-index: 0;
-            will-change: opacity;
-        }
-
-        .carousel-section > * {
-            position: relative;
-            z-index: 1;
         }
 
         .carousel-header {
@@ -2095,22 +2098,36 @@
             initNeoLogo();
         }
 
-        // Carousel section scroll-based background transition
-        function initCarouselTransition() {
-            const carouselSection = document.querySelector('.carousel-section');
-            if (!carouselSection) return;
+        // Section transition: Global Impact → Projects (black to green)
+        function initSectionTransition() {
+            const successSection = document.querySelector('.success-section');
+            if (!successSection) return;
 
             const updateBackground = () => {
-                const rect = carouselSection.getBoundingClientRect();
+                const rect = successSection.getBoundingClientRect();
+                const sectionHeight = successSection.offsetHeight;
                 const windowHeight = window.innerHeight;
 
-                // Start transition when section top enters bottom 30% of viewport
-                // Complete when section is 20% into viewport
-                const startPoint = windowHeight * 0.8;
-                const endPoint = windowHeight * 0.3;
-                const progress = Math.max(0, Math.min(1, (startPoint - rect.top) / (startPoint - endPoint)));
+                // Calculate how far we've scrolled through the section
+                // Start transition when section is 40% scrolled through
+                // Complete when section bottom reaches top of viewport
+                const scrolledPast = windowHeight - rect.top;
+                const startPoint = sectionHeight * 0.4;
+                const endPoint = sectionHeight;
 
-                carouselSection.style.setProperty('--bg-opacity', progress);
+                let progress = 0;
+                if (scrolledPast > startPoint) {
+                    progress = Math.min(1, (scrolledPast - startPoint) / (endPoint - startPoint));
+                }
+
+                successSection.style.setProperty('--bg-opacity', progress);
+
+                // Add transitioning class when progress > 0
+                if (progress > 0) {
+                    successSection.classList.add('transitioning');
+                } else {
+                    successSection.classList.remove('transitioning');
+                }
             };
 
             window.addEventListener('scroll', updateBackground, { passive: true });
@@ -2138,11 +2155,11 @@
             observer.observe(logo);
         }
 
-        // Initialize carousel transition
+        // Initialize section transition
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCarouselTransition);
+            document.addEventListener('DOMContentLoaded', initSectionTransition);
         } else {
-            initCarouselTransition();
+            initSectionTransition();
         }
 
         // Header scroll effect
