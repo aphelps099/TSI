@@ -590,145 +590,90 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           PROMISE SECTION — FINAL LANDING WITH ZOOMED GLOBE PATTERN
+           CAROUSEL SECTION — NEO PARALLAX
            ═══════════════════════════════════════════════════════════════ */
-        .promise-section {
-            background: linear-gradient(180deg, var(--charcoal) 0%, var(--black) 100%);
+        .carousel-section {
+            background: var(--black);
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 120vh;
             scroll-snap-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .promise-globe-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .carousel-slide {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
             width: 100%;
-            max-width: 800px;
-            height: 800px;
-            perspective: 2000px;
-            z-index: 1;
-            opacity: 0.2;
         }
 
-        .promise-content {
-            position: relative;
-            z-index: 10;
-            max-width: 1400px;
-            text-align: center;
-            padding: var(--space-3xl) var(--space-lg);
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+            transition: transform 0.1s ease-out;
         }
 
-        .promise-icons {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-3xl);
-            margin-bottom: var(--space-3xl);
-            flex-wrap: wrap;
-        }
-
-        .promise-icon {
-            opacity: 0;
-            transform: rotate(-180deg) scale(0.5);
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .promise-icon.visible {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        .icon-badge {
-            width: 120px;
-            height: 120px;
-            border: 2px solid var(--primary-green);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 216, 86, 0.05);
-            position: relative;
-        }
-
-        .icon-badge::before {
-            content: '';
+        .carousel-overlay {
             position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            padding: 2px;
-            background: linear-gradient(135deg, var(--primary-green), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            animation: badgeGlow 3s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
+            pointer-events: none;
         }
 
-        @keyframes badgeGlow {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+        .carousel-neo-logo {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: var(--space-xl);
+            width: 180px;
+            height: auto;
+            z-index: 10;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
 
-        .icon-badge-label {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--primary-green);
-        }
-
-        .icon-badge-value {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
-            margin-top: 0.25rem;
-        }
-
-        .promise-statement {
-            font-family: var(--font-sans);
-            font-size: clamp(2rem, 5vw, 4.5rem);
-            font-weight: 300;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
-            color: var(--white);
-            margin-bottom: var(--space-2xl);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .promise-statement.visible {
+        .carousel-neo-logo:hover {
             opacity: 1;
-            transform: translateY(0);
         }
 
-        .promise-statement strong {
-            color: var(--primary-green);
-            font-weight: 400;
+        .carousel-text-blurb {
+            position: absolute;
+            top: var(--space-xl);
+            right: var(--space-xl);
+            max-width: 400px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            padding: var(--space-lg);
+            border-left: 3px solid var(--primary-green);
         }
 
-        .promise-subtext {
+        .carousel-text-blurb h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+
+        .carousel-text-blurb p {
             font-family: var(--font-mono);
             font-size: 0.875rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
-            color: var(--pewter);
-            text-transform: uppercase;
-            opacity: 0;
-            transition: opacity 1s ease 0.5s;
-        }
-
-        .promise-subtext.visible {
-            opacity: 1;
+            letter-spacing: 0.05em;
+            color: var(--fog);
+            line-height: 1.8;
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -1168,62 +1113,23 @@
         </div>
     </section>
 
-    <!-- Promise Section — Final Landing -->
-    <section class="promise-section">
-        <!-- Ultra-zoomed Globe Background (500x crop) -->
-        <div class="promise-globe-bg">
-            <div class="globe" id="promise-globe">
-                <!-- Meridian rings -->
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <!-- Latitude rings -->
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
-                <div class="globe-ring"></div>
+    <!-- NEO Parallax Carousel -->
+    <section class="carousel-section">
+        <div class="carousel-slide">
+            <img src="https://neopave.com/wp-content/uploads/2025/06/20201202_110952-Large.jpg"
+                 alt="TechniSoil Construction Site"
+                 class="carousel-image"
+                 data-parallax="0.5">
+            <div class="carousel-overlay"></div>
+
+            <img src="https://neopave.com/wp-content/uploads/2025/07/Asset-1.png"
+                 alt="NEO"
+                 class="carousel-neo-logo">
+
+            <div class="carousel-text-blurb">
+                <h3>NEO Pave</h3>
+                <p>Advanced polymer pavement technology delivering unprecedented strength and sustainability. Built for the infrastructure of tomorrow.</p>
             </div>
-        </div>
-
-        <!-- Content -->
-        <div class="promise-content">
-            <!-- Icons that rotate/fade in -->
-            <div class="promise-icons">
-                <div class="promise-icon" data-delay="0">
-                    <div class="icon-badge">
-                        <div class="icon-badge-label">VOC</div>
-                        <div class="icon-badge-value">0%</div>
-                    </div>
-                </div>
-                <div class="promise-icon" data-delay="200">
-                    <div class="icon-badge">
-                        <div class="icon-badge-label">Plastic</div>
-                        <div class="icon-badge-value">1M+</div>
-                    </div>
-                </div>
-                <div class="promise-icon" data-delay="400">
-                    <div class="icon-badge">
-                        <div class="icon-badge-label">Years</div>
-                        <div class="icon-badge-value">50+</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brand Promise Statement -->
-            <h2 class="promise-statement">
-                We're not improving asphalt. <strong>We're replacing it.</strong>
-            </h2>
-
-            <p class="promise-subtext">
-                Engineered for permanence. Designed for impact.
-            </p>
         </div>
     </section>
 
@@ -1374,105 +1280,46 @@
             });
         });
 
-        // Scroll-Choreographed Journey: Atmosphere → Surface
-        function initScrollJourney() {
-            const heroSection = document.querySelector('.hero');
-            const successSection = document.querySelector('.success-section');
-            const promiseSection = document.querySelector('.promise-section');
+        // Simple globe rotation based on scroll
+        function initGlobe() {
             const globe = document.getElementById('globe');
-            const promiseGlobe = document.getElementById('promise-globe');
-            const heroContent = document.querySelector('.hero-content');
-            const successContent = document.querySelector('.success-content');
-            const promiseIcons = document.querySelectorAll('.promise-icon');
-            const promiseStatement = document.querySelector('.promise-statement');
-            const promiseSubtext = document.querySelector('.promise-subtext');
+            if (!globe) return;
 
-            let rotationY = 0;
-            let targetRotationY = 0;
-
-            function updateScrollAnimations() {
+            window.addEventListener('scroll', function() {
                 const scrollY = window.scrollY;
-                const windowHeight = window.innerHeight;
+                const rotation = scrollY * 0.1; // Slow rotation based on scroll
+                globe.style.transform = `rotateX(-15deg) rotateY(${rotation}deg)`;
+            });
+        }
 
-                // Get section positions
-                const heroRect = heroSection.getBoundingClientRect();
-                const successRect = successSection.getBoundingClientRect();
-                const promiseRect = promiseSection.getBoundingClientRect();
+        // Parallax effect for carousel image
+        function initParallax() {
+            const parallaxElements = document.querySelectorAll('[data-parallax]');
 
-                // Phase 1: Fade out hero text as we scroll down
-                if (heroRect.top < 0) {
-                    const fadeProgress = Math.min(Math.abs(heroRect.top) / windowHeight, 1);
-                    heroContent.style.opacity = 1 - fadeProgress;
-                    heroContent.style.transform = `translateY(${fadeProgress * 50}px)`;
-                }
-
-                // Phase 2: Globe zoom effect (starts small, grows to 500x)
-                // Calculate total scroll progress from hero through success to promise
-                const totalScrollDistance = successSection.offsetTop + successSection.offsetHeight;
-                const scrollProgress = Math.min(scrollY / totalScrollDistance, 1);
-
-                // Scale from 0.3 (distant) to 500 (extreme closeup)
-                const globeScale = 0.3 + (scrollProgress * 499.7);
-
-                if (globe) {
-                    // Rotate and scale
-                    targetRotationY = scrollProgress * 720; // 2 full rotations
-                    rotationY += (targetRotationY - rotationY) * 0.1;
-                    globe.style.transform = `rotateX(-15deg) rotateY(${rotationY}deg) scale(${globeScale})`;
-
-                    // Adjust opacity as we zoom in
-                    const globeOpacity = scrollProgress < 0.5 ? 0.4 : 0.4 - ((scrollProgress - 0.5) * 0.6);
-                    globe.parentElement.style.opacity = globeOpacity;
-                }
-
-                // Phase 3: Fade out success text near the end
-                if (successRect.top < windowHeight * 0.3) {
-                    const successFadeProgress = Math.min((windowHeight * 0.3 - successRect.top) / (windowHeight * 0.5), 1);
-                    successContent.style.opacity = 1 - successFadeProgress;
-                    successContent.style.transform = `translateY(${-successFadeProgress * 30}px)`;
-                }
-
-                // Phase 4: Promise section - show icons and text
-                if (promiseRect.top < windowHeight * 0.7) {
-                    // Set promise globe to extreme zoom (500x scale)
-                    if (promiseGlobe) {
-                        promiseGlobe.style.transform = `rotateX(-15deg) rotateY(${rotationY}deg) scale(500)`;
-                    }
-
-                    // Trigger icon animations with stagger
-                    promiseIcons.forEach((icon, index) => {
-                        const delay = parseInt(icon.getAttribute('data-delay')) || 0;
-                        setTimeout(() => {
-                            icon.classList.add('visible');
-                        }, delay);
-                    });
-
-                    // Show promise statement
-                    setTimeout(() => {
-                        promiseStatement.classList.add('visible');
-                    }, 600);
-
-                    // Show subtext
-                    setTimeout(() => {
-                        promiseSubtext.classList.add('visible');
-                    }, 900);
-                }
-
-                requestAnimationFrame(updateScrollAnimations);
+            function updateParallax() {
+                parallaxElements.forEach(element => {
+                    const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
+                    const rect = element.getBoundingClientRect();
+                    const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                    const yPos = -(scrollPercent * 100 * speed);
+                    element.style.transform = `translateY(${yPos}px) scale(1.2)`;
+                });
             }
 
-            // Start animation loop
-            updateScrollAnimations();
-
-            // Also update on scroll for immediate feedback
-            window.addEventListener('scroll', updateScrollAnimations);
+            window.addEventListener('scroll', updateParallax);
+            window.addEventListener('resize', updateParallax);
+            updateParallax();
         }
 
         // Initialize on load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initScrollJourney);
+            document.addEventListener('DOMContentLoaded', function() {
+                initGlobe();
+                initParallax();
+            });
         } else {
-            initScrollJourney();
+            initGlobe();
+            initParallax();
         }
     </script>
 </body>
